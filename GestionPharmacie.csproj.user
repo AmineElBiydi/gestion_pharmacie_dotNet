@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="Controls\ClientControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\ClientSearchControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\CommandeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\CommandeDashboardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\CommandeEditControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\CommandeSearchControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\DashboardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\MedicamentAlertControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\MedicamentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\MedicamentSearchControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Controls\UserManagementControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ClientSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\CommandeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\CommandeSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\CreateAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\MedicamentAlertForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\MedicamentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\MedicamentSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\StatistiquesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,57 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\amine\\Desktop\\s7\\.net\u0026c#\\GestionPharmacie\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|c:\\users\\amine\\desktop\\s7\\.net\u0026c#\\gestionpharmacie\\forms\\medicamentform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|solutionrelative:forms\\medicamentform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|c:\\users\\amine\\desktop\\s7\\.net\u0026c#\\gestionpharmacie\\forms\\statistiquesform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|solutionrelative:forms\\statistiquesform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MedicamentForm.cs",
+              "DocumentMoniker": "C:\\Users\\amine\\Desktop\\s7\\.net\u0026c#\\GestionPharmacie\\Forms\\MedicamentForm.cs",
+              "RelativeDocumentMoniker": "Forms\\MedicamentForm.cs",
+              "ToolTip": "C:\\Users\\amine\\Desktop\\s7\\.net\u0026c#\\GestionPharmacie\\Forms\\MedicamentForm.cs",
+              "RelativeToolTip": "Forms\\MedicamentForm.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAADwvwoAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T15:52:27.219Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StatistiquesForm.cs",
+              "DocumentMoniker": "C:\\Users\\amine\\Desktop\\s7\\.net\u0026c#\\GestionPharmacie\\Forms\\StatistiquesForm.cs",
+              "RelativeDocumentMoniker": "Forms\\StatistiquesForm.cs",
+              "ToolTip": "C:\\Users\\amine\\Desktop\\s7\\.net\u0026c#\\GestionPharmacie\\Forms\\StatistiquesForm.cs",
+              "RelativeToolTip": "Forms\\StatistiquesForm.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAIwBYAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T15:52:02.257Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
