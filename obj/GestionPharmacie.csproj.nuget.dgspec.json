@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\amine\\Desktop\\s7\\.net&c#\\GestionPharmacie\\GestionPharmacie.csproj": {}
+    "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\GestionPharmacie.csproj": {}
   },
   "projects": {
-    "C:\\Users\\amine\\Desktop\\s7\\.net&c#\\GestionPharmacie\\GestionPharmacie.csproj": {
+    "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\GestionPharmacie.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\amine\\Desktop\\s7\\.net&c#\\GestionPharmacie\\GestionPharmacie.csproj",
+        "projectUniqueName": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\GestionPharmacie.csproj",
         "projectName": "GestionPharmacie",
-        "projectPath": "C:\\Users\\amine\\Desktop\\s7\\.net&c#\\GestionPharmacie\\GestionPharmacie.csproj",
+        "projectPath": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\GestionPharmacie.csproj",
         "packagesPath": "C:\\Users\\amine\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\amine\\Desktop\\s7\\.net&c#\\GestionPharmacie\\obj\\",
+        "outputPath": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -53,6 +53,10 @@
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.6, )"
+            },
+            "System.Windows.Forms.DataVisualization": {
+              "target": "Package",
+              "version": "[1.0.0-prerelease.20110.1, )"
             }
           },
           "imports": [

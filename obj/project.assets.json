@@ -62,6 +62,20 @@
             "rid": "win"
           }
         }
+      },
+      "System.Windows.Forms.DataVisualization/1.0.0-prerelease.20110.1": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp3.0/System.Windows.Forms.DataVisualization.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Windows.Forms.DataVisualization.dll": {
+            "related": ".pdb"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.NETCore.App"
+        ]
       }
     }
   },
@@ -214,11 +228,28 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "System.Windows.Forms.DataVisualization/1.0.0-prerelease.20110.1": {
+      "sha512": "1EdLFl/I5QobO4shpqUNslDGWTeRbpt3pLMSkiLQYzdWBDqf44/8TM5hXMtkA8ktHU80aVZYVEuxr8vJqcB1Ig==",
+      "type": "package",
+      "path": "system.windows.forms.datavisualization/1.0.0-prerelease.20110.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp3.0/System.Windows.Forms.DataVisualization.dll",
+        "lib/netcoreapp3.0/System.Windows.Forms.DataVisualization.pdb",
+        "ref/netcoreapp3.0/System.Windows.Forms.DataVisualization.dll",
+        "system.windows.forms.datavisualization.1.0.0-prerelease.20110.1.nupkg.sha512",
+        "system.windows.forms.datavisualization.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net10.0-windows7.0": [
-      "System.Data.SqlClient >= 4.8.6"
+      "System.Data.SqlClient >= 4.8.6",
+      "System.Windows.Forms.DataVisualization >= 1.0.0-prerelease.20110.1"
     ]
   },
   "packageFolders": {
@@ -228,11 +259,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\amine\\Desktop\\s7\\.net&c#\\GestionPharmacie\\GestionPharmacie.csproj",
+      "projectUniqueName": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\GestionPharmacie.csproj",
       "projectName": "GestionPharmacie",
-      "projectPath": "C:\\Users\\amine\\Desktop\\s7\\.net&c#\\GestionPharmacie\\GestionPharmacie.csproj",
+      "projectPath": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\GestionPharmacie.csproj",
       "packagesPath": "C:\\Users\\amine\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\amine\\Desktop\\s7\\.net&c#\\GestionPharmacie\\obj\\",
+      "outputPath": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -274,6 +305,10 @@
           "System.Data.SqlClient": {
             "target": "Package",
             "version": "[4.8.6, )"
+          },
+          "System.Windows.Forms.DataVisualization": {
+            "target": "Package",
+            "version": "[1.0.0-prerelease.20110.1, )"
           }
         },
         "imports": [

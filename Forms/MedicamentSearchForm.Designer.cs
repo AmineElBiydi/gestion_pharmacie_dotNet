@@ -17,142 +17,147 @@ namespace GestionPharmacie.Forms
 
         private void InitializeComponent()
         {
-            this.searchPanel = new System.Windows.Forms.Panel();
-            this.btnSearchAll = new System.Windows.Forms.Button();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.lblSearch = new System.Windows.Forms.Label();
-            this.dgvResults = new System.Windows.Forms.DataGridView();
-            this.colReference = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDatePeremption = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrixUnitaire = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colQuantiteStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.searchPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
-            this.SuspendLayout();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            searchPanel = new Panel();
+            btnSearchAll = new Button();
+            txtSearch = new TextBox();
+            lblSearch = new Label();
+            dgvResults = new DataGridView();
+            colReference = new DataGridViewTextBoxColumn();
+            colNom = new DataGridViewTextBoxColumn();
+            colDatePeremption = new DataGridViewTextBoxColumn();
+            colPrixUnitaire = new DataGridViewTextBoxColumn();
+            colQuantiteStock = new DataGridViewTextBoxColumn();
+            searchPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvResults).BeginInit();
+            SuspendLayout();
             // 
             // searchPanel
             // 
-            this.searchPanel.Controls.Add(this.btnSearchAll);
-            this.searchPanel.Controls.Add(this.txtSearch);
-            this.searchPanel.Controls.Add(this.lblSearch);
-            this.searchPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.searchPanel.Location = new System.Drawing.Point(0, 0);
-            this.searchPanel.Name = "searchPanel";
-            this.searchPanel.Padding = new System.Windows.Forms.Padding(10);
-            this.searchPanel.Size = new System.Drawing.Size(900, 60);
-            this.searchPanel.TabIndex = 0;
+            searchPanel.Controls.Add(btnSearchAll);
+            searchPanel.Controls.Add(txtSearch);
+            searchPanel.Controls.Add(lblSearch);
+            searchPanel.Dock = DockStyle.Top;
+            searchPanel.Location = new Point(0, 0);
+            searchPanel.Margin = new Padding(3, 4, 3, 4);
+            searchPanel.Name = "searchPanel";
+            searchPanel.Padding = new Padding(11, 13, 11, 13);
+            searchPanel.Size = new Size(1029, 80);
+            searchPanel.TabIndex = 0;
             // 
             // btnSearchAll
             // 
-            this.btnSearchAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(133)))), ((int)(((byte)(244)))));
-            this.btnSearchAll.FlatAppearance.BorderSize = 0;
-            this.btnSearchAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchAll.ForeColor = System.Drawing.Color.White;
-            this.btnSearchAll.Location = new System.Drawing.Point(540, 10);
-            this.btnSearchAll.Name = "btnSearchAll";
-            this.btnSearchAll.Size = new System.Drawing.Size(120, 32);
-            this.btnSearchAll.TabIndex = 2;
-            this.btnSearchAll.Text = "Afficher Tous";
-            this.btnSearchAll.UseVisualStyleBackColor = false;
-            this.btnSearchAll.Click += new System.EventHandler(this.BtnSearchAll_Click);
+            btnSearchAll.BackColor = Color.FromArgb(66, 133, 244);
+            btnSearchAll.FlatAppearance.BorderSize = 0;
+            btnSearchAll.FlatStyle = FlatStyle.Flat;
+            btnSearchAll.ForeColor = Color.White;
+            btnSearchAll.Location = new Point(665, 16);
+            btnSearchAll.Margin = new Padding(3, 4, 3, 4);
+            btnSearchAll.Name = "btnSearchAll";
+            btnSearchAll.Size = new Size(137, 43);
+            btnSearchAll.TabIndex = 2;
+            btnSearchAll.Text = "Afficher Tous";
+            btnSearchAll.UseVisualStyleBackColor = false;
+            btnSearchAll.Click += BtnSearchAll_Click;
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(120, 12);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(400, 23);
-            this.txtSearch.TabIndex = 1;
-            this.txtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
+            txtSearch.Location = new Point(179, 23);
+            txtSearch.Margin = new Padding(3, 4, 3, 4);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(457, 27);
+            txtSearch.TabIndex = 1;
+            txtSearch.TextChanged += TxtSearch_TextChanged;
             // 
             // lblSearch
             // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(20, 15);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(70, 15);
-            this.lblSearch.TabIndex = 0;
-            this.lblSearch.Text = "Rechercher:";
+            lblSearch.AutoSize = true;
+            lblSearch.Location = new Point(65, 27);
+            lblSearch.Name = "lblSearch";
+            lblSearch.Size = new Size(85, 20);
+            lblSearch.TabIndex = 0;
+            lblSearch.Text = "Rechercher:";
             // 
             // dgvResults
             // 
-            this.dgvResults.AllowUserToAddRows = false;
-            this.dgvResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvResults.BackgroundColor = System.Drawing.Color.White;
-            this.dgvResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colReference,
-            this.colNom,
-            this.colDatePeremption,
-            this.colPrixUnitaire,
-            this.colQuantiteStock});
-            this.dgvResults.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvResults.Location = new System.Drawing.Point(0, 60);
-            this.dgvResults.MultiSelect = false;
-            this.dgvResults.Name = "dgvResults";
-            this.dgvResults.ReadOnly = true;
-            this.dgvResults.RowTemplate.Height = 25;
-            this.dgvResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvResults.Size = new System.Drawing.Size(900, 440);
-            this.dgvResults.TabIndex = 1;
+            dgvResults.AllowUserToAddRows = false;
+            dgvResults.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvResults.BackgroundColor = Color.White;
+            dgvResults.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvResults.Columns.AddRange(new DataGridViewColumn[] { colReference, colNom, colDatePeremption, colPrixUnitaire, colQuantiteStock });
+            dgvResults.Dock = DockStyle.Fill;
+            dgvResults.Location = new Point(0, 80);
+            dgvResults.Margin = new Padding(3, 4, 3, 4);
+            dgvResults.MultiSelect = false;
+            dgvResults.Name = "dgvResults";
+            dgvResults.ReadOnly = true;
+            dgvResults.RowHeadersWidth = 51;
+            dgvResults.RowTemplate.Height = 25;
+            dgvResults.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvResults.Size = new Size(1029, 587);
+            dgvResults.TabIndex = 1;
             // 
             // colReference
             // 
-            this.colReference.DataPropertyName = "Reference";
-            this.colReference.HeaderText = "Référence";
-            this.colReference.Name = "colReference";
-            this.colReference.ReadOnly = true;
-            this.colReference.Width = 120;
+            colReference.DataPropertyName = "Reference";
+            colReference.HeaderText = "Référence";
+            colReference.MinimumWidth = 6;
+            colReference.Name = "colReference";
+            colReference.ReadOnly = true;
             // 
             // colNom
             // 
-            this.colNom.DataPropertyName = "Nom";
-            this.colNom.HeaderText = "Nom";
-            this.colNom.Name = "colNom";
-            this.colNom.ReadOnly = true;
-            this.colNom.Width = 250;
+            colNom.DataPropertyName = "Nom";
+            colNom.HeaderText = "Nom";
+            colNom.MinimumWidth = 6;
+            colNom.Name = "colNom";
+            colNom.ReadOnly = true;
             // 
             // colDatePeremption
             // 
-            this.colDatePeremption.DataPropertyName = "DatePeremption";
-            this.colDatePeremption.DefaultCellStyle.Format = "dd/MM/yyyy";
-            this.colDatePeremption.HeaderText = "Date Péremption";
-            this.colDatePeremption.Name = "colDatePeremption";
-            this.colDatePeremption.ReadOnly = true;
-            this.colDatePeremption.Width = 120;
+            colDatePeremption.DataPropertyName = "DatePeremption";
+            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
+            colDatePeremption.DefaultCellStyle = dataGridViewCellStyle1;
+            colDatePeremption.HeaderText = "Date Péremption";
+            colDatePeremption.MinimumWidth = 6;
+            colDatePeremption.Name = "colDatePeremption";
+            colDatePeremption.ReadOnly = true;
             // 
             // colPrixUnitaire
             // 
-            this.colPrixUnitaire.DataPropertyName = "PrixUnitaire";
-            this.colPrixUnitaire.DefaultCellStyle.Format = "N2";
-            this.colPrixUnitaire.HeaderText = "Prix (€)";
-            this.colPrixUnitaire.Name = "colPrixUnitaire";
-            this.colPrixUnitaire.ReadOnly = true;
-            this.colPrixUnitaire.Width = 100;
+            colPrixUnitaire.DataPropertyName = "PrixUnitaire";
+            dataGridViewCellStyle2.Format = "N2";
+            colPrixUnitaire.DefaultCellStyle = dataGridViewCellStyle2;
+            colPrixUnitaire.HeaderText = "Prix (€)";
+            colPrixUnitaire.MinimumWidth = 6;
+            colPrixUnitaire.Name = "colPrixUnitaire";
+            colPrixUnitaire.ReadOnly = true;
             // 
             // colQuantiteStock
             // 
-            this.colQuantiteStock.DataPropertyName = "QuantiteStock";
-            this.colQuantiteStock.HeaderText = "Stock";
-            this.colQuantiteStock.Name = "colQuantiteStock";
-            this.colQuantiteStock.ReadOnly = true;
-            this.colQuantiteStock.Width = 80;
+            colQuantiteStock.DataPropertyName = "QuantiteStock";
+            colQuantiteStock.HeaderText = "Stock";
+            colQuantiteStock.MinimumWidth = 6;
+            colQuantiteStock.Name = "colQuantiteStock";
+            colQuantiteStock.ReadOnly = true;
             // 
             // MedicamentSearchForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(900, 500);
-            this.Controls.Add(this.dgvResults);
-            this.Controls.Add(this.searchPanel);
-            this.Name = "MedicamentSearchForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Rechercher Médicaments";
-            this.searchPanel.ResumeLayout(false);
-            this.searchPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(245, 245, 245);
+            ClientSize = new Size(1029, 667);
+            Controls.Add(dgvResults);
+            Controls.Add(searchPanel);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "MedicamentSearchForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Rechercher Médicaments";
+            searchPanel.ResumeLayout(false);
+            searchPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvResults).EndInit();
+            ResumeLayout(false);
 
         }
 

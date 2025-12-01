@@ -17,242 +17,250 @@ namespace GestionPharmacie.Forms
 
         private void InitializeComponent()
         {
-            this.searchPanel = new System.Windows.Forms.Panel();
-            this.btnShowAll = new System.Windows.Forms.Button();
-            this.btnSearchClient = new System.Windows.Forms.Button();
-            this.cboClient = new System.Windows.Forms.ComboBox();
-            this.lblClient = new System.Windows.Forms.Label();
-            this.btnSearchDate = new System.Windows.Forms.Button();
-            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
-            this.lblEndDate = new System.Windows.Forms.Label();
-            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
-            this.lblStartDate = new System.Windows.Forms.Label();
-            this.lblSearch = new System.Windows.Forms.Label();
-            this.dgvCommandes = new System.Windows.Forms.DataGridView();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDateCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colClientNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMontantTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatut = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrint = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.searchPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCommandes)).BeginInit();
-            this.SuspendLayout();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            searchPanel = new Panel();
+            btnShowAll = new Button();
+            btnSearchClient = new Button();
+            cboClient = new ComboBox();
+            lblClient = new Label();
+            btnSearchDate = new Button();
+            dtpEndDate = new DateTimePicker();
+            lblEndDate = new Label();
+            dtpStartDate = new DateTimePicker();
+            lblStartDate = new Label();
+            lblSearch = new Label();
+            dgvCommandes = new DataGridView();
+            colID = new DataGridViewTextBoxColumn();
+            colDateCommande = new DataGridViewTextBoxColumn();
+            colClientNom = new DataGridViewTextBoxColumn();
+            colMontantTotal = new DataGridViewTextBoxColumn();
+            colStatut = new DataGridViewTextBoxColumn();
+            colPrint = new DataGridViewButtonColumn();
+            searchPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCommandes).BeginInit();
+            SuspendLayout();
             // 
             // searchPanel
             // 
-            this.searchPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.searchPanel.Controls.Add(this.btnShowAll);
-            this.searchPanel.Controls.Add(this.btnSearchClient);
-            this.searchPanel.Controls.Add(this.cboClient);
-            this.searchPanel.Controls.Add(this.lblClient);
-            this.searchPanel.Controls.Add(this.btnSearchDate);
-            this.searchPanel.Controls.Add(this.dtpEndDate);
-            this.searchPanel.Controls.Add(this.lblEndDate);
-            this.searchPanel.Controls.Add(this.dtpStartDate);
-            this.searchPanel.Controls.Add(this.lblStartDate);
-            this.searchPanel.Controls.Add(this.lblSearch);
-            this.searchPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.searchPanel.Location = new System.Drawing.Point(0, 0);
-            this.searchPanel.Name = "searchPanel";
-            this.searchPanel.Padding = new System.Windows.Forms.Padding(10);
-            this.searchPanel.Size = new System.Drawing.Size(1000, 100);
-            this.searchPanel.TabIndex = 0;
+            searchPanel.BorderStyle = BorderStyle.FixedSingle;
+            searchPanel.Controls.Add(btnShowAll);
+            searchPanel.Controls.Add(btnSearchClient);
+            searchPanel.Controls.Add(cboClient);
+            searchPanel.Controls.Add(lblClient);
+            searchPanel.Controls.Add(btnSearchDate);
+            searchPanel.Controls.Add(dtpEndDate);
+            searchPanel.Controls.Add(lblEndDate);
+            searchPanel.Controls.Add(dtpStartDate);
+            searchPanel.Controls.Add(lblStartDate);
+            searchPanel.Controls.Add(lblSearch);
+            searchPanel.Dock = DockStyle.Top;
+            searchPanel.Location = new Point(0, 0);
+            searchPanel.Margin = new Padding(3, 4, 3, 4);
+            searchPanel.Name = "searchPanel";
+            searchPanel.Padding = new Padding(11, 13, 11, 13);
+            searchPanel.Size = new Size(1143, 133);
+            searchPanel.TabIndex = 0;
             // 
             // btnShowAll
             // 
-            this.btnShowAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(133)))), ((int)(((byte)(244)))));
-            this.btnShowAll.FlatAppearance.BorderSize = 0;
-            this.btnShowAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnShowAll.ForeColor = System.Drawing.Color.White;
-            this.btnShowAll.Location = new System.Drawing.Point(720, 50);
-            this.btnShowAll.Name = "btnShowAll";
-            this.btnShowAll.Size = new System.Drawing.Size(120, 30);
-            this.btnShowAll.TabIndex = 9;
-            this.btnShowAll.Text = "Afficher Tout";
-            this.btnShowAll.UseVisualStyleBackColor = false;
-            this.btnShowAll.Click += new System.EventHandler(this.BtnShowAll_Click);
+            btnShowAll.BackColor = Color.FromArgb(66, 133, 244);
+            btnShowAll.FlatAppearance.BorderSize = 0;
+            btnShowAll.FlatStyle = FlatStyle.Flat;
+            btnShowAll.ForeColor = Color.White;
+            btnShowAll.Location = new Point(895, 38);
+            btnShowAll.Margin = new Padding(3, 4, 3, 4);
+            btnShowAll.Name = "btnShowAll";
+            btnShowAll.Size = new Size(137, 40);
+            btnShowAll.TabIndex = 9;
+            btnShowAll.Text = "Afficher Tout";
+            btnShowAll.UseVisualStyleBackColor = false;
+            btnShowAll.Click += BtnShowAll_Click;
             // 
             // btnSearchClient
             // 
-            this.btnSearchClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(187)))), ((int)(((byte)(106)))));
-            this.btnSearchClient.FlatAppearance.BorderSize = 0;
-            this.btnSearchClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchClient.ForeColor = System.Drawing.Color.White;
-            this.btnSearchClient.Location = new System.Drawing.Point(390, 65);
-            this.btnSearchClient.Name = "btnSearchClient";
-            this.btnSearchClient.Size = new System.Drawing.Size(150, 28);
-            this.btnSearchClient.TabIndex = 8;
-            this.btnSearchClient.Text = "Rechercher par Client";
-            this.btnSearchClient.UseVisualStyleBackColor = false;
-            this.btnSearchClient.Click += new System.EventHandler(this.BtnSearchClient_Click);
+            btnSearchClient.BackColor = Color.FromArgb(102, 187, 106);
+            btnSearchClient.FlatAppearance.BorderSize = 0;
+            btnSearchClient.FlatStyle = FlatStyle.Flat;
+            btnSearchClient.ForeColor = Color.White;
+            btnSearchClient.Location = new Point(691, 84);
+            btnSearchClient.Margin = new Padding(3, 4, 3, 4);
+            btnSearchClient.Name = "btnSearchClient";
+            btnSearchClient.Size = new Size(171, 37);
+            btnSearchClient.TabIndex = 8;
+            btnSearchClient.Text = "Rechercher par Client";
+            btnSearchClient.UseVisualStyleBackColor = false;
+            btnSearchClient.Click += BtnSearchClient_Click;
             // 
             // cboClient
             // 
-            this.cboClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboClient.FormattingEnabled = true;
-            this.cboClient.Location = new System.Drawing.Point(120, 67);
-            this.cboClient.Name = "cboClient";
-            this.cboClient.Size = new System.Drawing.Size(250, 23);
-            this.cboClient.TabIndex = 7;
+            cboClient.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboClient.FormattingEnabled = true;
+            cboClient.Location = new Point(79, 84);
+            cboClient.Margin = new Padding(3, 4, 3, 4);
+            cboClient.Name = "cboClient";
+            cboClient.Size = new Size(585, 28);
+            cboClient.TabIndex = 7;
             // 
             // lblClient
             // 
-            this.lblClient.AutoSize = true;
-            this.lblClient.Location = new System.Drawing.Point(20, 70);
-            this.lblClient.Name = "lblClient";
-            this.lblClient.Size = new System.Drawing.Size(41, 15);
-            this.lblClient.TabIndex = 6;
-            this.lblClient.Text = "Client:";
+            lblClient.AutoSize = true;
+            lblClient.Location = new Point(23, 88);
+            lblClient.Name = "lblClient";
+            lblClient.Size = new Size(50, 20);
+            lblClient.TabIndex = 6;
+            lblClient.Text = "Client:";
             // 
             // btnSearchDate
             // 
-            this.btnSearchDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(187)))), ((int)(((byte)(106)))));
-            this.btnSearchDate.FlatAppearance.BorderSize = 0;
-            this.btnSearchDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchDate.ForeColor = System.Drawing.Color.White;
-            this.btnSearchDate.Location = new System.Drawing.Point(550, 35);
-            this.btnSearchDate.Name = "btnSearchDate";
-            this.btnSearchDate.Size = new System.Drawing.Size(150, 28);
-            this.btnSearchDate.TabIndex = 5;
-            this.btnSearchDate.Text = "Rechercher par Date";
-            this.btnSearchDate.UseVisualStyleBackColor = false;
-            this.btnSearchDate.Click += new System.EventHandler(this.BtnSearchDate_Click);
+            btnSearchDate.BackColor = Color.FromArgb(102, 187, 106);
+            btnSearchDate.FlatAppearance.BorderSize = 0;
+            btnSearchDate.FlatStyle = FlatStyle.Flat;
+            btnSearchDate.ForeColor = Color.White;
+            btnSearchDate.Location = new Point(691, 40);
+            btnSearchDate.Margin = new Padding(3, 4, 3, 4);
+            btnSearchDate.Name = "btnSearchDate";
+            btnSearchDate.Size = new Size(171, 37);
+            btnSearchDate.TabIndex = 5;
+            btnSearchDate.Text = "Rechercher par Date";
+            btnSearchDate.UseVisualStyleBackColor = false;
+            btnSearchDate.Click += BtnSearchDate_Click;
             // 
             // dtpEndDate
             // 
-            this.dtpEndDate.Location = new System.Drawing.Point(380, 37);
-            this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(150, 23);
-            this.dtpEndDate.TabIndex = 4;
+            dtpEndDate.Location = new Point(434, 44);
+            dtpEndDate.Margin = new Padding(3, 4, 3, 4);
+            dtpEndDate.Name = "dtpEndDate";
+            dtpEndDate.Size = new Size(230, 27);
+            dtpEndDate.TabIndex = 4;
             // 
             // lblEndDate
             // 
-            this.lblEndDate.AutoSize = true;
-            this.lblEndDate.Location = new System.Drawing.Point(300, 40);
-            this.lblEndDate.Name = "lblEndDate";
-            this.lblEndDate.Size = new System.Drawing.Size(60, 15);
-            this.lblEndDate.TabIndex = 3;
-            this.lblEndDate.Text = "Date Fin:";
+            lblEndDate.AutoSize = true;
+            lblEndDate.Location = new Point(361, 48);
+            lblEndDate.Name = "lblEndDate";
+            lblEndDate.Size = new Size(67, 20);
+            lblEndDate.TabIndex = 3;
+            lblEndDate.Text = "Date Fin:";
             // 
             // dtpStartDate
             // 
-            this.dtpStartDate.Location = new System.Drawing.Point(120, 37);
-            this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(150, 23);
-            this.dtpStartDate.TabIndex = 2;
+            dtpStartDate.Location = new Point(118, 44);
+            dtpStartDate.Margin = new Padding(3, 4, 3, 4);
+            dtpStartDate.Name = "dtpStartDate";
+            dtpStartDate.Size = new Size(219, 27);
+            dtpStartDate.TabIndex = 2;
             // 
             // lblStartDate
             // 
-            this.lblStartDate.AutoSize = true;
-            this.lblStartDate.Location = new System.Drawing.Point(20, 40);
-            this.lblStartDate.Name = "lblStartDate";
-            this.lblStartDate.Size = new System.Drawing.Size(72, 15);
-            this.lblStartDate.TabIndex = 1;
-            this.lblStartDate.Text = "Date Début:";
+            lblStartDate.AutoSize = true;
+            lblStartDate.Location = new Point(23, 48);
+            lblStartDate.Name = "lblStartDate";
+            lblStartDate.Size = new Size(89, 20);
+            lblStartDate.TabIndex = 1;
+            lblStartDate.Text = "Date Début:";
             // 
             // lblSearch
             // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblSearch.Location = new System.Drawing.Point(20, 10);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(125, 19);
-            this.lblSearch.TabIndex = 0;
-            this.lblSearch.Text = "Rechercher par:";
+            lblSearch.AutoSize = true;
+            lblSearch.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblSearch.Location = new Point(14, 8);
+            lblSearch.Name = "lblSearch";
+            lblSearch.Size = new Size(136, 23);
+            lblSearch.TabIndex = 0;
+            lblSearch.Text = "Rechercher par:";
             // 
             // dgvCommandes
             // 
-            this.dgvCommandes.AllowUserToAddRows = false;
-            this.dgvCommandes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCommandes.BackgroundColor = System.Drawing.Color.White;
-            this.dgvCommandes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCommandes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colID,
-            this.colDateCommande,
-            this.colClientNom,
-            this.colMontantTotal,
-            this.colStatut,
-            this.colPrint});
-            this.dgvCommandes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvCommandes.Location = new System.Drawing.Point(0, 100);
-            this.dgvCommandes.MultiSelect = false;
-            this.dgvCommandes.Name = "dgvCommandes";
-            this.dgvCommandes.ReadOnly = true;
-            this.dgvCommandes.RowTemplate.Height = 25;
-            this.dgvCommandes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCommandes.Size = new System.Drawing.Size(1000, 500);
-            this.dgvCommandes.TabIndex = 1;
-            this.dgvCommandes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCommandes_CellClick);
-            this.dgvCommandes.SelectionChanged += new System.EventHandler(this.DgvCommandes_SelectionChanged);
+            dgvCommandes.AllowUserToAddRows = false;
+            dgvCommandes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCommandes.BackgroundColor = Color.White;
+            dgvCommandes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCommandes.Columns.AddRange(new DataGridViewColumn[] { colID, colDateCommande, colClientNom, colMontantTotal, colStatut, colPrint });
+            dgvCommandes.Dock = DockStyle.Fill;
+            dgvCommandes.Location = new Point(0, 133);
+            dgvCommandes.Margin = new Padding(3, 4, 3, 4);
+            dgvCommandes.MultiSelect = false;
+            dgvCommandes.Name = "dgvCommandes";
+            dgvCommandes.ReadOnly = true;
+            dgvCommandes.RowHeadersWidth = 51;
+            dgvCommandes.RowTemplate.Height = 25;
+            dgvCommandes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCommandes.Size = new Size(1143, 667);
+            dgvCommandes.TabIndex = 1;
+            dgvCommandes.CellClick += DgvCommandes_CellClick;
+            dgvCommandes.SelectionChanged += DgvCommandes_SelectionChanged;
             // 
             // colID
             // 
-            this.colID.DataPropertyName = "ID";
-            this.colID.HeaderText = "N° Cmd";
-            this.colID.Name = "colID";
-            this.colID.ReadOnly = true;
-            this.colID.Width = 80;
+            colID.DataPropertyName = "ID";
+            colID.HeaderText = "N° Cmd";
+            colID.MinimumWidth = 6;
+            colID.Name = "colID";
+            colID.ReadOnly = true;
             // 
             // colDateCommande
             // 
-            this.colDateCommande.DataPropertyName = "DateCommande";
-            this.colDateCommande.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
-            this.colDateCommande.HeaderText = "Date";
-            this.colDateCommande.Name = "colDateCommande";
-            this.colDateCommande.ReadOnly = true;
-            this.colDateCommande.Width = 150;
+            colDateCommande.DataPropertyName = "DateCommande";
+            dataGridViewCellStyle1.Format = "dd/MM/yyyy HH:mm";
+            colDateCommande.DefaultCellStyle = dataGridViewCellStyle1;
+            colDateCommande.HeaderText = "Date";
+            colDateCommande.MinimumWidth = 6;
+            colDateCommande.Name = "colDateCommande";
+            colDateCommande.ReadOnly = true;
             // 
             // colClientNom
             // 
-            this.colClientNom.DataPropertyName = "ClientNom";
-            this.colClientNom.HeaderText = "Client";
-            this.colClientNom.Name = "colClientNom";
-            this.colClientNom.ReadOnly = true;
-            this.colClientNom.Width = 200;
+            colClientNom.DataPropertyName = "ClientNom";
+            colClientNom.HeaderText = "Client";
+            colClientNom.MinimumWidth = 6;
+            colClientNom.Name = "colClientNom";
+            colClientNom.ReadOnly = true;
             // 
             // colMontantTotal
             // 
-            this.colMontantTotal.DataPropertyName = "MontantTotal";
-            this.colMontantTotal.DefaultCellStyle.Format = "N2";
-            this.colMontantTotal.HeaderText = "Montant Total (€)";
-            this.colMontantTotal.Name = "colMontantTotal";
-            this.colMontantTotal.ReadOnly = true;
-            this.colMontantTotal.Width = 120;
+            colMontantTotal.DataPropertyName = "MontantTotal";
+            dataGridViewCellStyle2.Format = "N2";
+            colMontantTotal.DefaultCellStyle = dataGridViewCellStyle2;
+            colMontantTotal.HeaderText = "Montant Total (€)";
+            colMontantTotal.MinimumWidth = 6;
+            colMontantTotal.Name = "colMontantTotal";
+            colMontantTotal.ReadOnly = true;
             // 
             // colStatut
             // 
-            this.colStatut.DataPropertyName = "Statut";
-            this.colStatut.HeaderText = "Statut";
-            this.colStatut.Name = "colStatut";
-            this.colStatut.ReadOnly = true;
-            this.colStatut.Width = 100;
+            colStatut.DataPropertyName = "Statut";
+            colStatut.HeaderText = "Statut";
+            colStatut.MinimumWidth = 6;
+            colStatut.Name = "colStatut";
+            colStatut.ReadOnly = true;
             // 
             // colPrint
             // 
-            this.colPrint.HeaderText = "Action";
-            this.colPrint.Name = "colPrint";
-            this.colPrint.ReadOnly = true;
-            this.colPrint.Text = "Imprimer";
-            this.colPrint.UseColumnTextForButtonValue = true;
-            this.colPrint.Width = 100;
+            colPrint.HeaderText = "Action";
+            colPrint.MinimumWidth = 6;
+            colPrint.Name = "colPrint";
+            colPrint.ReadOnly = true;
+            colPrint.Text = "Imprimer";
+            colPrint.UseColumnTextForButtonValue = true;
             // 
             // CommandeSearchForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(1000, 600);
-            this.Controls.Add(this.dgvCommandes);
-            this.Controls.Add(this.searchPanel);
-            this.Name = "CommandeSearchForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Rechercher Commandes";
-            this.Load += new System.EventHandler(this.CommandeSearchForm_Load);
-            this.searchPanel.ResumeLayout(false);
-            this.searchPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCommandes)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(245, 245, 245);
+            ClientSize = new Size(1143, 800);
+            Controls.Add(dgvCommandes);
+            Controls.Add(searchPanel);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "CommandeSearchForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Rechercher Commandes";
+            Load += CommandeSearchForm_Load;
+            searchPanel.ResumeLayout(false);
+            searchPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCommandes).EndInit();
+            ResumeLayout(false);
 
         }
 

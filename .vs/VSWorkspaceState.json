@@ -1,11 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\bin",
-    "\\Controls",
     "\\Forms",
-    "\\obj",
     "\\Utils"
   ],
+  "SelectedNode": "\\Forms\\StatistiquesForm.Designer.cs",
   "PreviewInSolutionExplorer": false
 }

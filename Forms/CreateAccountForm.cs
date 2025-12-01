@@ -21,6 +21,8 @@ namespace GestionPharmacie.Forms
         {
             InitializeComponent();
             CreateControls();
+            StyleHelper.ApplyFormTheme(this);
+            StyleHelper.ApplyGradientBackground(this);
         }
 
         private void CreateControls()
@@ -31,7 +33,7 @@ namespace GestionPharmacie.Forms
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.BackColor = Color.FromArgb(245, 245, 245);
+            this.BackColor = StyleHelper.BackgroundColor;
 
             var mainPanel = new Panel
             {

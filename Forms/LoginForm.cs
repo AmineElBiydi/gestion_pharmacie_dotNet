@@ -25,6 +25,10 @@ namespace GestionPharmacie.Forms
             InitializeComponent();
             InitializeCreateAccountControls();
             ShowLoginView();
+            // Apply global typography/colors
+            StyleHelper.ApplyFormTheme(this);
+            // Vibrant blue gradient background behind the main card
+            StyleHelper.ApplyGradientBackground(this);
         }
 
         private void InitializeCreateAccountControls()

@@ -17,267 +17,263 @@ namespace GestionPharmacie.Forms
 
         private void InitializeComponent()
         {
-            this.formPanel = new System.Windows.Forms.Panel();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnNew = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.txtTelephone = new System.Windows.Forms.TextBox();
-            this.lblTelephone = new System.Windows.Forms.Label();
-            this.txtAdresse = new System.Windows.Forms.TextBox();
-            this.lblAdresse = new System.Windows.Forms.Label();
-            this.txtPrenom = new System.Windows.Forms.TextBox();
-            this.lblPrenom = new System.Windows.Forms.Label();
-            this.txtNom = new System.Windows.Forms.TextBox();
-            this.lblNom = new System.Windows.Forms.Label();
-            this.txtNumero = new System.Windows.Forms.TextBox();
-            this.lblNumero = new System.Windows.Forms.Label();
-            this.dgvClients = new System.Windows.Forms.DataGridView();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAdresse = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTelephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.formPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
-            this.SuspendLayout();
+            formPanel = new Panel();
+            btnDelete = new Button();
+            btnNew = new Button();
+            btnSave = new Button();
+            txtTelephone = new TextBox();
+            lblTelephone = new Label();
+            txtAdresse = new TextBox();
+            lblAdresse = new Label();
+            txtPrenom = new TextBox();
+            lblPrenom = new Label();
+            txtNom = new TextBox();
+            lblNom = new Label();
+            dgvClients = new DataGridView();
+            colID = new DataGridViewTextBoxColumn();
+            colNumero = new DataGridViewTextBoxColumn();
+            colNom = new DataGridViewTextBoxColumn();
+            colPrenom = new DataGridViewTextBoxColumn();
+            colAdresse = new DataGridViewTextBoxColumn();
+            colTelephone = new DataGridViewTextBoxColumn();
+            lblNumero = new Label();
+            txtNumero = new TextBox();
+            formPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvClients).BeginInit();
+            SuspendLayout();
             // 
             // formPanel
             // 
-            this.formPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.formPanel.Controls.Add(this.btnDelete);
-            this.formPanel.Controls.Add(this.btnNew);
-            this.formPanel.Controls.Add(this.btnSave);
-            this.formPanel.Controls.Add(this.txtTelephone);
-            this.formPanel.Controls.Add(this.lblTelephone);
-            this.formPanel.Controls.Add(this.txtAdresse);
-            this.formPanel.Controls.Add(this.lblAdresse);
-            this.formPanel.Controls.Add(this.txtPrenom);
-            this.formPanel.Controls.Add(this.lblPrenom);
-            this.formPanel.Controls.Add(this.txtNom);
-            this.formPanel.Controls.Add(this.lblNom);
-            this.formPanel.Controls.Add(this.txtNumero);
-            this.formPanel.Controls.Add(this.lblNumero);
-            this.formPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.formPanel.Location = new System.Drawing.Point(0, 0);
-            this.formPanel.Name = "formPanel";
-            this.formPanel.Padding = new System.Windows.Forms.Padding(10);
-            this.formPanel.Size = new System.Drawing.Size(900, 220);
-            this.formPanel.TabIndex = 0;
+            formPanel.BorderStyle = BorderStyle.FixedSingle;
+            formPanel.Controls.Add(btnDelete);
+            formPanel.Controls.Add(btnNew);
+            formPanel.Controls.Add(btnSave);
+            formPanel.Controls.Add(txtTelephone);
+            formPanel.Controls.Add(lblTelephone);
+            formPanel.Controls.Add(txtAdresse);
+            formPanel.Controls.Add(lblAdresse);
+            formPanel.Controls.Add(txtPrenom);
+            formPanel.Controls.Add(lblPrenom);
+            formPanel.Controls.Add(txtNom);
+            formPanel.Controls.Add(lblNom);
+            formPanel.Controls.Add(txtNumero);
+            formPanel.Controls.Add(lblNumero);
+            formPanel.Dock = DockStyle.Top;
+            formPanel.Location = new Point(0, 0);
+            formPanel.Margin = new Padding(3, 4, 3, 4);
+            formPanel.Name = "formPanel";
+            formPanel.Padding = new Padding(11, 13, 11, 13);
+            formPanel.Size = new Size(1029, 293);
+            formPanel.TabIndex = 0;
             // 
             // btnDelete
             // 
-            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(83)))), ((int)(((byte)(80)))));
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(720, 60);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(100, 30);
-            this.btnDelete.TabIndex = 7;
-            this.btnDelete.Text = "Supprimer";
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            btnDelete.BackColor = Color.FromArgb(239, 83, 80);
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.ForeColor = Color.White;
+            btnDelete.Location = new Point(826, 129);
+            btnDelete.Margin = new Padding(3, 4, 3, 4);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(114, 40);
+            btnDelete.TabIndex = 7;
+            btnDelete.Text = "Supprimer";
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += BtnDelete_Click;
             // 
             // btnNew
             // 
-            this.btnNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(181)))), ((int)(((byte)(246)))));
-            this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNew.ForeColor = System.Drawing.Color.White;
-            this.btnNew.Location = new System.Drawing.Point(610, 60);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(100, 30);
-            this.btnNew.TabIndex = 6;
-            this.btnNew.Text = "Nouveau";
-            this.btnNew.UseVisualStyleBackColor = false;
-            this.btnNew.Click += new System.EventHandler(this.BtnNew_Click);
+            btnNew.BackColor = Color.FromArgb(100, 181, 246);
+            btnNew.FlatStyle = FlatStyle.Flat;
+            btnNew.ForeColor = Color.White;
+            btnNew.Location = new Point(700, 129);
+            btnNew.Margin = new Padding(3, 4, 3, 4);
+            btnNew.Name = "btnNew";
+            btnNew.Size = new Size(114, 40);
+            btnNew.TabIndex = 6;
+            btnNew.Text = "Nouveau";
+            btnNew.UseVisualStyleBackColor = false;
+            btnNew.Click += BtnNew_Click;
             // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(133)))), ((int)(((byte)(244)))));
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(500, 60);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 30);
-            this.btnSave.TabIndex = 5;
-            this.btnSave.Text = "Enregistrer";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            btnSave.BackColor = Color.FromArgb(66, 133, 244);
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.ForeColor = Color.White;
+            btnSave.Location = new Point(574, 129);
+            btnSave.Margin = new Padding(3, 4, 3, 4);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(114, 40);
+            btnSave.TabIndex = 5;
+            btnSave.Text = "Enregistrer";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += BtnSave_Click;
             // 
             // txtTelephone
             // 
-            this.txtTelephone.Location = new System.Drawing.Point(150, 180);
-            this.txtTelephone.Name = "txtTelephone";
-            this.txtTelephone.Size = new System.Drawing.Size(300, 23);
-            this.txtTelephone.TabIndex = 4;
+            txtTelephone.Location = new Point(171, 240);
+            txtTelephone.Margin = new Padding(3, 4, 3, 4);
+            txtTelephone.Name = "txtTelephone";
+            txtTelephone.Size = new Size(342, 27);
+            txtTelephone.TabIndex = 4;
             // 
             // lblTelephone
             // 
-            this.lblTelephone.AutoSize = true;
-            this.lblTelephone.Location = new System.Drawing.Point(20, 183);
-            this.lblTelephone.Name = "lblTelephone";
-            this.lblTelephone.Size = new System.Drawing.Size(68, 15);
-            this.lblTelephone.TabIndex = 9;
-            this.lblTelephone.Text = "Téléphone:";
+            lblTelephone.AutoSize = true;
+            lblTelephone.Location = new Point(23, 244);
+            lblTelephone.Name = "lblTelephone";
+            lblTelephone.Size = new Size(81, 20);
+            lblTelephone.TabIndex = 9;
+            lblTelephone.Text = "Téléphone:";
             // 
             // txtAdresse
             // 
-            this.txtAdresse.Location = new System.Drawing.Point(150, 140);
-            this.txtAdresse.Name = "txtAdresse";
-            this.txtAdresse.Size = new System.Drawing.Size(300, 23);
-            this.txtAdresse.TabIndex = 3;
+            txtAdresse.Location = new Point(171, 187);
+            txtAdresse.Margin = new Padding(3, 4, 3, 4);
+            txtAdresse.Name = "txtAdresse";
+            txtAdresse.Size = new Size(342, 27);
+            txtAdresse.TabIndex = 3;
             // 
             // lblAdresse
             // 
-            this.lblAdresse.AutoSize = true;
-            this.lblAdresse.Location = new System.Drawing.Point(20, 143);
-            this.lblAdresse.Name = "lblAdresse";
-            this.lblAdresse.Size = new System.Drawing.Size(54, 15);
-            this.lblAdresse.TabIndex = 7;
-            this.lblAdresse.Text = "Adresse:";
+            lblAdresse.AutoSize = true;
+            lblAdresse.Location = new Point(23, 191);
+            lblAdresse.Name = "lblAdresse";
+            lblAdresse.Size = new Size(64, 20);
+            lblAdresse.TabIndex = 7;
+            lblAdresse.Text = "Adresse:";
             // 
             // txtPrenom
             // 
-            this.txtPrenom.Location = new System.Drawing.Point(150, 100);
-            this.txtPrenom.Name = "txtPrenom";
-            this.txtPrenom.Size = new System.Drawing.Size(300, 23);
-            this.txtPrenom.TabIndex = 2;
+            txtPrenom.Location = new Point(171, 133);
+            txtPrenom.Margin = new Padding(3, 4, 3, 4);
+            txtPrenom.Name = "txtPrenom";
+            txtPrenom.Size = new Size(342, 27);
+            txtPrenom.TabIndex = 2;
             // 
             // lblPrenom
             // 
-            this.lblPrenom.AutoSize = true;
-            this.lblPrenom.Location = new System.Drawing.Point(20, 103);
-            this.lblPrenom.Name = "lblPrenom";
-            this.lblPrenom.Size = new System.Drawing.Size(52, 15);
-            this.lblPrenom.TabIndex = 5;
-            this.lblPrenom.Text = "Prénom:";
+            lblPrenom.AutoSize = true;
+            lblPrenom.Location = new Point(23, 137);
+            lblPrenom.Name = "lblPrenom";
+            lblPrenom.Size = new Size(63, 20);
+            lblPrenom.TabIndex = 5;
+            lblPrenom.Text = "Prénom:";
             // 
             // txtNom
             // 
-            this.txtNom.Location = new System.Drawing.Point(150, 60);
-            this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(300, 23);
-            this.txtNom.TabIndex = 1;
+            txtNom.Location = new Point(171, 80);
+            txtNom.Margin = new Padding(3, 4, 3, 4);
+            txtNom.Name = "txtNom";
+            txtNom.Size = new Size(342, 27);
+            txtNom.TabIndex = 1;
             // 
             // lblNom
             // 
-            this.lblNom.AutoSize = true;
-            this.lblNom.Location = new System.Drawing.Point(20, 63);
-            this.lblNom.Name = "lblNom";
-            this.lblNom.Size = new System.Drawing.Size(37, 15);
-            this.lblNom.TabIndex = 3;
-            this.lblNom.Text = "Nom:";
-            // 
-            // txtNumero
-            // 
-            this.txtNumero.Location = new System.Drawing.Point(150, 20);
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(300, 23);
-            this.txtNumero.TabIndex = 0;
+            lblNom.AutoSize = true;
+            lblNom.Location = new Point(23, 84);
+            lblNom.Name = "lblNom";
+            lblNom.Size = new Size(45, 20);
+            lblNom.TabIndex = 3;
+            lblNom.Text = "Nom:";
             // 
             // lblNumero
             // 
-            this.lblNumero.AutoSize = true;
-            this.lblNumero.Location = new System.Drawing.Point(20, 23);
-            this.lblNumero.Name = "lblNumero";
-            this.lblNumero.Size = new System.Drawing.Size(92, 15);
-            this.lblNumero.TabIndex = 1;
-            this.lblNumero.Text = "Numéro Client:";
+            lblNumero.AutoSize = true;
+            lblNumero.Location = new Point(23, 31);
+            lblNumero.Name = "lblNumero";
+            lblNumero.Size = new Size(108, 20);
+            lblNumero.TabIndex = 1;
+            lblNumero.Text = "Numéro Client:";
+            // 
+            // txtNumero
+            // 
+            txtNumero.Location = new Point(171, 27);
+            txtNumero.Margin = new Padding(3, 4, 3, 4);
+            txtNumero.Name = "txtNumero";
+            txtNumero.Size = new Size(342, 27);
+            txtNumero.TabIndex = 0;
             // 
             // dgvClients
             // 
-            this.dgvClients.AllowUserToAddRows = false;
-            this.dgvClients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvClients.BackgroundColor = System.Drawing.Color.White;
-            this.dgvClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colID,
-            this.colNumero,
-            this.colNom,
-            this.colPrenom,
-            this.colAdresse,
-            this.colTelephone});
-            this.dgvClients.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvClients.Location = new System.Drawing.Point(0, 220);
-            this.dgvClients.MultiSelect = false;
-            this.dgvClients.Name = "dgvClients";
-            this.dgvClients.ReadOnly = true;
-            this.dgvClients.RowTemplate.Height = 25;
-            this.dgvClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClients.Size = new System.Drawing.Size(900, 380);
-            this.dgvClients.TabIndex = 1;
-            this.dgvClients.SelectionChanged += new System.EventHandler(this.DgvClients_SelectionChanged);
+            dgvClients.AllowUserToAddRows = false;
+            dgvClients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvClients.BackgroundColor = Color.White;
+            dgvClients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvClients.Columns.AddRange(new DataGridViewColumn[] { colID, colNumero, colNom, colPrenom, colAdresse, colTelephone });
+            dgvClients.Dock = DockStyle.Fill;
+            dgvClients.Location = new Point(0, 293);
+            dgvClients.Margin = new Padding(3, 4, 3, 4);
+            dgvClients.MultiSelect = false;
+            dgvClients.Name = "dgvClients";
+            dgvClients.ReadOnly = true;
+            dgvClients.RowHeadersWidth = 51;
+            dgvClients.RowTemplate.Height = 25;
+            dgvClients.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvClients.Size = new Size(1029, 507);
+            dgvClients.TabIndex = 1;
+            dgvClients.SelectionChanged += DgvClients_SelectionChanged;
             // 
             // colID
             // 
-            this.colID.DataPropertyName = "ID";
-            this.colID.HeaderText = "ID";
-            this.colID.Name = "colID";
-            this.colID.ReadOnly = true;
-            this.colID.Width = 50;
+            colID.DataPropertyName = "ID";
+            colID.HeaderText = "ID";
+            colID.MinimumWidth = 6;
+            colID.Name = "colID";
+            colID.ReadOnly = true;
             // 
             // colNumero
             // 
-            this.colNumero.DataPropertyName = "Numero";
-            this.colNumero.HeaderText = "Numéro";
-            this.colNumero.Name = "colNumero";
-            this.colNumero.ReadOnly = true;
+            colNumero.DataPropertyName = "Numero";
+            colNumero.HeaderText = "Numéro";
+            colNumero.MinimumWidth = 6;
+            colNumero.Name = "colNumero";
+            colNumero.ReadOnly = true;
             // 
             // colNom
             // 
-            this.colNom.DataPropertyName = "Nom";
-            this.colNom.HeaderText = "Nom";
-            this.colNom.Name = "colNom";
-            this.colNom.ReadOnly = true;
+            colNom.DataPropertyName = "Nom";
+            colNom.HeaderText = "Nom";
+            colNom.MinimumWidth = 6;
+            colNom.Name = "colNom";
+            colNom.ReadOnly = true;
             // 
             // colPrenom
             // 
-            this.colPrenom.DataPropertyName = "Prenom";
-            this.colPrenom.HeaderText = "Prénom";
-            this.colPrenom.Name = "colPrenom";
-            this.colPrenom.ReadOnly = true;
+            colPrenom.DataPropertyName = "Prenom";
+            colPrenom.HeaderText = "Prénom";
+            colPrenom.MinimumWidth = 6;
+            colPrenom.Name = "colPrenom";
+            colPrenom.ReadOnly = true;
             // 
             // colAdresse
             // 
-            this.colAdresse.DataPropertyName = "Adresse";
-            this.colAdresse.HeaderText = "Adresse";
-            this.colAdresse.Name = "colAdresse";
-            this.colAdresse.ReadOnly = true;
+            colAdresse.DataPropertyName = "Adresse";
+            colAdresse.HeaderText = "Adresse";
+            colAdresse.MinimumWidth = 6;
+            colAdresse.Name = "colAdresse";
+            colAdresse.ReadOnly = true;
             // 
             // colTelephone
             // 
-            this.colTelephone.DataPropertyName = "Telephone";
-            this.colTelephone.HeaderText = "Téléphone";
-            this.colTelephone.Name = "colTelephone";
-            this.colTelephone.ReadOnly = true;
+            colTelephone.DataPropertyName = "Telephone";
+            colTelephone.HeaderText = "Téléphone";
+            colTelephone.MinimumWidth = 6;
+            colTelephone.Name = "colTelephone";
+            colTelephone.ReadOnly = true;
             // 
             // ClientForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 600);
-            this.Controls.Add(this.dgvClients);
-            this.Controls.Add(this.formPanel);
-            this.Name = "ClientForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gestion des Clients";
-            this.Load += new System.EventHandler(this.ClientForm_Load);
-            this.formPanel.ResumeLayout(false);
-            this.formPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1029, 800);
         }
-
         #endregion
 
         private System.Windows.Forms.Panel formPanel;
-        private System.Windows.Forms.TextBox txtNumero;
-        private System.Windows.Forms.Label lblNumero;
-        private System.Windows.Forms.TextBox txtNom;
         private System.Windows.Forms.Label lblNom;
-        private System.Windows.Forms.TextBox txtPrenom;
+        private System.Windows.Forms.TextBox txtNom;
         private System.Windows.Forms.Label lblPrenom;
+        private System.Windows.Forms.TextBox txtPrenom;
         private System.Windows.Forms.TextBox txtAdresse;
         private System.Windows.Forms.Label lblAdresse;
         private System.Windows.Forms.TextBox txtTelephone;
@@ -292,5 +288,7 @@ namespace GestionPharmacie.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrenom;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAdresse;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTelephone;
+        private System.Windows.Forms.TextBox txtNumero;
+        private System.Windows.Forms.Label lblNumero;
     }
 }

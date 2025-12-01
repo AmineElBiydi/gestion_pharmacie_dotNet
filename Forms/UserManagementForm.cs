@@ -3,9 +3,9 @@ using GestionPharmacie.Models;
 using GestionPharmacie.Data;
 using GestionPharmacie.Utils;
 
-namespace GestionPharmacie.Controls
+namespace GestionPharmacie.Forms
 {
-    public partial class UserManagementControl : UserControl
+    public partial class UserManagementForm : Form
     {
         private TextBox txtUsername = null!;
         private TextBox txtPassword = null!;
@@ -17,17 +17,17 @@ namespace GestionPharmacie.Controls
         private DataGridView dgvUsers = null!;
         private Label lblMessage = null!;
 
-        public UserManagementControl()
+        public UserManagementForm()
         {
             InitializeComponent();
             CreateControls();
+            StyleHelper.ApplyFormTheme(this);
             LoadUsers();
         }
 
         private void CreateControls()
         {
             this.BackColor = StyleHelper.LightGray;
-            this.Dock = DockStyle.Fill;
             this.AutoScroll = true;
 
             // Title
@@ -331,4 +331,3 @@ namespace GestionPharmacie.Controls
         }
     }
 }
-

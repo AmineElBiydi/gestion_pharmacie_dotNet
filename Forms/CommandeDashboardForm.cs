@@ -1,23 +1,20 @@
-using System;
-using System.Drawing;
-using System.Windows.Forms;
 using System.Data.SqlClient;
-using GestionPharmacie.Utils;
-using GestionPharmacie.Data;
 using GestionPharmacie.Models;
+using GestionPharmacie.Data;
+using GestionPharmacie.Utils;
 
-namespace GestionPharmacie.Controls
+namespace GestionPharmacie.Forms
 {
-    public partial class CommandeDashboardControl : UserControl
+    public partial class CommandeDashboardForm : Form
     {
         private readonly CommandeRepository _commandeRepo = new();
         private System.Windows.Forms.Timer refreshTimer = null!;
 
-        public CommandeDashboardControl()
+        public CommandeDashboardForm()
         {
             InitializeComponent();
-            this.Dock = DockStyle.Fill;
             CreateDashboard();
+            StyleHelper.ApplyFormTheme(this);
             LoadStatistics();
             
             // Auto-refresh every 30 seconds
@@ -30,7 +27,6 @@ namespace GestionPharmacie.Controls
         {
             this.BackColor = StyleHelper.LightGray;
             this.AutoScroll = true;
-            this.Padding = new Padding(0);
 
             // Main container
             var container = new Panel
@@ -38,7 +34,8 @@ namespace GestionPharmacie.Controls
                 Location = new Point(0, 0),
                 Size = new Size(1200, 900),
                 BackColor = StyleHelper.LightGray,
-                AutoScroll = false
+                AutoScroll = false,
+                Dock = DockStyle.Fill
             };
 
             // Header
@@ -318,20 +315,15 @@ namespace GestionPharmacie.Controls
 
         private void BtnNew_Click(object? sender, EventArgs e)
         {
-            var parentForm = this.FindForm();
-            if (parentForm is Form1 mainForm)
-            {
-                mainForm.LoadControl(new CommandeControl());
-            }
+            var form = new CommandeForm();
+            form.ShowDialog();
+            LoadStatistics(); // Refresh after closing
         }
 
         private void BtnSearch_Click(object? sender, EventArgs e)
         {
-            var parentForm = this.FindForm();
-            if (parentForm is Form1 mainForm)
-            {
-                mainForm.LoadControl(new CommandeSearchControl());
-            }
+            var form = new CommandeSearchForm();
+            form.ShowDialog();
         }
 
         private void BtnModify_Click(object? sender, EventArgs e)
@@ -342,11 +334,9 @@ namespace GestionPharmacie.Controls
                 var fullCommande = _commandeRepo.GetById(cmd.ID);
                 if (fullCommande != null)
                 {
-                    var parentForm = this.FindForm();
-                    if (parentForm is Form1 mainForm)
-                    {
-                        mainForm.LoadControl(new CommandeEditControl(fullCommande));
-                    }
+                    var form = new CommandeEditForm(fullCommande);
+                    form.ShowDialog();
+                    LoadStatistics();
                 }
             }
             else
@@ -364,14 +354,5 @@ namespace GestionPharmacie.Controls
             }
             base.Dispose(disposing);
         }
-
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            this.Name = "CommandeDashboardControl";
-            this.Size = new Size(1200, 900);
-            this.ResumeLayout(false);
-        }
     }
 }
-

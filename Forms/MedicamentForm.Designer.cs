@@ -17,327 +17,310 @@ namespace GestionPharmacie.Forms
 
         private void InitializeComponent()
         {
-            this.formPanel = new System.Windows.Forms.Panel();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnNew = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.nudSeuil = new System.Windows.Forms.NumericUpDown();
-            this.lblSeuil = new System.Windows.Forms.Label();
-            this.nudQuantiteStock = new System.Windows.Forms.NumericUpDown();
-            this.lblQte = new System.Windows.Forms.Label();
-            this.nudPrixUnitaire = new System.Windows.Forms.NumericUpDown();
-            this.lblPrix = new System.Windows.Forms.Label();
-            this.dtpDatePeremption = new System.Windows.Forms.DateTimePicker();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.txtNom = new System.Windows.Forms.TextBox();
-            this.lblNom = new System.Windows.Forms.Label();
-            this.txtReference = new System.Windows.Forms.TextBox();
-            this.lblReference = new System.Windows.Forms.Label();
-            this.dgvMedicaments = new System.Windows.Forms.DataGridView();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colReference = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDatePeremption = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrixUnitaire = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colQuantiteStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSeuil = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.formPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudSeuil)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudQuantiteStock)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPrixUnitaire)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMedicaments)).BeginInit();
-            this.SuspendLayout();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            formPanel = new Panel();
+            btnDelete = new Button();
+            btnNew = new Button();
+            btnSave = new Button();
+            nudSeuil = new NumericUpDown();
+            lblSeuil = new Label();
+            nudQuantiteStock = new NumericUpDown();
+            lblQte = new Label();
+            nudPrixUnitaire = new NumericUpDown();
+            lblPrix = new Label();
+            dtpDatePeremption = new DateTimePicker();
+            lblDate = new Label();
+            txtNom = new TextBox();
+            lblNom = new Label();
+            txtReference = new TextBox();
+            lblReference = new Label();
+            dgvMedicaments = new DataGridView();
+            colID = new DataGridViewTextBoxColumn();
+            colReference = new DataGridViewTextBoxColumn();
+            colNom = new DataGridViewTextBoxColumn();
+            colDatePeremption = new DataGridViewTextBoxColumn();
+            colPrixUnitaire = new DataGridViewTextBoxColumn();
+            colQuantiteStock = new DataGridViewTextBoxColumn();
+            colSeuil = new DataGridViewTextBoxColumn();
+            formPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nudSeuil).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudQuantiteStock).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudPrixUnitaire).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvMedicaments).BeginInit();
+            SuspendLayout();
             // 
             // formPanel
             // 
-            this.formPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.formPanel.Controls.Add(this.btnDelete);
-            this.formPanel.Controls.Add(this.btnNew);
-            this.formPanel.Controls.Add(this.btnSave);
-            this.formPanel.Controls.Add(this.nudSeuil);
-            this.formPanel.Controls.Add(this.lblSeuil);
-            this.formPanel.Controls.Add(this.nudQuantiteStock);
-            this.formPanel.Controls.Add(this.lblQte);
-            this.formPanel.Controls.Add(this.nudPrixUnitaire);
-            this.formPanel.Controls.Add(this.lblPrix);
-            this.formPanel.Controls.Add(this.dtpDatePeremption);
-            this.formPanel.Controls.Add(this.lblDate);
-            this.formPanel.Controls.Add(this.txtNom);
-            this.formPanel.Controls.Add(this.lblNom);
-            this.formPanel.Controls.Add(this.txtReference);
-            this.formPanel.Controls.Add(this.lblReference);
-            this.formPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.formPanel.Location = new System.Drawing.Point(0, 0);
-            this.formPanel.Name = "formPanel";
-            this.formPanel.Padding = new System.Windows.Forms.Padding(10);
-            this.formPanel.Size = new System.Drawing.Size(1000, 250);
-            this.formPanel.TabIndex = 0;
+            formPanel.BorderStyle = BorderStyle.FixedSingle;
+            formPanel.Controls.Add(btnDelete);
+            formPanel.Controls.Add(btnNew);
+            formPanel.Controls.Add(btnSave);
+            formPanel.Controls.Add(nudSeuil);
+            formPanel.Controls.Add(lblSeuil);
+            formPanel.Controls.Add(nudQuantiteStock);
+            formPanel.Controls.Add(lblQte);
+            formPanel.Controls.Add(nudPrixUnitaire);
+            formPanel.Controls.Add(lblPrix);
+            formPanel.Controls.Add(dtpDatePeremption);
+            formPanel.Controls.Add(lblDate);
+            formPanel.Controls.Add(txtNom);
+            formPanel.Controls.Add(lblNom);
+            formPanel.Controls.Add(txtReference);
+            formPanel.Controls.Add(lblReference);
+            formPanel.Dock = DockStyle.Top;
+            formPanel.Location = new Point(0, 0);
+            formPanel.Margin = new Padding(3, 4, 3, 4);
+            formPanel.Name = "formPanel";
+            formPanel.Padding = new Padding(11, 13, 11, 13);
+            formPanel.Size = new Size(1143, 333);
+            formPanel.TabIndex = 0;
             // 
             // btnDelete
             // 
-            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(83)))), ((int)(((byte)(80)))));
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(720, 180);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(100, 30);
-            this.btnDelete.TabIndex = 14;
-            this.btnDelete.Text = "Supprimer";
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            btnDelete.BackColor = Color.FromArgb(239, 83, 80);
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.ForeColor = Color.White;
+            btnDelete.Location = new Point(767, 262);
+            btnDelete.Margin = new Padding(3, 4, 3, 4);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(157, 40);
+            btnDelete.TabIndex = 14;
+            btnDelete.Text = "Supprimer";
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += BtnDelete_Click;
             // 
             // btnNew
             // 
-            this.btnNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(181)))), ((int)(((byte)(246)))));
-            this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNew.ForeColor = System.Drawing.Color.White;
-            this.btnNew.Location = new System.Drawing.Point(610, 180);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(100, 30);
-            this.btnNew.TabIndex = 13;
-            this.btnNew.Text = "Nouveau";
-            this.btnNew.UseVisualStyleBackColor = false;
-            this.btnNew.Click += new System.EventHandler(this.BtnNew_Click);
+            btnNew.BackColor = Color.FromArgb(100, 181, 246);
+            btnNew.FlatStyle = FlatStyle.Flat;
+            btnNew.ForeColor = Color.White;
+            btnNew.Location = new Point(604, 262);
+            btnNew.Margin = new Padding(3, 4, 3, 4);
+            btnNew.Name = "btnNew";
+            btnNew.Size = new Size(157, 40);
+            btnNew.TabIndex = 13;
+            btnNew.Text = "Nouveau";
+            btnNew.UseVisualStyleBackColor = false;
+            btnNew.Click += BtnNew_Click;
             // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(133)))), ((int)(((byte)(244)))));
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(500, 180);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 30);
-            this.btnSave.TabIndex = 12;
-            this.btnSave.Text = "Enregistrer";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            btnSave.BackColor = Color.FromArgb(66, 133, 244);
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.ForeColor = Color.White;
+            btnSave.Location = new Point(441, 262);
+            btnSave.Margin = new Padding(3, 4, 3, 4);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(157, 40);
+            btnSave.TabIndex = 12;
+            btnSave.Text = "Enregistrer";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += BtnSave_Click;
             // 
             // nudSeuil
             // 
-            this.nudSeuil.Location = new System.Drawing.Point(660, 140);
-            this.nudSeuil.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudSeuil.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudSeuil.Name = "nudSeuil";
-            this.nudSeuil.Size = new System.Drawing.Size(150, 23);
-            this.nudSeuil.TabIndex = 11;
-            this.nudSeuil.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
+            nudSeuil.Location = new Point(754, 187);
+            nudSeuil.Margin = new Padding(3, 4, 3, 4);
+            nudSeuil.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            nudSeuil.Name = "nudSeuil";
+            nudSeuil.Size = new Size(171, 27);
+            nudSeuil.TabIndex = 11;
+            nudSeuil.Value = new decimal(new int[] { 10, 0, 0, 0 });
             // 
             // lblSeuil
             // 
-            this.lblSeuil.AutoSize = true;
-            this.lblSeuil.Location = new System.Drawing.Point(500, 143);
-            this.lblSeuil.Name = "lblSeuil";
-            this.lblSeuil.Size = new System.Drawing.Size(75, 15);
-            this.lblSeuil.TabIndex = 10;
-            this.lblSeuil.Text = "Seuil d\'Alerte:";
+            lblSeuil.AutoSize = true;
+            lblSeuil.Location = new Point(571, 191);
+            lblSeuil.Name = "lblSeuil";
+            lblSeuil.Size = new Size(100, 20);
+            lblSeuil.TabIndex = 10;
+            lblSeuil.Text = "Seuil d'Alerte:";
             // 
             // nudQuantiteStock
             // 
-            this.nudQuantiteStock.Location = new System.Drawing.Point(660, 100);
-            this.nudQuantiteStock.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.nudQuantiteStock.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudQuantiteStock.Name = "nudQuantiteStock";
-            this.nudQuantiteStock.Size = new System.Drawing.Size(150, 23);
-            this.nudQuantiteStock.TabIndex = 9;
+            nudQuantiteStock.Location = new Point(754, 133);
+            nudQuantiteStock.Margin = new Padding(3, 4, 3, 4);
+            nudQuantiteStock.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
+            nudQuantiteStock.Name = "nudQuantiteStock";
+            nudQuantiteStock.Size = new Size(171, 27);
+            nudQuantiteStock.TabIndex = 9;
             // 
             // lblQte
             // 
-            this.lblQte.AutoSize = true;
-            this.lblQte.Location = new System.Drawing.Point(500, 103);
-            this.lblQte.Name = "lblQte";
-            this.lblQte.Size = new System.Drawing.Size(108, 15);
-            this.lblQte.TabIndex = 8;
-            this.lblQte.Text = "Quantité en Stock:";
+            lblQte.AutoSize = true;
+            lblQte.Location = new Point(571, 137);
+            lblQte.Name = "lblQte";
+            lblQte.Size = new Size(129, 20);
+            lblQte.TabIndex = 8;
+            lblQte.Text = "Quantité en Stock:";
             // 
             // nudPrixUnitaire
             // 
-            this.nudPrixUnitaire.DecimalPlaces = 2;
-            this.nudPrixUnitaire.Location = new System.Drawing.Point(180, 140);
-            this.nudPrixUnitaire.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.nudPrixUnitaire.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudPrixUnitaire.Name = "nudPrixUnitaire";
-            this.nudPrixUnitaire.Size = new System.Drawing.Size(250, 23);
-            this.nudPrixUnitaire.TabIndex = 7;
+            nudPrixUnitaire.DecimalPlaces = 2;
+            nudPrixUnitaire.Location = new Point(206, 187);
+            nudPrixUnitaire.Margin = new Padding(3, 4, 3, 4);
+            nudPrixUnitaire.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
+            nudPrixUnitaire.Name = "nudPrixUnitaire";
+            nudPrixUnitaire.Size = new Size(286, 27);
+            nudPrixUnitaire.TabIndex = 7;
             // 
             // lblPrix
             // 
-            this.lblPrix.AutoSize = true;
-            this.lblPrix.Location = new System.Drawing.Point(20, 143);
-            this.lblPrix.Name = "lblPrix";
-            this.lblPrix.Size = new System.Drawing.Size(87, 15);
-            this.lblPrix.TabIndex = 6;
-            this.lblPrix.Text = "Prix Unitaire (€):";
+            lblPrix.AutoSize = true;
+            lblPrix.Location = new Point(23, 191);
+            lblPrix.Name = "lblPrix";
+            lblPrix.Size = new Size(114, 20);
+            lblPrix.TabIndex = 6;
+            lblPrix.Text = "Prix Unitaire (€):";
             // 
             // dtpDatePeremption
             // 
-            this.dtpDatePeremption.Location = new System.Drawing.Point(180, 100);
-            this.dtpDatePeremption.Name = "dtpDatePeremption";
-            this.dtpDatePeremption.Size = new System.Drawing.Size(250, 23);
-            this.dtpDatePeremption.TabIndex = 5;
+            dtpDatePeremption.Location = new Point(206, 133);
+            dtpDatePeremption.Margin = new Padding(3, 4, 3, 4);
+            dtpDatePeremption.Name = "dtpDatePeremption";
+            dtpDatePeremption.Size = new Size(285, 27);
+            dtpDatePeremption.TabIndex = 5;
             // 
             // lblDate
             // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(20, 103);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(115, 15);
-            this.lblDate.TabIndex = 4;
-            this.lblDate.Text = "Date de Péremption:";
+            lblDate.AutoSize = true;
+            lblDate.Location = new Point(23, 137);
+            lblDate.Name = "lblDate";
+            lblDate.Size = new Size(145, 20);
+            lblDate.TabIndex = 4;
+            lblDate.Text = "Date de Péremption:";
             // 
             // txtNom
             // 
-            this.txtNom.Location = new System.Drawing.Point(180, 60);
-            this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(250, 23);
-            this.txtNom.TabIndex = 3;
+            txtNom.Location = new Point(206, 80);
+            txtNom.Margin = new Padding(3, 4, 3, 4);
+            txtNom.Name = "txtNom";
+            txtNom.Size = new Size(285, 27);
+            txtNom.TabIndex = 3;
             // 
             // lblNom
             // 
-            this.lblNom.AutoSize = true;
-            this.lblNom.Location = new System.Drawing.Point(20, 63);
-            this.lblNom.Name = "lblNom";
-            this.lblNom.Size = new System.Drawing.Size(37, 15);
-            this.lblNom.TabIndex = 2;
-            this.lblNom.Text = "Nom:";
+            lblNom.AutoSize = true;
+            lblNom.Location = new Point(23, 84);
+            lblNom.Name = "lblNom";
+            lblNom.Size = new Size(45, 20);
+            lblNom.TabIndex = 2;
+            lblNom.Text = "Nom:";
             // 
             // txtReference
             // 
-            this.txtReference.Location = new System.Drawing.Point(180, 20);
-            this.txtReference.Name = "txtReference";
-            this.txtReference.Size = new System.Drawing.Size(250, 23);
-            this.txtReference.TabIndex = 1;
+            txtReference.Location = new Point(206, 27);
+            txtReference.Margin = new Padding(3, 4, 3, 4);
+            txtReference.Name = "txtReference";
+            txtReference.Size = new Size(285, 27);
+            txtReference.TabIndex = 1;
             // 
             // lblReference
             // 
-            this.lblReference.AutoSize = true;
-            this.lblReference.Location = new System.Drawing.Point(20, 23);
-            this.lblReference.Name = "lblReference";
-            this.lblReference.Size = new System.Drawing.Size(65, 15);
-            this.lblReference.TabIndex = 0;
-            this.lblReference.Text = "Référence:";
+            lblReference.AutoSize = true;
+            lblReference.Location = new Point(23, 31);
+            lblReference.Name = "lblReference";
+            lblReference.Size = new Size(78, 20);
+            lblReference.TabIndex = 0;
+            lblReference.Text = "Référence:";
             // 
             // dgvMedicaments
             // 
-            this.dgvMedicaments.AllowUserToAddRows = false;
-            this.dgvMedicaments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvMedicaments.BackgroundColor = System.Drawing.Color.White;
-            this.dgvMedicaments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMedicaments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colID,
-            this.colReference,
-            this.colNom,
-            this.colDatePeremption,
-            this.colPrixUnitaire,
-            this.colQuantiteStock,
-            this.colSeuil});
-            this.dgvMedicaments.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMedicaments.Location = new System.Drawing.Point(0, 250);
-            this.dgvMedicaments.MultiSelect = false;
-            this.dgvMedicaments.Name = "dgvMedicaments";
-            this.dgvMedicaments.ReadOnly = true;
-            this.dgvMedicaments.RowTemplate.Height = 25;
-            this.dgvMedicaments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMedicaments.Size = new System.Drawing.Size(1000, 350);
-            this.dgvMedicaments.TabIndex = 1;
-            this.dgvMedicaments.SelectionChanged += new System.EventHandler(this.DgvMedicaments_SelectionChanged);
+            dgvMedicaments.AllowUserToAddRows = false;
+            dgvMedicaments.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvMedicaments.BackgroundColor = Color.White;
+            dgvMedicaments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMedicaments.Columns.AddRange(new DataGridViewColumn[] { colID, colReference, colNom, colDatePeremption, colPrixUnitaire, colQuantiteStock, colSeuil });
+            dgvMedicaments.Dock = DockStyle.Fill;
+            dgvMedicaments.Location = new Point(0, 333);
+            dgvMedicaments.Margin = new Padding(3, 4, 3, 4);
+            dgvMedicaments.MultiSelect = false;
+            dgvMedicaments.Name = "dgvMedicaments";
+            dgvMedicaments.ReadOnly = true;
+            dgvMedicaments.RowHeadersWidth = 51;
+            dgvMedicaments.RowTemplate.Height = 25;
+            dgvMedicaments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvMedicaments.Size = new Size(1143, 467);
+            dgvMedicaments.TabIndex = 1;
+            dgvMedicaments.SelectionChanged += DgvMedicaments_SelectionChanged;
             // 
             // colID
             // 
-            this.colID.DataPropertyName = "ID";
-            this.colID.HeaderText = "ID";
-            this.colID.Name = "colID";
-            this.colID.ReadOnly = true;
-            this.colID.Width = 50;
+            colID.DataPropertyName = "ID";
+            colID.HeaderText = "ID";
+            colID.MinimumWidth = 6;
+            colID.Name = "colID";
+            colID.ReadOnly = true;
             // 
             // colReference
             // 
-            this.colReference.DataPropertyName = "Reference";
-            this.colReference.HeaderText = "Référence";
-            this.colReference.Name = "colReference";
-            this.colReference.ReadOnly = true;
+            colReference.DataPropertyName = "Reference";
+            colReference.HeaderText = "Référence";
+            colReference.MinimumWidth = 6;
+            colReference.Name = "colReference";
+            colReference.ReadOnly = true;
             // 
             // colNom
             // 
-            this.colNom.DataPropertyName = "Nom";
-            this.colNom.HeaderText = "Nom";
-            this.colNom.Name = "colNom";
-            this.colNom.ReadOnly = true;
+            colNom.DataPropertyName = "Nom";
+            colNom.HeaderText = "Nom";
+            colNom.MinimumWidth = 6;
+            colNom.Name = "colNom";
+            colNom.ReadOnly = true;
             // 
             // colDatePeremption
             // 
-            this.colDatePeremption.DataPropertyName = "DatePeremption";
-            this.colDatePeremption.HeaderText = "Date Péremption";
-            this.colDatePeremption.Name = "colDatePeremption";
-            this.colDatePeremption.ReadOnly = true;
+            colDatePeremption.DataPropertyName = "DatePeremption";
+            colDatePeremption.HeaderText = "Date Péremption";
+            colDatePeremption.MinimumWidth = 6;
+            colDatePeremption.Name = "colDatePeremption";
+            colDatePeremption.ReadOnly = true;
             // 
             // colPrixUnitaire
             // 
-            this.colPrixUnitaire.DataPropertyName = "PrixUnitaire";
-            this.colPrixUnitaire.DefaultCellStyle.Format = "N2";
-            this.colPrixUnitaire.HeaderText = "Prix (€)";
-            this.colPrixUnitaire.Name = "colPrixUnitaire";
-            this.colPrixUnitaire.ReadOnly = true;
+            colPrixUnitaire.DataPropertyName = "PrixUnitaire";
+            dataGridViewCellStyle1.Format = "N2";
+            colPrixUnitaire.DefaultCellStyle = dataGridViewCellStyle1;
+            colPrixUnitaire.HeaderText = "Prix (€)";
+            colPrixUnitaire.MinimumWidth = 6;
+            colPrixUnitaire.Name = "colPrixUnitaire";
+            colPrixUnitaire.ReadOnly = true;
             // 
             // colQuantiteStock
             // 
-            this.colQuantiteStock.DataPropertyName = "QuantiteStock";
-            this.colQuantiteStock.HeaderText = "Stock";
-            this.colQuantiteStock.Name = "colQuantiteStock";
-            this.colQuantiteStock.ReadOnly = true;
+            colQuantiteStock.DataPropertyName = "QuantiteStock";
+            colQuantiteStock.HeaderText = "Stock";
+            colQuantiteStock.MinimumWidth = 6;
+            colQuantiteStock.Name = "colQuantiteStock";
+            colQuantiteStock.ReadOnly = true;
             // 
             // colSeuil
             // 
-            this.colSeuil.DataPropertyName = "Seuil";
-            this.colSeuil.HeaderText = "Seuil";
-            this.colSeuil.Name = "colSeuil";
-            this.colSeuil.ReadOnly = true;
+            colSeuil.DataPropertyName = "Seuil";
+            colSeuil.HeaderText = "Seuil";
+            colSeuil.MinimumWidth = 6;
+            colSeuil.Name = "colSeuil";
+            colSeuil.ReadOnly = true;
             // 
             // MedicamentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(1000, 600);
-            this.Controls.Add(this.dgvMedicaments);
-            this.Controls.Add(this.formPanel);
-            this.Name = "MedicamentForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gestion des Médicaments";
-            this.formPanel.ResumeLayout(false);
-            this.formPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudSeuil)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudQuantiteStock)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPrixUnitaire)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMedicaments)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(245, 245, 245);
+            ClientSize = new Size(1143, 800);
+            Controls.Add(dgvMedicaments);
+            Controls.Add(formPanel);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "MedicamentForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Gestion des Médicaments";
+            formPanel.ResumeLayout(false);
+            formPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nudSeuil).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudQuantiteStock).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudPrixUnitaire).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvMedicaments).EndInit();
+            ResumeLayout(false);
 
         }
 

@@ -1,15 +1,17 @@
+using System.Data.SqlClient;
 using GestionPharmacie.Models;
 using GestionPharmacie.Data;
 using GestionPharmacie.Utils;
 
-namespace GestionPharmacie.Controls
+namespace GestionPharmacie.Forms
 {
-    public partial class CommandeControl : UserControl
+    public partial class CommandeEditForm : Form
     {
         private readonly CommandeRepository _commandeRepo = new();
         private readonly ClientRepository _clientRepo = new();
         private readonly MedicamentRepository _medicamentRepo = new();
 
+        private Commande _commande;
         private List<DetailsCommande> _details = new();
 
         private ComboBox cboClient = null!;
@@ -22,17 +24,20 @@ namespace GestionPharmacie.Controls
         private CheckBox chkEstPaye = null!;
         private ComboBox cboTypePaiement = null!;
 
-        public CommandeControl()
+        public CommandeEditForm(Commande commande)
         {
+            _commande = commande;
+            _details = commande.Details != null ? commande.Details.ToList() : new List<DetailsCommande>();
             InitializeComponent();
             CreateControls();
+            StyleHelper.ApplyFormTheme(this);
             LoadData();
+            LoadCommandeData();
         }
 
         private void CreateControls()
         {
             this.BackColor = StyleHelper.LightGray;
-            this.Dock = DockStyle.Fill;
             this.AutoScroll = true;
 
             // Main container
@@ -46,10 +51,10 @@ namespace GestionPharmacie.Controls
             // Title
             var lblTitle = new Label
             {
-                Text = "Nouvelle Commande",
+                Text = $"Modifier Commande #{_commande.ID}",
                 Font = StyleHelper.HeadingFont,
                 ForeColor = StyleHelper.PrimaryBlue,
-                Location = new Point(0, 0),
+                Location = new Point(20, 20),
                 AutoSize = true
             };
             container.Controls.Add(lblTitle);
@@ -57,7 +62,7 @@ namespace GestionPharmacie.Controls
             // Header Panel
             var headerPanel = new Panel
             {
-                Location = new Point(0, 50),
+                Location = new Point(20, 70),
                 Size = new Size(1100, 180),
                 BackColor = StyleHelper.White
             };
@@ -92,7 +97,6 @@ namespace GestionPharmacie.Controls
                 Font = StyleHelper.BodyFont
             };
             cboStatut.Items.AddRange(new object[] { "En cours", "Livrée", "Annulée" });
-            cboStatut.SelectedIndex = 0;
 
             // Payment fields
             chkEstPaye = new CheckBox
@@ -122,7 +126,7 @@ namespace GestionPharmacie.Controls
             // Details Panel
             var detailsPanel = new Panel
             {
-                Location = new Point(0, 250),
+                Location = new Point(20, 270),
                 Size = new Size(1100, 120),
                 BackColor = StyleHelper.White
             };
@@ -174,7 +178,7 @@ namespace GestionPharmacie.Controls
             // Details Grid
             var gridPanel = new Panel
             {
-                Location = new Point(0, 390),
+                Location = new Point(20, 410),
                 Size = new Size(1100, 300),
                 BackColor = StyleHelper.White
             };
@@ -215,7 +219,7 @@ namespace GestionPharmacie.Controls
             // Footer Panel
             var footerPanel = new Panel
             {
-                Location = new Point(0, 710),
+                Location = new Point(20, 730),
                 Size = new Size(1100, 80),
                 BackColor = StyleHelper.White
             };
@@ -232,14 +236,23 @@ namespace GestionPharmacie.Controls
 
             var btnSave = new Button
             {
-                Text = "Enregistrer Commande",
+                Text = "Enregistrer Modifications",
                 Location = new Point(800, 20),
                 Size = new Size(200, 45)
             };
             StyleHelper.StyleButton(btnSave);
             btnSave.Click += BtnSave_Click;
 
-            footerPanel.Controls.AddRange(new Control[] { lblTotal, btnSave });
+            var btnCancel = new Button
+            {
+                Text = "Annuler",
+                Location = new Point(600, 20),
+                Size = new Size(150, 45)
+            };
+            StyleHelper.StyleButton(btnCancel, StyleHelper.TextLight);
+            btnCancel.Click += BtnCancel_Click;
+
+            footerPanel.Controls.AddRange(new Control[] { lblTotal, btnSave, btnCancel });
             container.Controls.Add(footerPanel);
 
             this.Controls.Add(container);
@@ -265,6 +278,27 @@ namespace GestionPharmacie.Controls
             }
         }
 
+        private void LoadCommandeData()
+        {
+            cboClient.SelectedValue = _commande.ClientID;
+            dtpDate.Value = _commande.DateCommande;
+            cboStatut.SelectedItem = _commande.Statut;
+            chkEstPaye.Checked = _commande.EstPaye;
+            if (!string.IsNullOrEmpty(_commande.TypePaiement))
+            {
+                var index = cboTypePaiement.Items.IndexOf(_commande.TypePaiement);
+                if (index >= 0) cboTypePaiement.SelectedIndex = index;
+            }
+            
+            // Load details if not already loaded
+            if (_commande.Details != null && _commande.Details.Count > 0)
+            {
+                _details = _commande.Details.ToList();
+            }
+            
+            RefreshDetails();
+        }
+
         private void BtnAddDetail_Click(object? sender, EventArgs e)
         {
             if (cboMedicament.SelectedValue == null)
@@ -275,12 +309,6 @@ namespace GestionPharmacie.Controls
 
             var medicament = _medicamentRepo.GetById((int)cboMedicament.SelectedValue);
             if (medicament == null) return;
-
-            if (medicament.QuantiteStock < (int)nudQuantite.Value)
-            {
-                MessageBox.Show($"Stock insuffisant! Disponible: {medicament.QuantiteStock}", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
             var detail = new DetailsCommande
             {
@@ -329,28 +357,19 @@ namespace GestionPharmacie.Controls
 
             try
             {
-                var commande = new Commande
-                {
-                    DateCommande = dtpDate.Value,
-                    ClientID = (int)cboClient.SelectedValue,
-                    MontantTotal = _details.Sum(d => d.SousTotal),
-                    Statut = cboStatut.SelectedItem?.ToString() ?? "En cours",
-                    EstPaye = chkEstPaye.Checked,
-                    TypePaiement = cboTypePaiement.SelectedItem?.ToString(),
-                    Details = _details
-                };
+                _commande.DateCommande = dtpDate.Value;
+                _commande.ClientID = (int)cboClient.SelectedValue;
+                _commande.MontantTotal = _details.Sum(d => d.SousTotal);
+                _commande.Statut = cboStatut.SelectedItem?.ToString() ?? "En cours";
+                _commande.EstPaye = chkEstPaye.Checked;
+                _commande.TypePaiement = cboTypePaiement.SelectedItem?.ToString();
+                _commande.Details = _details;
 
-                _commandeRepo.Insert(commande);
-                MessageBox.Show("Commande enregistrée avec succès!", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _commandeRepo.Update(_commande);
+                MessageBox.Show("Commande modifiée avec succès!", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
-                // Clear form after successful save
-                _details.Clear();
-                RefreshDetails();
-                cboClient.SelectedIndex = -1;
-                dtpDate.Value = DateTime.Now;
-                cboStatut.SelectedIndex = 0;
-                chkEstPaye.Checked = false;
-                cboTypePaiement.SelectedIndex = -1;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             catch (Exception ex)
             {
@@ -358,13 +377,10 @@ namespace GestionPharmacie.Controls
             }
         }
 
-        private void InitializeComponent()
+        private void BtnCancel_Click(object? sender, EventArgs e)
         {
-            this.SuspendLayout();
-            this.Name = "CommandeControl";
-            this.Size = new Size(1200, 800);
-            this.ResumeLayout(false);
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }
-

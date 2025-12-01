@@ -1,5 +1,6 @@
 using GestionPharmacie.Models;
 using GestionPharmacie.Data;
+using GestionPharmacie.Utils;
 
 namespace GestionPharmacie.Forms
 {
@@ -14,6 +15,8 @@ namespace GestionPharmacie.Forms
         public CommandeForm()
         {
             InitializeComponent();
+            StyleHelper.ApplyFormTheme(this);
+            LoadData();
             cboStatut.SelectedIndex = 0; // Set default to "En cours"
         }
 

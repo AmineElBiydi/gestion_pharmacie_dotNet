@@ -17,119 +17,121 @@ namespace GestionPharmacie.Forms
 
         private void InitializeComponent()
         {
-            this.titlePanel = new System.Windows.Forms.Panel();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.dgvAlerts = new System.Windows.Forms.DataGridView();
-            this.colReference = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDatePeremption = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colQuantiteStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSeuil = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titlePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAlerts)).BeginInit();
-            this.SuspendLayout();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            titlePanel = new Panel();
+            lblTitle = new Label();
+            dgvAlerts = new DataGridView();
+            colReference = new DataGridViewTextBoxColumn();
+            colNom = new DataGridViewTextBoxColumn();
+            colDatePeremption = new DataGridViewTextBoxColumn();
+            colQuantiteStock = new DataGridViewTextBoxColumn();
+            colSeuil = new DataGridViewTextBoxColumn();
+            titlePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvAlerts).BeginInit();
+            SuspendLayout();
             // 
             // titlePanel
             // 
-            this.titlePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(243)))), ((int)(((byte)(205)))));
-            this.titlePanel.Controls.Add(this.lblTitle);
-            this.titlePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.titlePanel.Location = new System.Drawing.Point(0, 0);
-            this.titlePanel.Name = "titlePanel";
-            this.titlePanel.Size = new System.Drawing.Size(900, 60);
-            this.titlePanel.TabIndex = 0;
+            titlePanel.BackColor = Color.FromArgb(255, 243, 205);
+            titlePanel.Controls.Add(lblTitle);
+            titlePanel.Dock = DockStyle.Top;
+            titlePanel.Location = new Point(0, 0);
+            titlePanel.Margin = new Padding(3, 4, 3, 4);
+            titlePanel.Name = "titlePanel";
+            titlePanel.Size = new Size(1029, 80);
+            titlePanel.TabIndex = 0;
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(100)))), ((int)(((byte)(4)))));
-            this.lblTitle.Location = new System.Drawing.Point(20, 18);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(560, 21);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "⚠ Médicaments nécessitant une attention (stock faible ou péremption proche)";
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.FromArgb(133, 100, 4);
+            lblTitle.Location = new Point(122, 26);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(768, 28);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "⚠ Médicaments nécessitant une attention (stock faible ou péremption proche)";
+            lblTitle.Click += lblTitle_Click;
             // 
             // dgvAlerts
             // 
-            this.dgvAlerts.AllowUserToAddRows = false;
-            this.dgvAlerts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvAlerts.BackgroundColor = System.Drawing.Color.White;
-            this.dgvAlerts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAlerts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colReference,
-            this.colNom,
-            this.colDatePeremption,
-            this.colQuantiteStock,
-            this.colSeuil});
-            this.dgvAlerts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvAlerts.Location = new System.Drawing.Point(0, 60);
-            this.dgvAlerts.MultiSelect = false;
-            this.dgvAlerts.Name = "dgvAlerts";
-            this.dgvAlerts.ReadOnly = true;
-            this.dgvAlerts.RowTemplate.Height = 25;
-            this.dgvAlerts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAlerts.Size = new System.Drawing.Size(900, 440);
-            this.dgvAlerts.TabIndex = 1;
-            this.dgvAlerts.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.DgvAlerts_RowPrePaint);
+            dgvAlerts.AllowUserToAddRows = false;
+            dgvAlerts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvAlerts.BackgroundColor = Color.White;
+            dgvAlerts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAlerts.Columns.AddRange(new DataGridViewColumn[] { colReference, colNom, colDatePeremption, colQuantiteStock, colSeuil });
+            dgvAlerts.Dock = DockStyle.Fill;
+            dgvAlerts.Location = new Point(0, 80);
+            dgvAlerts.Margin = new Padding(3, 4, 3, 4);
+            dgvAlerts.MultiSelect = false;
+            dgvAlerts.Name = "dgvAlerts";
+            dgvAlerts.ReadOnly = true;
+            dgvAlerts.RowHeadersWidth = 51;
+            dgvAlerts.RowTemplate.Height = 25;
+            dgvAlerts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvAlerts.Size = new Size(1029, 587);
+            dgvAlerts.TabIndex = 1;
+            dgvAlerts.RowPrePaint += DgvAlerts_RowPrePaint;
             // 
             // colReference
             // 
-            this.colReference.DataPropertyName = "Reference";
-            this.colReference.HeaderText = "Référence";
-            this.colReference.Name = "colReference";
-            this.colReference.ReadOnly = true;
-            this.colReference.Width = 120;
+            colReference.DataPropertyName = "Reference";
+            colReference.HeaderText = "Référence";
+            colReference.MinimumWidth = 6;
+            colReference.Name = "colReference";
+            colReference.ReadOnly = true;
             // 
             // colNom
             // 
-            this.colNom.DataPropertyName = "Nom";
-            this.colNom.HeaderText = "Nom";
-            this.colNom.Name = "colNom";
-            this.colNom.ReadOnly = true;
-            this.colNom.Width = 250;
+            colNom.DataPropertyName = "Nom";
+            colNom.HeaderText = "Nom";
+            colNom.MinimumWidth = 6;
+            colNom.Name = "colNom";
+            colNom.ReadOnly = true;
             // 
             // colDatePeremption
             // 
-            this.colDatePeremption.DataPropertyName = "DatePeremption";
-            this.colDatePeremption.DefaultCellStyle.Format = "dd/MM/yyyy";
-            this.colDatePeremption.HeaderText = "Date Péremption";
-            this.colDatePeremption.Name = "colDatePeremption";
-            this.colDatePeremption.ReadOnly = true;
-            this.colDatePeremption.Width = 120;
+            colDatePeremption.DataPropertyName = "DatePeremption";
+            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
+            colDatePeremption.DefaultCellStyle = dataGridViewCellStyle2;
+            colDatePeremption.HeaderText = "Date Péremption";
+            colDatePeremption.MinimumWidth = 6;
+            colDatePeremption.Name = "colDatePeremption";
+            colDatePeremption.ReadOnly = true;
             // 
             // colQuantiteStock
             // 
-            this.colQuantiteStock.DataPropertyName = "QuantiteStock";
-            this.colQuantiteStock.HeaderText = "Stock";
-            this.colQuantiteStock.Name = "colQuantiteStock";
-            this.colQuantiteStock.ReadOnly = true;
-            this.colQuantiteStock.Width = 80;
+            colQuantiteStock.DataPropertyName = "QuantiteStock";
+            colQuantiteStock.HeaderText = "Stock";
+            colQuantiteStock.MinimumWidth = 6;
+            colQuantiteStock.Name = "colQuantiteStock";
+            colQuantiteStock.ReadOnly = true;
             // 
             // colSeuil
             // 
-            this.colSeuil.DataPropertyName = "Seuil";
-            this.colSeuil.HeaderText = "Seuil";
-            this.colSeuil.Name = "colSeuil";
-            this.colSeuil.ReadOnly = true;
-            this.colSeuil.Width = 80;
+            colSeuil.DataPropertyName = "Seuil";
+            colSeuil.HeaderText = "Seuil";
+            colSeuil.MinimumWidth = 6;
+            colSeuil.Name = "colSeuil";
+            colSeuil.ReadOnly = true;
             // 
             // MedicamentAlertForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(900, 500);
-            this.Controls.Add(this.dgvAlerts);
-            this.Controls.Add(this.titlePanel);
-            this.Name = "MedicamentAlertForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Alertes - Médicaments en Alerte";
-            this.Load += new System.EventHandler(this.MedicamentAlertForm_Load);
-            this.titlePanel.ResumeLayout(false);
-            this.titlePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAlerts)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(245, 245, 245);
+            ClientSize = new Size(1029, 667);
+            Controls.Add(dgvAlerts);
+            Controls.Add(titlePanel);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "MedicamentAlertForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Alertes - Médicaments en Alerte";
+            Load += MedicamentAlertForm_Load;
+            titlePanel.ResumeLayout(false);
+            titlePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvAlerts).EndInit();
+            ResumeLayout(false);
 
         }
 

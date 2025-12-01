@@ -1,5 +1,6 @@
 using GestionPharmacie.Models;
 using GestionPharmacie.Data;
+using GestionPharmacie.Utils;
 
 namespace GestionPharmacie.Forms
 {
@@ -10,6 +11,7 @@ namespace GestionPharmacie.Forms
         public MedicamentAlertForm()
         {
             InitializeComponent();
+            StyleHelper.ApplyFormTheme(this);
             LoadAlerts();
         }
 
@@ -43,7 +45,7 @@ namespace GestionPharmacie.Forms
             {
                 var alerts = _repository.GetMedicamentsEnAlerte();
                 dgvAlerts.DataSource = alerts;
-                
+
                 if (alerts.Count == 0)
                 {
                     MessageBox.Show("Aucune alerte pour le moment!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -53,6 +55,11 @@ namespace GestionPharmacie.Forms
             {
                 MessageBox.Show($"Erreur: {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

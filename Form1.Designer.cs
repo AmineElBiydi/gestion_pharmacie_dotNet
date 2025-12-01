@@ -11,14 +11,7 @@
         ///  Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+
 
         #region Windows Form Designer generated code
 
@@ -35,6 +28,7 @@
             menuMedRechercher = new ToolStripMenuItem();
             menuMedAlertes = new ToolStripMenuItem();
             menuCommandes = new ToolStripMenuItem();
+            menuCmdDashboard = new ToolStripMenuItem();
             menuCmdNouvelle = new ToolStripMenuItem();
             menuCmdRechercher = new ToolStripMenuItem();
             menuClients = new ToolStripMenuItem();
@@ -62,7 +56,7 @@
             mainMenuStrip.Location = new Point(0, 0);
             mainMenuStrip.Name = "mainMenuStrip";
             mainMenuStrip.Padding = new Padding(11, 7, 11, 7);
-            mainMenuStrip.Size = new Size(1371, 41);
+            mainMenuStrip.Size = new Size(1200, 41);
             mainMenuStrip.TabIndex = 0;
             mainMenuStrip.Text = "menuStrip1";
             // 
@@ -106,7 +100,6 @@
             // 
             // menuCommandes
             // 
-            menuCmdDashboard = new ToolStripMenuItem();
             menuCommandes.DropDownItems.AddRange(new ToolStripItem[] { menuCmdDashboard, menuCmdNouvelle, menuCmdRechercher });
             menuCommandes.Font = new Font("Segoe UI", 10F);
             menuCommandes.Name = "menuCommandes";
@@ -168,7 +161,7 @@
             // menuStatTableau
             // 
             menuStatTableau.Name = "menuStatTableau";
-            menuStatTableau.Size = new Size(224, 28);
+            menuStatTableau.Size = new Size(217, 28);
             menuStatTableau.Text = "Tableau de bord";
             menuStatTableau.Click += MenuStatTableau_Click;
             // 
@@ -183,14 +176,14 @@
             // menuCompteGérer
             // 
             menuCompteGérer.Name = "menuCompteGérer";
-            menuCompteGérer.Size = new Size(194, 28);
+            menuCompteGérer.Size = new Size(248, 28);
             menuCompteGérer.Text = "Gérer les utilisateurs";
             menuCompteGérer.Click += MenuCompteGérer_Click;
             // 
             // menuCompteLogout
             // 
             menuCompteLogout.Name = "menuCompteLogout";
-            menuCompteLogout.Size = new Size(194, 28);
+            menuCompteLogout.Size = new Size(248, 28);
             menuCompteLogout.Text = "Déconnexion";
             menuCompteLogout.Click += MenuCompteLogout_Click;
             // 
@@ -199,10 +192,10 @@
             statusStrip.BackColor = Color.White;
             statusStrip.ImageScalingSize = new Size(20, 20);
             statusStrip.Items.AddRange(new ToolStripItem[] { statusLabel, statusSpacer, statusDateLabel });
-            statusStrip.Location = new Point(0, 1015);
+            statusStrip.Location = new Point(0, 720);
             statusStrip.Name = "statusStrip";
             statusStrip.Padding = new Padding(6, 7, 6, 7);
-            statusStrip.Size = new Size(1371, 40);
+            statusStrip.Size = new Size(1200, 40);
             statusStrip.TabIndex = 1;
             statusStrip.Text = "statusStrip1";
             // 
@@ -217,7 +210,7 @@
             // statusSpacer
             // 
             statusSpacer.Name = "statusSpacer";
-            statusSpacer.Size = new Size(1258, 20);
+            statusSpacer.Size = new Size(1087, 20);
             statusSpacer.Spring = true;
             // 
             // statusDateLabel
@@ -234,15 +227,16 @@
             contentPanel.Location = new Point(0, 41);
             contentPanel.Margin = new Padding(0);
             contentPanel.Name = "contentPanel";
-            contentPanel.Size = new Size(1371, 974);
+            contentPanel.Size = new Size(1200, 679);
             contentPanel.TabIndex = 2;
+            contentPanel.Paint += contentPanel_Paint;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(245, 245, 245);
-            ClientSize = new Size(1371, 1055);
+            ClientSize = new Size(1200, 760);
             Controls.Add(contentPanel);
             Controls.Add(statusStrip);
             Controls.Add(mainMenuStrip);

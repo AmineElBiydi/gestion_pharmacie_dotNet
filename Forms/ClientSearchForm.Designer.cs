@@ -17,137 +17,139 @@ namespace GestionPharmacie.Forms
 
         private void InitializeComponent()
         {
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.dgvResults = new System.Windows.Forms.DataGridView();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrenom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAdresse = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTelephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblSearch = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
-            this.SuspendLayout();
+            txtSearch = new TextBox();
+            btnSearch = new Button();
+            dgvResults = new DataGridView();
+            colID = new DataGridViewTextBoxColumn();
+            colNumero = new DataGridViewTextBoxColumn();
+            colNom = new DataGridViewTextBoxColumn();
+            colPrenom = new DataGridViewTextBoxColumn();
+            colAdresse = new DataGridViewTextBoxColumn();
+            colTelephone = new DataGridViewTextBoxColumn();
+            lblSearch = new Label();
+            ((System.ComponentModel.ISupportInitialize)dgvResults).BeginInit();
+            SuspendLayout();
             // 
             // txtSearch
             // 
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtSearch.Location = new System.Drawing.Point(120, 20);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(400, 27);
-            this.txtSearch.TabIndex = 0;
+            txtSearch.Font = new Font("Segoe UI", 11F);
+            txtSearch.Location = new Point(187, 37);
+            txtSearch.Margin = new Padding(3, 4, 3, 4);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(457, 32);
+            txtSearch.TabIndex = 0;
             // 
             // btnSearch
             // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(133)))), ((int)(((byte)(244)))));
-            this.btnSearch.FlatAppearance.BorderSize = 0;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(530, 18);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(120, 32);
-            this.btnSearch.TabIndex = 1;
-            this.btnSearch.Text = "Rechercher";
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
+            btnSearch.BackColor = Color.FromArgb(66, 133, 244);
+            btnSearch.FlatAppearance.BorderSize = 0;
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.Font = new Font("Segoe UI", 10F);
+            btnSearch.ForeColor = Color.White;
+            btnSearch.Location = new Point(656, 34);
+            btnSearch.Margin = new Padding(3, 4, 3, 4);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(137, 43);
+            btnSearch.TabIndex = 1;
+            btnSearch.Text = "Rechercher";
+            btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += BtnSearch_Click;
             // 
             // dgvResults
             // 
-            this.dgvResults.AllowUserToAddRows = false;
-            this.dgvResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvResults.BackgroundColor = System.Drawing.Color.White;
-            this.dgvResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colID,
-            this.colNumero,
-            this.colNom,
-            this.colPrenom,
-            this.colAdresse,
-            this.colTelephone});
-            this.dgvResults.Location = new System.Drawing.Point(20, 70);
-            this.dgvResults.MultiSelect = false;
-            this.dgvResults.Name = "dgvResults";
-            this.dgvResults.ReadOnly = true;
-            this.dgvResults.RowTemplate.Height = 25;
-            this.dgvResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvResults.Size = new System.Drawing.Size(760, 430);
-            this.dgvResults.TabIndex = 2;
+            dgvResults.AllowUserToAddRows = false;
+            dgvResults.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvResults.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvResults.BackgroundColor = Color.White;
+            dgvResults.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvResults.Columns.AddRange(new DataGridViewColumn[] { colID, colNumero, colNom, colPrenom, colAdresse, colTelephone });
+            dgvResults.Location = new Point(23, 93);
+            dgvResults.Margin = new Padding(3, 4, 3, 4);
+            dgvResults.MultiSelect = false;
+            dgvResults.Name = "dgvResults";
+            dgvResults.ReadOnly = true;
+            dgvResults.RowHeadersWidth = 51;
+            dgvResults.RowTemplate.Height = 25;
+            dgvResults.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvResults.Size = new Size(869, 573);
+            dgvResults.TabIndex = 2;
             // 
             // colID
             // 
-            this.colID.DataPropertyName = "ID";
-            this.colID.HeaderText = "ID";
-            this.colID.Name = "colID";
-            this.colID.ReadOnly = true;
-            this.colID.Width = 50;
+            colID.DataPropertyName = "ID";
+            colID.HeaderText = "ID";
+            colID.MinimumWidth = 6;
+            colID.Name = "colID";
+            colID.ReadOnly = true;
             // 
             // colNumero
             // 
-            this.colNumero.DataPropertyName = "Numero";
-            this.colNumero.HeaderText = "Numéro";
-            this.colNumero.Name = "colNumero";
-            this.colNumero.ReadOnly = true;
+            colNumero.DataPropertyName = "Numero";
+            colNumero.HeaderText = "Numéro";
+            colNumero.MinimumWidth = 6;
+            colNumero.Name = "colNumero";
+            colNumero.ReadOnly = true;
             // 
             // colNom
             // 
-            this.colNom.DataPropertyName = "Nom";
-            this.colNom.HeaderText = "Nom";
-            this.colNom.Name = "colNom";
-            this.colNom.ReadOnly = true;
+            colNom.DataPropertyName = "Nom";
+            colNom.HeaderText = "Nom";
+            colNom.MinimumWidth = 6;
+            colNom.Name = "colNom";
+            colNom.ReadOnly = true;
             // 
             // colPrenom
             // 
-            this.colPrenom.DataPropertyName = "Prenom";
-            this.colPrenom.HeaderText = "Prénom";
-            this.colPrenom.Name = "colPrenom";
-            this.colPrenom.ReadOnly = true;
+            colPrenom.DataPropertyName = "Prenom";
+            colPrenom.HeaderText = "Prénom";
+            colPrenom.MinimumWidth = 6;
+            colPrenom.Name = "colPrenom";
+            colPrenom.ReadOnly = true;
             // 
             // colAdresse
             // 
-            this.colAdresse.DataPropertyName = "Adresse";
-            this.colAdresse.HeaderText = "Adresse";
-            this.colAdresse.Name = "colAdresse";
-            this.colAdresse.ReadOnly = true;
+            colAdresse.DataPropertyName = "Adresse";
+            colAdresse.HeaderText = "Adresse";
+            colAdresse.MinimumWidth = 6;
+            colAdresse.Name = "colAdresse";
+            colAdresse.ReadOnly = true;
             // 
             // colTelephone
             // 
-            this.colTelephone.DataPropertyName = "Telephone";
-            this.colTelephone.HeaderText = "Téléphone";
-            this.colTelephone.Name = "colTelephone";
-            this.colTelephone.ReadOnly = true;
+            colTelephone.DataPropertyName = "Telephone";
+            colTelephone.HeaderText = "Téléphone";
+            colTelephone.MinimumWidth = 6;
+            colTelephone.Name = "colTelephone";
+            colTelephone.ReadOnly = true;
             // 
             // lblSearch
             // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblSearch.Location = new System.Drawing.Point(20, 23);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(81, 19);
-            this.lblSearch.TabIndex = 3;
-            this.lblSearch.Text = "Rechercher:";
+            lblSearch.AutoSize = true;
+            lblSearch.Font = new Font("Segoe UI", 10F);
+            lblSearch.Location = new Point(73, 41);
+            lblSearch.Name = "lblSearch";
+            lblSearch.Size = new Size(99, 23);
+            lblSearch.TabIndex = 3;
+            lblSearch.Text = "Rechercher:";
             // 
             // ClientSearchForm
             // 
-            this.AcceptButton = this.btnSearch;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(800, 520);
-            this.Controls.Add(this.lblSearch);
-            this.Controls.Add(this.dgvResults);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.txtSearch);
-            this.Name = "ClientSearchForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Recherche de Clients";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AcceptButton = btnSearch;
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(245, 245, 245);
+            ClientSize = new Size(914, 693);
+            Controls.Add(lblSearch);
+            Controls.Add(dgvResults);
+            Controls.Add(btnSearch);
+            Controls.Add(txtSearch);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "ClientSearchForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Recherche de Clients";
+            ((System.ComponentModel.ISupportInitialize)dgvResults).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 

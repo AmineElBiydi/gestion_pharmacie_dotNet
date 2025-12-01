@@ -1,5 +1,6 @@
 using GestionPharmacie.Models;
 using GestionPharmacie.Data;
+using GestionPharmacie.Utils;
 
 namespace GestionPharmacie.Forms
 {
@@ -11,10 +12,7 @@ namespace GestionPharmacie.Forms
         public ClientForm()
         {
             InitializeComponent();
-        }
-
-        private void ClientForm_Load(object? sender, EventArgs e)
-        {
+            StyleHelper.ApplyFormTheme(this);
             LoadClients();
         }
 
