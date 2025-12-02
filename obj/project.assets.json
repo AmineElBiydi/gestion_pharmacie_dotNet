@@ -253,23 +253,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\amine\\.nuget\\packages\\": {},
+    "C:\\Users\\allou\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\GestionPharmacie.csproj",
+      "projectUniqueName": "C:\\Users\\allou\\OneDrive\\Bureau\\GestionPharmacie\\GestionPharmacie.csproj",
       "projectName": "GestionPharmacie",
-      "projectPath": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\GestionPharmacie.csproj",
-      "packagesPath": "C:\\Users\\amine\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\obj\\",
+      "projectPath": "C:\\Users\\allou\\OneDrive\\Bureau\\GestionPharmacie\\GestionPharmacie.csproj",
+      "packagesPath": "C:\\Users\\allou\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\allou\\OneDrive\\Bureau\\GestionPharmacie\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\amine\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\allou\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -278,6 +278,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

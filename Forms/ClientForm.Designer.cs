@@ -266,6 +266,14 @@ namespace GestionPharmacie.Forms
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1029, 800);
+            Controls.Add(dgvClients);
+            Controls.Add(formPanel);
+            Name = "ClientForm";
+            Text = "Gestion des Clients";
+            formPanel.ResumeLayout(false);
+            formPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvClients).EndInit();
+            ResumeLayout(false);
         }
         #endregion
 

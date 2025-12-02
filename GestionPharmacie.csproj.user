@@ -37,9 +37,6 @@
     <Compile Update="Forms\MedicamentSearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\StatistiquesForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Forms\UserManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
