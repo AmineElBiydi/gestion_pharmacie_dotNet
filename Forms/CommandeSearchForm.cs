@@ -20,7 +20,11 @@ namespace GestionPharmacie.Forms
         public CommandeSearchForm()
         {
             InitializeComponent();
-            StyleHelper.ApplyFormTheme(this);
+
+            if (!DesignMode)
+            {
+                StyleHelper.ApplyFormTheme(this);
+            }
             dtpStartDate.Value = DateTime.Now.AddMonths(-1);
 
             // Add extra columns if they don't exist (Modify, Payment, Print)
@@ -221,106 +225,11 @@ namespace GestionPharmacie.Forms
 
         private void ManagePayment(Commande commande)
         {
-            var paymentForm = new Form
+            var form = new PaymentManagerForm(commande);
+            if (form.ShowDialog() == DialogResult.OK)
             {
-                Text = "Gestion du Paiement - Commande #" + commande.ID,
-                Size = new Size(500, 300),
-                StartPosition = FormStartPosition.CenterParent,
-                FormBorderStyle = FormBorderStyle.FixedDialog,
-                MaximizeBox = false,
-                MinimizeBox = false
-            };
-
-            var panel = new Panel
-            {
-                Dock = DockStyle.Fill,
-                Padding = new Padding(20),
-                BackColor = StyleHelper.White
-            };
-
-            var lblCommande = new Label
-            {
-                Text = $"Commande #{commande.ID} - {commande.ClientNom}",
-                Font = StyleHelper.SubheadingFont,
-                ForeColor = StyleHelper.PrimaryBlue,
-                Location = new Point(20, 20),
-                AutoSize = true
-            };
-
-            var lblMontant = new Label
-            {
-                Text = $"Montant: {commande.MontantTotal:N2} €",
-                Font = StyleHelper.BodyFont,
-                Location = new Point(20, 60),
-                AutoSize = true
-            };
-
-            var chkEstPaye = new CheckBox
-            {
-                Text = "Facture Payée",
-                Location = new Point(20, 100),
-                Checked = commande.EstPaye,
-                Font = StyleHelper.BodyFont
-            };
-
-            var lblTypePaiement = new Label
-            {
-                Text = "Type de Paiement:",
-                Location = new Point(20, 140),
-                AutoSize = true
-            };
-            StyleHelper.StyleLabel(lblTypePaiement);
-
-            var cboTypePaiement = new ComboBox
-            {
-                Location = new Point(20, 165),
-                Size = new Size(400, 30),
-                DropDownStyle = ComboBoxStyle.DropDownList,
-                Font = StyleHelper.BodyFont
-            };
-            cboTypePaiement.Items.AddRange(new object[] { "", "Espèces", "Carte Bancaire", "Chèque", "Virement", "Autre" });
-            if (!string.IsNullOrEmpty(commande.TypePaiement))
-            {
-                var index = cboTypePaiement.Items.IndexOf(commande.TypePaiement);
-                if (index >= 0) cboTypePaiement.SelectedIndex = index;
+                LoadAllCommandes();
             }
-
-            var btnSave = new Button
-            {
-                Text = "Enregistrer",
-                Location = new Point(200, 220),
-                Size = new Size(120, 35)
-            };
-            StyleHelper.StyleButton(btnSave);
-            btnSave.Click += (s, e) =>
-            {
-                try
-                {
-                    commande.EstPaye = chkEstPaye.Checked;
-                    commande.TypePaiement = cboTypePaiement.SelectedItem?.ToString();
-                    _commandeRepo.Update(commande);
-                    MessageBox.Show("Paiement mis à jour avec succès!", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    paymentForm.Close();
-                    LoadAllCommandes();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Erreur: {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            };
-
-            var btnCancel = new Button
-            {
-                Text = "Annuler",
-                Location = new Point(330, 220),
-                Size = new Size(120, 35)
-            };
-            StyleHelper.StyleButton(btnCancel, StyleHelper.TextLight);
-            btnCancel.Click += (s, e) => paymentForm.Close();
-
-            panel.Controls.AddRange(new Control[] { lblCommande, lblMontant, chkEstPaye, lblTypePaiement, cboTypePaiement, btnSave, btnCancel });
-            paymentForm.Controls.Add(panel);
-            paymentForm.ShowDialog(this);
         }
 
         private void PrintCommande(Commande commande)
@@ -526,6 +435,11 @@ namespace GestionPharmacie.Forms
         }
 
         private void dgvCommandes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dtpStartDate_ValueChanged(object sender, EventArgs e)
         {
 
         }

@@ -1,4 +1,4 @@
-﻿namespace GestionPharmacie
+namespace GestionPharmacie
 {
     partial class Form1
     {
@@ -59,6 +59,7 @@
             mainMenuStrip.Size = new Size(1200, 41);
             mainMenuStrip.TabIndex = 0;
             mainMenuStrip.Text = "menuStrip1";
+            mainMenuStrip.ItemClicked += mainMenuStrip_ItemClicked;
             // 
             // menuHome
             // 
@@ -76,6 +77,7 @@
             menuMedicaments.Name = "menuMedicaments";
             menuMedicaments.Size = new Size(154, 27);
             menuMedicaments.Text = "💊 Médicaments";
+            menuMedicaments.Click += menuMedicaments_Click;
             // 
             // menuMedGerer
             // 
@@ -172,6 +174,7 @@
             menuCompte.Name = "menuCompte";
             menuCompte.Size = new Size(113, 27);
             menuCompte.Text = "⚙️ Compte";
+            menuCompte.Click += menuCompte_Click_1;
             // 
             // menuCompteGérer
             // 

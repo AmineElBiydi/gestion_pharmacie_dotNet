@@ -82,11 +82,35 @@ GO
 CREATE TABLE Fournisseurs (
     ID INT PRIMARY KEY IDENTITY(1,1),
     Nom NVARCHAR(100) NOT NULL,
+    Telephone NVARCHAR(20),
+    Email NVARCHAR(100),
     Adresse NVARCHAR(255),
-    Telephone NVARCHAR(20)
+    Ville NVARCHAR(50),
+    CodePostal NVARCHAR(10),
+    Actif BIT NOT NULL DEFAULT 1,
+    DateCreation DATETIME NOT NULL DEFAULT GETDATE()
 );
 
 CREATE INDEX IX_Fournisseurs_Nom ON Fournisseurs(Nom);
+CREATE INDEX IX_Fournisseurs_Actif ON Fournisseurs(Actif);
+GO
+
+-- ========================================
+-- Table: MedicamentFournisseurs (Many-to-Many: Medications-Suppliers)
+-- ========================================
+CREATE TABLE MedicamentFournisseurs (
+    MedicamentID INT NOT NULL,
+    FournisseurID INT NOT NULL,
+    PrixAchat DECIMAL(10,2),
+    DelaiLivraison INT, -- days
+    DateDebut DATETIME NOT NULL DEFAULT GETDATE(),
+    PRIMARY KEY (MedicamentID, FournisseurID),
+    CONSTRAINT FK_MedFourn_Medicaments FOREIGN KEY (MedicamentID) REFERENCES Medicaments(ID) ON DELETE CASCADE,
+    CONSTRAINT FK_MedFourn_Fournisseurs FOREIGN KEY (FournisseurID) REFERENCES Fournisseurs(ID) ON DELETE CASCADE
+);
+
+CREATE INDEX IX_MedFourn_MedicamentID ON MedicamentFournisseurs(MedicamentID);
+CREATE INDEX IX_MedFourn_FournisseurID ON MedicamentFournisseurs(FournisseurID);
 GO
 
 -- ========================================
@@ -158,12 +182,12 @@ INSERT INTO Users (Username, PasswordHash, FullName, Role, IsActive, CreatedDate
 ('pharmacien', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a', 'Pharmacien Principal', 'Pharmacien', 1, GETDATE());
 GO
 
--- Insert Suppliers
-INSERT INTO Fournisseurs (Nom, Adresse, Telephone) VALUES
-('Pharmacie Centrale', '123 Rue de Paris, 75001 Paris', '01 23 45 67 89'),
-('MediSupply France', '456 Avenue des Sciences, 69000 Lyon', '04 78 90 12 34'),
-('PharmaDistrib', '789 Boulevard de la Santé, 33000 Bordeaux', '05 56 78 90 12'),
-('EuroPharma', '321 Rue du Médicament, 13000 Marseille', '04 91 23 45 67');
+-- Insert Suppliers  
+INSERT INTO Fournisseurs (Nom, Telephone, Email, Adresse, Ville, CodePostal, Actif) VALUES
+('Pharmacie Centrale', '05 22 45 67 89', 'contact@pharmacentrale.ma', '123 Rue de Paris', 'Casablanca', '20000', 1),
+('MediSupply Maroc', '05 37 90 12 34', 'info@medisupply.ma', '456 Avenue des Sciences', 'Rabat', '10000', 1),
+('PharmaDistrib', '05 24 78 90 12', 'service@pharmadistrib.ma', '789 Boulevard de la Santé', 'Marrakech', '40000', 1),
+('Atlas Pharma', '05 28 23 45 67', 'contact@atlaspharma.ma', '321 Rue du Médicament', 'Agadir', '80000', 1);
 GO
 
 -- Insert Medicines with various stock levels for testing alerts
@@ -193,6 +217,28 @@ INSERT INTO Medicaments (Reference, Nom, DatePeremption, PrixUnitaire, QuantiteS
 ('MED016', 'Doliprane Enfant', '2025-04-15', 5.00, 45, 20),  -- Expiring soon
 ('MED017', 'Sirop Toux', '2025-05-20', 8.50, 30, 15),  -- Expiring soon
 ('MED018', 'Gaviscon', '2025-06-10', 9.50, 25, 10);  -- Expiring soon
+GO
+
+-- Insert Medicament-Fournisseur relationships (which suppliers provide which medications)
+INSERT INTO MedicamentFournisseurs (MedicamentID, FournisseurID, PrixAchat, DelaiLivraison) VALUES
+-- In-stock items
+(1, 1, 3.50, 2), (1, 2, 3.75, 3),  -- Paracétamol
+(2, 1, 5.00, 2), (2, 3, 4.85, 5),  -- Ibuprofène
+(3, 2, 8.00, 3), (3, 4, 7.90, 4),  -- Amoxicilline
+(4, 1, 3.50, 2), (4, 2, 3.60, 3),  -- Vitamine C
+(5, 1, 2.50, 2),  -- Aspirine
+(6, 2, 5.00, 3), (6, 3, 4.95, 4),  -- Doliprane
+(7, 3, 6.50, 4),  -- Spasfon
+(8, 4, 5.50, 5),  --  Smecta
+-- LOW STOCK items - critical to have supplier info for reordering
+(9, 1, 6.00, 2), (9, 2, 5.90, 3),  -- Nurofen (Low stock)
+(10, 1, 4.00, 2), (10, 3, 3.95, 4),  -- Efferalgan (Low stock)
+(11, 2, 4.50, 3),  -- Dafalgan (Low stock)
+(12, 3, 3.50, 4), (12, 4, 3.45, 5),  -- Strepsils (Very low stock)
+-- OUT OF STOCK items - IMPORTANT for reordering
+(13, 1, 5.50, 2), (13, 2, 5.40, 3), (13, 4, 5.45, 4),  -- Advil (Out)
+(14, 2, 4.50, 3), (14, 3, 4.40, 5),  -- Actifed (Out)
+(15, 1, 4.00, 2), (15, 4, 3.95, 4);  -- Humex (Out)
 GO
 
 -- Insert Clients
@@ -298,3 +344,6 @@ PRINT '  Please change the password after first login!';
 PRINT '========================================';
 GO
 
+
+ALTER TABLE Medicaments
+ADD EstBloque BIT NOT NULL DEFAULT 0;

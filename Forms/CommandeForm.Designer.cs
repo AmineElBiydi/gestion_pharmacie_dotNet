@@ -252,7 +252,7 @@ namespace GestionPharmacie.Forms
             colPrixUnit.DataPropertyName = "PrixUnitaire";
             dataGridViewCellStyle1.Format = "N2";
             colPrixUnit.DefaultCellStyle = dataGridViewCellStyle1;
-            colPrixUnit.HeaderText = "Prix Unit. (€)";
+            colPrixUnit.HeaderText = "Prix Unit. (DH)";
             colPrixUnit.MinimumWidth = 6;
             colPrixUnit.Name = "colPrixUnit";
             colPrixUnit.ReadOnly = true;
@@ -262,7 +262,7 @@ namespace GestionPharmacie.Forms
             colSousTotal.DataPropertyName = "SousTotal";
             dataGridViewCellStyle2.Format = "N2";
             colSousTotal.DefaultCellStyle = dataGridViewCellStyle2;
-            colSousTotal.HeaderText = "Sous-Total (€)";
+            colSousTotal.HeaderText = "Sous-Total (DH)";
             colSousTotal.MinimumWidth = 6;
             colSousTotal.Name = "colSousTotal";
             colSousTotal.ReadOnly = true;
@@ -313,7 +313,7 @@ namespace GestionPharmacie.Forms
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(174, 37);
             lblTotal.TabIndex = 0;
-            lblTotal.Text = "Total: 0.00 €";
+            lblTotal.Text = "Total: 0.00 DH";
             // 
             // CommandeForm
             // 

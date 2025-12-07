@@ -15,7 +15,11 @@ namespace GestionPharmacie.Forms
         public CommandeForm()
         {
             InitializeComponent();
-            StyleHelper.ApplyFormTheme(this);
+
+            if (!DesignMode)
+            {
+                StyleHelper.ApplyFormTheme(this);
+            }
             LoadData();
             cboStatut.SelectedIndex = 0; // Set default to "En cours"
         }
@@ -90,7 +94,7 @@ namespace GestionPharmacie.Forms
             dgvDetails.DataSource = _details.ToList();
             
             var total = _details.Sum(d => d.SousTotal);
-            lblTotal.Text = $"Total: {total:N2} €";
+            lblTotal.Text = $"Total: {total:N2} DH";
         }
 
         private void BtnSave_Click(object? sender, EventArgs e)

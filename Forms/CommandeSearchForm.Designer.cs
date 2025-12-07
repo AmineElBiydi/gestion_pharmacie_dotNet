@@ -17,8 +17,8 @@ namespace GestionPharmacie.Forms
 
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             searchPanel = new Panel();
             btnShowAll = new Button();
             btnSearchClient = new Button();
@@ -150,6 +150,7 @@ namespace GestionPharmacie.Forms
             dtpStartDate.Name = "dtpStartDate";
             dtpStartDate.Size = new Size(219, 27);
             dtpStartDate.TabIndex = 2;
+            dtpStartDate.ValueChanged += dtpStartDate_ValueChanged;
             // 
             // lblStartDate
             // 
@@ -203,8 +204,8 @@ namespace GestionPharmacie.Forms
             // colDateCommande
             // 
             colDateCommande.DataPropertyName = "DateCommande";
-            dataGridViewCellStyle3.Format = "dd/MM/yyyy HH:mm";
-            colDateCommande.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Format = "dd/MM/yyyy HH:mm";
+            colDateCommande.DefaultCellStyle = dataGridViewCellStyle1;
             colDateCommande.HeaderText = "Date";
             colDateCommande.MinimumWidth = 6;
             colDateCommande.Name = "colDateCommande";
@@ -221,9 +222,9 @@ namespace GestionPharmacie.Forms
             // colMontantTotal
             // 
             colMontantTotal.DataPropertyName = "MontantTotal";
-            dataGridViewCellStyle4.Format = "N2";
-            colMontantTotal.DefaultCellStyle = dataGridViewCellStyle4;
-            colMontantTotal.HeaderText = "Montant Total (€)";
+            dataGridViewCellStyle2.Format = "N2";
+            colMontantTotal.DefaultCellStyle = dataGridViewCellStyle2;
+            colMontantTotal.HeaderText = "Montant Total (DH)";
             colMontantTotal.MinimumWidth = 6;
             colMontantTotal.Name = "colMontantTotal";
             colMontantTotal.ReadOnly = true;

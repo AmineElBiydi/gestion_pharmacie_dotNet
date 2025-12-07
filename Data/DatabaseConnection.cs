@@ -16,7 +16,7 @@ namespace GestionPharmacie.Data
             
             // Option 2: Named SQL Server instance (like "Amine")
             // Use this if your SQL Server instance is named "Amine":
-            return @"Server=LAPTOP-9GC20M39;Database=GestionPharmacie;Integrated Security=true;TrustServerCertificate=true;";
+            return @"Server=Amine;Database=GestionPharmacie;Integrated Security=true;TrustServerCertificate=true;";
             
             // Option 3: SQL Server with username/password
             // Uncomment and modify if using SQL Server Authentication:

@@ -14,7 +14,7 @@ namespace GestionPharmacie.Data
             {
                 conn.Open();
                 var cmd = new SqlCommand(
-                    "SELECT * FROM Medicaments WHERE EstBloque = 0 ORDER BY Nom", conn);
+                    "SELECT * FROM Medicaments ORDER BY Nom", conn);
 
                 using (var reader = cmd.ExecuteReader())
                 {

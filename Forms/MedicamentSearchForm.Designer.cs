@@ -129,7 +129,7 @@ namespace GestionPharmacie.Forms
             colPrixUnitaire.DataPropertyName = "PrixUnitaire";
             dataGridViewCellStyle2.Format = "N2";
             colPrixUnitaire.DefaultCellStyle = dataGridViewCellStyle2;
-            colPrixUnitaire.HeaderText = "Prix (€)";
+            colPrixUnitaire.HeaderText = "Prix (DH)";
             colPrixUnitaire.MinimumWidth = 6;
             colPrixUnitaire.Name = "colPrixUnitaire";
             colPrixUnitaire.ReadOnly = true;

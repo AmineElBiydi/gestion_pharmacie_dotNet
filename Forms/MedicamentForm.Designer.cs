@@ -42,6 +42,7 @@ namespace GestionPharmacie.Forms
             colPrixUnitaire = new DataGridViewTextBoxColumn();
             colQuantiteStock = new DataGridViewTextBoxColumn();
             colSeuil = new DataGridViewTextBoxColumn();
+            colEstBloque = new DataGridViewCheckBoxColumn();
             formPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudSeuil).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudQuantiteStock).BeginInit();
@@ -171,7 +172,7 @@ namespace GestionPharmacie.Forms
             lblPrix.Name = "lblPrix";
             lblPrix.Size = new Size(114, 20);
             lblPrix.TabIndex = 6;
-            lblPrix.Text = "Prix Unitaire (€):";
+            lblPrix.Text = "Prix Unitaire (DH):";
             // 
             // dtpDatePeremption
             // 
@@ -230,7 +231,7 @@ namespace GestionPharmacie.Forms
             dgvMedicaments.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMedicaments.BackgroundColor = Color.White;
             dgvMedicaments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMedicaments.Columns.AddRange(new DataGridViewColumn[] { colID, colReference, colNom, colDatePeremption, colPrixUnitaire, colQuantiteStock, colSeuil });
+            dgvMedicaments.Columns.AddRange(new DataGridViewColumn[] { colID, colReference, colNom, colDatePeremption, colPrixUnitaire, colQuantiteStock, colSeuil, colEstBloque });
             dgvMedicaments.Dock = DockStyle.Fill;
             dgvMedicaments.Location = new Point(0, 333);
             dgvMedicaments.Margin = new Padding(3, 4, 3, 4);
@@ -281,7 +282,7 @@ namespace GestionPharmacie.Forms
             colPrixUnitaire.DataPropertyName = "PrixUnitaire";
             dataGridViewCellStyle1.Format = "N2";
             colPrixUnitaire.DefaultCellStyle = dataGridViewCellStyle1;
-            colPrixUnitaire.HeaderText = "Prix (€)";
+            colPrixUnitaire.HeaderText = "Prix (DH)";
             colPrixUnitaire.MinimumWidth = 6;
             colPrixUnitaire.Name = "colPrixUnitaire";
             colPrixUnitaire.ReadOnly = true;
@@ -301,6 +302,14 @@ namespace GestionPharmacie.Forms
             colSeuil.MinimumWidth = 6;
             colSeuil.Name = "colSeuil";
             colSeuil.ReadOnly = true;
+            // 
+            // colEstBloque
+            // 
+            colEstBloque.DataPropertyName = "EstBloque";
+            colEstBloque.HeaderText = "Bloqué";
+            colEstBloque.MinimumWidth = 6;
+            colEstBloque.Name = "colEstBloque";
+            colEstBloque.ReadOnly = true;
             // 
             // MedicamentForm
             // 
@@ -351,5 +360,6 @@ namespace GestionPharmacie.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrixUnitaire;
         private System.Windows.Forms.DataGridViewTextBoxColumn colQuantiteStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSeuil;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colEstBloque;
     }
 }

@@ -40,6 +40,16 @@ namespace GestionPharmacie.Forms
             lblSubtitle = new Label();
             lblTitle = new Label();
             lblIcon = new Label();
+            // Create account controls
+            txtConfirmPassword = new TextBox();
+            txtFullName = new TextBox();
+            cboRole = new ComboBox();
+            chkShowPasswordCreate = new CheckBox();
+            btnCreate = new Button();
+            btnBackToLogin = new LinkLabel();
+            lblConfirmPassword = new Label();
+            lblFullName = new Label();
+            lblRole = new Label();
             mainPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -57,6 +67,16 @@ namespace GestionPharmacie.Forms
             mainPanel.Controls.Add(lblSubtitle);
             mainPanel.Controls.Add(lblTitle);
             mainPanel.Controls.Add(lblIcon);
+            // Create account controls
+            mainPanel.Controls.Add(txtConfirmPassword);
+            mainPanel.Controls.Add(txtFullName);
+            mainPanel.Controls.Add(cboRole);
+            mainPanel.Controls.Add(chkShowPasswordCreate);
+            mainPanel.Controls.Add(btnCreate);
+            mainPanel.Controls.Add(btnBackToLogin);
+            mainPanel.Controls.Add(lblConfirmPassword);
+            mainPanel.Controls.Add(lblFullName);
+            mainPanel.Controls.Add(lblRole);
             mainPanel.Location = new Point(40, 67);
             mainPanel.Margin = new Padding(3, 4, 3, 4);
             mainPanel.Name = "mainPanel";
@@ -205,6 +225,131 @@ namespace GestionPharmacie.Forms
             lblIcon.Text = "💊";
             lblIcon.Click += lblIcon_Click;
             // 
+            // txtConfirmPassword
+            // 
+            txtConfirmPassword.BorderStyle = BorderStyle.FixedSingle;
+            txtConfirmPassword.Font = new Font("Segoe UI", 11F);
+            txtConfirmPassword.Location = new Point(46, 420);
+            txtConfirmPassword.Size = new Size(343, 40);
+            txtConfirmPassword.TabIndex = 2;
+            txtConfirmPassword.UseSystemPasswordChar = true;
+            txtConfirmPassword.BackColor = Color.FromArgb(250, 250, 250);
+            txtConfirmPassword.Visible = false;
+            txtConfirmPassword.Name = "txtConfirmPassword";
+            txtConfirmPassword.Enter += (s, e) => { if (s is TextBox tb) tb.BackColor = Color.White; };
+            txtConfirmPassword.Leave += (s, e) => { if (s is TextBox tb) tb.BackColor = Color.FromArgb(250, 250, 250); };
+            // 
+            // txtFullName
+            // 
+            txtFullName.BorderStyle = BorderStyle.FixedSingle;
+            txtFullName.Font = new Font("Segoe UI", 11F);
+            txtFullName.Location = new Point(46, 500);
+            txtFullName.Size = new Size(343, 40);
+            txtFullName.TabIndex = 3;
+            txtFullName.BackColor = Color.FromArgb(250, 250, 250);
+            txtFullName.Visible = false;
+            txtFullName.Name = "txtFullName";
+            txtFullName.Enter += (s, e) => { if (s is TextBox tb) tb.BackColor = Color.White; };
+            txtFullName.Leave += (s, e) => { if (s is TextBox tb) tb.BackColor = Color.FromArgb(250, 250, 250); };
+            // 
+            // cboRole
+            // 
+            cboRole.Font = new Font("Segoe UI", 11F);
+            cboRole.Location = new Point(46, 560);
+            cboRole.Size = new Size(343, 40);
+            cboRole.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboRole.TabIndex = 4;
+            cboRole.BackColor = Color.FromArgb(250, 250, 250);
+            cboRole.FlatStyle = FlatStyle.Flat;
+            cboRole.Visible = false;
+            cboRole.Name = "cboRole";
+            cboRole.Items.AddRange(new string[] { "Pharmacien", "Admin", "User" });
+            cboRole.SelectedIndex = 0;
+            cboRole.Enter += (s, e) => { if (s is ComboBox cb) cb.BackColor = Color.White; };
+            cboRole.Leave += (s, e) => { if (s is ComboBox cb) cb.BackColor = Color.FromArgb(250, 250, 250); };
+            // 
+            // chkShowPasswordCreate
+            // 
+            chkShowPasswordCreate.Text = "Afficher le mot de passe";
+            chkShowPasswordCreate.Font = new Font("Segoe UI", 9F);
+            chkShowPasswordCreate.ForeColor = Color.FromArgb(117, 117, 117);
+            chkShowPasswordCreate.Location = new Point(46, 470);
+            chkShowPasswordCreate.AutoSize = true;
+            chkShowPasswordCreate.Visible = false;
+            chkShowPasswordCreate.Name = "chkShowPasswordCreate";
+            chkShowPasswordCreate.CheckedChanged += (s, e) =>
+            {
+                if (txtPassword != null && txtConfirmPassword != null)
+                {
+                    txtPassword.UseSystemPasswordChar = !chkShowPasswordCreate.Checked;
+                    txtConfirmPassword.UseSystemPasswordChar = !chkShowPasswordCreate.Checked;
+                }
+            };
+            // 
+            // btnCreate
+            // 
+            btnCreate.Text = "Créer le compte";
+            btnCreate.BackColor = Color.FromArgb(66, 133, 244);
+            btnCreate.ForeColor = Color.White;
+            btnCreate.FlatStyle = FlatStyle.Flat;
+            btnCreate.FlatAppearance.BorderSize = 0;
+            btnCreate.Font = new Font("Segoe UI", 11F, FontStyle.Regular);
+            btnCreate.Location = new Point(103, 620);
+            btnCreate.Size = new Size(229, 48);
+            btnCreate.Cursor = Cursors.Hand;
+            btnCreate.TabIndex = 5;
+            btnCreate.Visible = false;
+            btnCreate.Name = "btnCreate";
+            btnCreate.Click += BtnCreate_Click;
+            btnCreate.MouseEnter += (s, e) => { if (s is Button btn) btn.BackColor = Color.FromArgb(52, 73, 94); };
+            btnCreate.MouseLeave += (s, e) => { if (s is Button btn) btn.BackColor = Color.FromArgb(66, 133, 244); };
+            btnCreate.Paint += BtnLogin_Paint;
+            // 
+            // btnBackToLogin
+            // 
+            btnBackToLogin.AutoSize = false;
+            btnBackToLogin.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            btnBackToLogin.ForeColor = Color.FromArgb(66, 133, 244);
+            btnBackToLogin.Location = new Point(103, 680);
+            btnBackToLogin.Size = new Size(229, 20);
+            btnBackToLogin.TabStop = true;
+            btnBackToLogin.Text = "Retour à la connexion";
+            btnBackToLogin.TextAlign = ContentAlignment.MiddleCenter;
+            btnBackToLogin.LinkBehavior = LinkBehavior.HoverUnderline;
+            btnBackToLogin.Visible = false;
+            btnBackToLogin.Name = "btnBackToLogin";
+            btnBackToLogin.LinkClicked += (s, e) => ShowLoginView();
+            // 
+            // lblConfirmPassword
+            // 
+            lblConfirmPassword.Text = "Confirmer le mot de passe *";
+            lblConfirmPassword.Font = new Font("Segoe UI", 10F);
+            lblConfirmPassword.ForeColor = Color.FromArgb(33, 33, 33);
+            lblConfirmPassword.Location = new Point(46, 390);
+            lblConfirmPassword.AutoSize = true;
+            lblConfirmPassword.Visible = false;
+            lblConfirmPassword.Name = "lblConfirmPassword";
+            // 
+            // lblFullName
+            // 
+            lblFullName.Text = "Nom complet *";
+            lblFullName.Font = new Font("Segoe UI", 10F);
+            lblFullName.ForeColor = Color.FromArgb(33, 33, 33);
+            lblFullName.Location = new Point(46, 470);
+            lblFullName.AutoSize = true;
+            lblFullName.Visible = false;
+            lblFullName.Name = "lblFullName";
+            // 
+            // lblRole
+            // 
+            lblRole.Text = "Rôle";
+            lblRole.Font = new Font("Segoe UI", 10F);
+            lblRole.ForeColor = Color.FromArgb(33, 33, 33);
+            lblRole.Location = new Point(46, 530);
+            lblRole.AutoSize = true;
+            lblRole.Visible = false;
+            lblRole.Name = "lblRole";
+            // 
             // LoginForm
             // 
             AcceptButton = btnLogin;
@@ -240,5 +385,15 @@ namespace GestionPharmacie.Forms
         private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.LinkLabel btnCreateAccount;
+        // Create account controls
+        private System.Windows.Forms.TextBox txtConfirmPassword;
+        private System.Windows.Forms.TextBox txtFullName;
+        private System.Windows.Forms.ComboBox cboRole;
+        private System.Windows.Forms.CheckBox chkShowPasswordCreate;
+        private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.LinkLabel btnBackToLogin;
+        private System.Windows.Forms.Label lblConfirmPassword;
+        private System.Windows.Forms.Label lblFullName;
+        private System.Windows.Forms.Label lblRole;
     }
 }

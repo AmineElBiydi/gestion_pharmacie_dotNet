@@ -10,158 +10,22 @@ namespace GestionPharmacie.Forms
     public partial class LoginForm : Form
     {
         private bool _isCreateAccountMode = false;
-        private TextBox? txtConfirmPassword;
-        private TextBox? txtFullName;
-        private ComboBox? cboRole;
-        private CheckBox? chkShowPasswordCreate;
-        private Button? btnCreate;
-        private LinkLabel? btnBackToLogin;
-        private Label? lblConfirmPassword;
-        private Label? lblFullName;
-        private Label? lblRole;
 
         public LoginForm()
         {
             InitializeComponent();
-            InitializeCreateAccountControls();
             ShowLoginView();
-            // Apply global typography/colors
-            StyleHelper.ApplyFormTheme(this);
-            // Vibrant blue gradient background behind the main card
-            StyleHelper.ApplyGradientBackground(this);
+            
+            if (!DesignMode)
+            {
+                // Apply global typography/colors
+                StyleHelper.ApplyFormTheme(this);
+                // Vibrant blue gradient background behind the main card
+                StyleHelper.ApplyGradientBackground(this);
+            }
         }
 
-        private void InitializeCreateAccountControls()
-        {
-            // These will be created dynamically when switching to create account mode
-            txtConfirmPassword = new TextBox
-            {
-                BorderStyle = BorderStyle.FixedSingle,
-                Font = new Font("Segoe UI", 11F),
-                Location = new Point(46, 420),
-                Size = new Size(343, 40),
-                TabIndex = 2,
-                UseSystemPasswordChar = true,
-                BackColor = Color.FromArgb(250, 250, 250),
-                Visible = false
-            };
-            txtConfirmPassword.Enter += (s, e) => { if (s is TextBox tb) tb.BackColor = Color.White; };
-            txtConfirmPassword.Leave += (s, e) => { if (s is TextBox tb) tb.BackColor = Color.FromArgb(250, 250, 250); };
 
-            txtFullName = new TextBox
-            {
-                BorderStyle = BorderStyle.FixedSingle,
-                Font = new Font("Segoe UI", 11F),
-                Location = new Point(46, 500),
-                Size = new Size(343, 40),
-                TabIndex = 3,
-                BackColor = Color.FromArgb(250, 250, 250),
-                Visible = false
-            };
-            txtFullName.Enter += (s, e) => { if (s is TextBox tb) tb.BackColor = Color.White; };
-            txtFullName.Leave += (s, e) => { if (s is TextBox tb) tb.BackColor = Color.FromArgb(250, 250, 250); };
-
-            cboRole = new ComboBox
-            {
-                Font = new Font("Segoe UI", 11F),
-                Location = new Point(46, 560),
-                Size = new Size(343, 40),
-                DropDownStyle = ComboBoxStyle.DropDownList,
-                TabIndex = 4,
-                BackColor = Color.FromArgb(250, 250, 250),
-                FlatStyle = FlatStyle.Flat,
-                Visible = false
-            };
-            cboRole.Items.AddRange(new string[] { "Pharmacien", "Admin", "User" });
-            cboRole.SelectedIndex = 0;
-            cboRole.Enter += (s, e) => { if (s is ComboBox cb) cb.BackColor = Color.White; };
-            cboRole.Leave += (s, e) => { if (s is ComboBox cb) cb.BackColor = Color.FromArgb(250, 250, 250); };
-
-            chkShowPasswordCreate = new CheckBox
-            {
-                Text = "Afficher le mot de passe",
-                Font = new Font("Segoe UI", 9F),
-                ForeColor = Color.FromArgb(117, 117, 117),
-                Location = new Point(46, 470),
-                AutoSize = true,
-                Visible = false
-            };
-            chkShowPasswordCreate.CheckedChanged += (s, e) =>
-            {
-                if (txtPassword != null && txtConfirmPassword != null)
-                {
-                    txtPassword.UseSystemPasswordChar = !chkShowPasswordCreate.Checked;
-                    txtConfirmPassword.UseSystemPasswordChar = !chkShowPasswordCreate.Checked;
-                }
-            };
-
-            btnCreate = new Button
-            {
-                Text = "Créer le compte",
-                BackColor = StyleHelper.PrimaryBlue,
-                ForeColor = Color.White,
-                FlatStyle = FlatStyle.Flat,
-                FlatAppearance = { BorderSize = 0 },
-                Font = new Font("Segoe UI", 11F, FontStyle.Regular),
-                Location = new Point(103, 620),
-                Size = new Size(229, 48),
-                Cursor = Cursors.Hand,
-                TabIndex = 5,
-                Visible = false
-            };
-            btnCreate.Click += BtnCreate_Click;
-            btnCreate.MouseEnter += (s, e) => { if (s is Button btn) btn.BackColor = StyleHelper.DarkBlue; };
-            btnCreate.MouseLeave += (s, e) => { if (s is Button btn) btn.BackColor = StyleHelper.PrimaryBlue; };
-            btnCreate.Paint += BtnLogin_Paint;
-
-            btnBackToLogin = new LinkLabel
-            {
-                AutoSize = false,
-                Font = new Font("Segoe UI", 9F, FontStyle.Underline),
-                ForeColor = Color.FromArgb(66, 133, 244),
-                Location = new Point(103, 680),
-                Size = new Size(229, 20),
-                TabStop = true,
-                Text = "Retour à la connexion",
-                TextAlign = ContentAlignment.MiddleCenter,
-                LinkBehavior = LinkBehavior.HoverUnderline,
-                Visible = false
-            };
-            btnBackToLogin.LinkClicked += (s, e) => ShowLoginView();
-
-            // Create labels for create account view
-            lblConfirmPassword = new Label
-            {
-                Text = "Confirmer le mot de passe *",
-                Font = new Font("Segoe UI", 10F),
-                ForeColor = Color.FromArgb(33, 33, 33),
-                Location = new Point(46, 390),
-                AutoSize = true,
-                Visible = false
-            };
-
-            lblFullName = new Label
-            {
-                Text = "Nom complet *",
-                Font = new Font("Segoe UI", 10F),
-                ForeColor = Color.FromArgb(33, 33, 33),
-                Location = new Point(46, 470),
-                AutoSize = true,
-                Visible = false
-            };
-
-            lblRole = new Label
-            {
-                Text = "Rôle",
-                Font = new Font("Segoe UI", 10F),
-                ForeColor = Color.FromArgb(33, 33, 33),
-                Location = new Point(46, 530),
-                AutoSize = true,
-                Visible = false
-            };
-
-            mainPanel.Controls.AddRange(new Control[] { txtConfirmPassword, txtFullName, cboRole, chkShowPasswordCreate, btnCreate, btnBackToLogin, lblConfirmPassword, lblFullName, lblRole });
-        }
 
         private void ShowLoginView()
         {
@@ -181,15 +45,15 @@ namespace GestionPharmacie.Forms
             btnCreateAccount.Location = new Point(103, 580);
             lblError.Location = new Point(46, 460);
 
-            if (txtConfirmPassword != null) txtConfirmPassword.Visible = false;
-            if (txtFullName != null) txtFullName.Visible = false;
-            if (cboRole != null) cboRole.Visible = false;
-            if (chkShowPasswordCreate != null) chkShowPasswordCreate.Visible = false;
-            if (btnCreate != null) btnCreate.Visible = false;
-            if (btnBackToLogin != null) btnBackToLogin.Visible = false;
-            if (lblConfirmPassword != null) lblConfirmPassword.Visible = false;
-            if (lblFullName != null) lblFullName.Visible = false;
-            if (lblRole != null) lblRole.Visible = false;
+            txtConfirmPassword.Visible = false;
+            txtFullName.Visible = false;
+            cboRole.Visible = false;
+            chkShowPasswordCreate.Visible = false;
+            btnCreate.Visible = false;
+            btnBackToLogin.Visible = false;
+            lblConfirmPassword.Visible = false;
+            lblFullName.Visible = false;
+            lblRole.Visible = false;
 
             mainPanel.Size = new Size(434, 620);
             this.ClientSize = new Size(514, 753);
@@ -207,56 +71,32 @@ namespace GestionPharmacie.Forms
             lblUsername.Text = "Nom d'utilisateur *";
             lblPassword.Text = "Mot de passe *";
 
-            if (lblConfirmPassword != null)
-            {
-                lblConfirmPassword.Visible = true;
-                lblConfirmPassword.Location = new Point(46, 390);
-            }
-            if (txtConfirmPassword != null)
-            {
-                txtConfirmPassword.Visible = true;
-                txtConfirmPassword.Location = new Point(46, 420);
-            }
+            lblConfirmPassword.Visible = true;
+            lblConfirmPassword.Location = new Point(46, 390);
 
-            if (chkShowPasswordCreate != null)
-            {
-                chkShowPasswordCreate.Visible = true;
-                chkShowPasswordCreate.Location = new Point(46, 470);
-            }
+            txtConfirmPassword.Visible = true;
+            txtConfirmPassword.Location = new Point(46, 420);
 
-            if (lblFullName != null)
-            {
-                lblFullName.Visible = true;
-                lblFullName.Location = new Point(46, 500);
-            }
-            if (txtFullName != null)
-            {
-                txtFullName.Visible = true;
-                txtFullName.Location = new Point(46, 530);
-            }
+            chkShowPasswordCreate.Visible = true;
+            chkShowPasswordCreate.Location = new Point(46, 470);
 
-            if (lblRole != null)
-            {
-                lblRole.Visible = true;
-                lblRole.Location = new Point(46, 570);
-            }
-            if (cboRole != null)
-            {
-                cboRole.Visible = true;
-                cboRole.Location = new Point(46, 600);
-            }
+            lblFullName.Visible = true;
+            lblFullName.Location = new Point(46, 500);
 
-            if (btnCreate != null)
-            {
-                btnCreate.Visible = true;
-                btnCreate.Location = new Point(103, 660);
-            }
+            txtFullName.Visible = true;
+            txtFullName.Location = new Point(46, 530);
 
-            if (btnBackToLogin != null)
-            {
-                btnBackToLogin.Visible = true;
-                btnBackToLogin.Location = new Point(103, 720);
-            }
+            lblRole.Visible = true;
+            lblRole.Location = new Point(46, 570);
+
+            cboRole.Visible = true;
+            cboRole.Location = new Point(46, 600);
+
+            btnCreate.Visible = true;
+            btnCreate.Location = new Point(103, 660);
+
+            btnBackToLogin.Visible = true;
+            btnBackToLogin.Location = new Point(103, 720);
 
             lblError.Location = new Point(46, 640);
             mainPanel.Size = new Size(434, 760);
@@ -396,17 +236,17 @@ namespace GestionPharmacie.Forms
                 return;
             }
 
-            if (txtConfirmPassword == null || txtPassword.Text != txtConfirmPassword.Text)
+            if (txtPassword.Text != txtConfirmPassword.Text)
             {
                 ShowError("Les mots de passe ne correspondent pas.");
-                txtConfirmPassword?.Focus();
+                txtConfirmPassword.Focus();
                 return;
             }
 
-            if (txtFullName == null || string.IsNullOrWhiteSpace(txtFullName.Text))
+            if (string.IsNullOrWhiteSpace(txtFullName.Text))
             {
                 ShowError("Veuillez entrer le nom complet.");
-                txtFullName?.Focus();
+                txtFullName.Focus();
                 return;
             }
 

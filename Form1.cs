@@ -15,34 +15,26 @@ public partial class Form1 : Form
     {
         InitializeComponent();
         StyleHelper.ApplyFormTheme(this);
-        // Start maximized to ensure the full dashboard is visible on smaller screens
         this.WindowState = FormWindowState.Maximized;
     }
 
     private void Form1_Load(object? sender, EventArgs e)
     {
-        // Update status bar with user info
         if (Session.CurrentUser != null)
         {
             statusLabel.Text = $"👤 {Session.CurrentUser.FullName} ({Session.CurrentUser.Role})";
         }
         statusDateLabel.Text = "🕒 " + DateTime.Now.ToString("dd MMMM yyyy - HH:mm");
-
-        // Load dashboard on startup
         LoadDashboard();
     }
 
     private void LoadDashboard()
     {
-        // Clear all existing controls first
         ClearContentPanel();
-
-        // Apply modern gradient background
         StyleHelper.ApplyGradientBackground(contentPanel);
         CreateDashboard();
         LoadStatistics();
 
-        // Auto-refresh every 30 seconds
         refreshTimer?.Stop();
         refreshTimer?.Dispose();
         refreshTimer = new System.Windows.Forms.Timer { Interval = 30000 };
@@ -63,69 +55,17 @@ public partial class Form1 : Form
         }
     }
 
-    private void MenuHome_Click(object? sender, EventArgs e)
-    {
-        LoadDashboard();
-    }
-
-    private void MenuMedGerer_Click(object? sender, EventArgs e)
-    {
-        var form = new MedicamentForm();
-        form.ShowDialog();
-    }
-
-    private void MenuMedRechercher_Click(object? sender, EventArgs e)
-    {
-        var form = new MedicamentSearchForm();
-        form.ShowDialog();
-    }
-
-    private void MenuMedAlertes_Click(object? sender, EventArgs e)
-    {
-        var form = new MedicamentAlertForm();
-        form.ShowDialog();
-    }
-
-    private void MenuCmdDashboard_Click(object? sender, EventArgs e)
-    {
-        var form = new CommandeDashboardForm();
-        form.ShowDialog();
-    }
-
-    private void MenuCmdNouvelle_Click(object? sender, EventArgs e)
-    {
-        var form = new CommandeForm();
-        form.ShowDialog();
-    }
-
-    private void MenuCmdRechercher_Click(object? sender, EventArgs e)
-    {
-        var form = new CommandeSearchForm();
-        form.ShowDialog();
-    }
-
-    private void MenuCliGerer_Click(object? sender, EventArgs e)
-    {
-        var form = new ClientForm();
-        form.ShowDialog();
-    }
-
-    private void MenuCliRechercher_Click(object? sender, EventArgs e)
-    {
-        var form = new ClientSearchForm();
-        form.ShowDialog();
-    }
-
-    private void MenuStatTableau_Click(object? sender, EventArgs e)
-    {
-        LoadDashboard();
-    }
-
-    private void MenuCompteGérer_Click(object? sender, EventArgs e)
-    {
-        var form = new UserManagementForm();
-        form.ShowDialog();
-    }
+    private void MenuHome_Click(object? sender, EventArgs e) => LoadDashboard();
+    private void MenuMedGerer_Click(object? sender, EventArgs e) => new MedicamentForm().ShowDialog();
+    private void MenuMedRechercher_Click(object? sender, EventArgs e) => new MedicamentSearchForm().ShowDialog();
+    private void MenuMedAlertes_Click(object? sender, EventArgs e) => new MedicamentAlertForm().ShowDialog();
+    private void MenuCmdDashboard_Click(object? sender, EventArgs e) => new CommandeDashboardForm().ShowDialog();
+    private void MenuCmdNouvelle_Click(object? sender, EventArgs e) => new CommandeForm().ShowDialog();
+    private void MenuCmdRechercher_Click(object? sender, EventArgs e) => new CommandeSearchForm().ShowDialog();
+    private void MenuCliGerer_Click(object? sender, EventArgs e) => new ClientForm().ShowDialog();
+    private void MenuCliRechercher_Click(object? sender, EventArgs e) => new ClientSearchForm().ShowDialog();
+    private void MenuStatTableau_Click(object? sender, EventArgs e) => LoadDashboard();
+    private void MenuCompteGérer_Click(object? sender, EventArgs e) => new UserManagementForm().ShowDialog();
 
     private void MenuCompteLogout_Click(object? sender, EventArgs e)
     {
@@ -136,8 +76,6 @@ public partial class Form1 : Form
         {
             Session.Logout();
             this.Close();
-
-            // Show login form again
             var loginForm = new LoginForm();
             if (loginForm.ShowDialog() == DialogResult.OK)
             {
@@ -150,15 +88,8 @@ public partial class Form1 : Form
         }
     }
 
-    private void menuCompte_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void menuStatistiques_Click(object sender, EventArgs e)
-    {
-
-    }
+    private void menuCompte_Click(object sender, EventArgs e) { }
+    private void menuStatistiques_Click(object sender, EventArgs e) { }
 
     #region Dashboard Methods
 
@@ -173,7 +104,6 @@ public partial class Form1 : Form
         contentPanel.Controls.Clear();
         contentPanel.BackColor = Color.FromArgb(245, 247, 250);
 
-        // Main FlowLayoutPanel for the dashboard
         var dashboardFlowPanel = new FlowLayoutPanel
         {
             Dock = DockStyle.Fill,
@@ -206,14 +136,17 @@ public partial class Form1 : Form
         headerPanel.Controls.Add(lblUpdate);
         dashboardFlowPanel.Controls.Add(headerPanel);
 
-        // Quick Actions Section
+        // Quick Actions
         CreateQuickActionsSection();
         dashboardFlowPanel.Controls.Add(quickActionsPanel);
 
-        // Top stats panel - horizontal flow for metric cards
+        // Top stats panel - FIXED: Added proper sizing
+        // Top stats panel - FIXED: Added proper sizing
         topStatsPanel = new FlowLayoutPanel
         {
-            Size = new Size(1100, 240),
+            Width = 1100,
+            Height = 320,
+            AutoSize = false,
             FlowDirection = FlowDirection.LeftToRight,
             WrapContents = true,
             Padding = new Padding(0),
@@ -284,8 +217,7 @@ public partial class Form1 : Form
         };
         btn.FlatAppearance.BorderSize = 0;
         btn.Click += onClick;
-        
-        // Rounded corners
+
         btn.Paint += (s, e) =>
         {
             var g = e.Graphics;
@@ -331,23 +263,32 @@ public partial class Form1 : Form
             Name = "revenueChart",
             Location = new Point(20, 50),
             Size = new Size(1060, 280),
-            BackColor = Color.Transparent
+            BackColor = Color.White,
+            Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom
         };
 
         var area = new ChartArea("MainArea");
-        area.BackColor = Color.Transparent;
+        area.BackColor = Color.White;
         area.AxisX.MajorGrid.LineColor = Color.LightGray;
         area.AxisY.MajorGrid.LineColor = Color.LightGray;
-        area.AxisX.LabelStyle.Font = new Font("Segoe UI", 8);
-        area.AxisY.LabelStyle.Font = new Font("Segoe UI", 8);
+        area.AxisX.LabelStyle.Font = new Font("Segoe UI", 9);
+        area.AxisY.LabelStyle.Font = new Font("Segoe UI", 9);
+        area.AxisX.LineColor = Color.Gray;
+        area.AxisY.LineColor = Color.Gray;
         chart.ChartAreas.Add(area);
 
         var series = new Series("Revenue");
         series.ChartType = SeriesChartType.SplineArea;
         series.Color = Color.FromArgb(100, StyleHelper.PrimaryBlue);
         series.BorderColor = StyleHelper.PrimaryBlue;
-        series.BorderWidth = 2;
+        series.BorderWidth = 3;
+        series.IsValueShownAsLabel = false;
         chart.Series.Add(series);
+
+        // Add legend
+        var legend = new Legend("Legend");
+        legend.Enabled = false;
+        chart.Legends.Add(legend);
 
         chartPanel.Controls.Add(chart);
     }
@@ -358,7 +299,6 @@ public partial class Form1 : Form
         {
             topStatsPanel.Controls.Clear();
 
-            // Get statistics
             var totalMedicaments = GetTotalMedicaments();
             var lowStock = GetLowStockCount();
             var expirationProche = GetExpirationProcheCount();
@@ -368,28 +308,23 @@ public partial class Form1 : Form
             var avgOrder = totalOrders > 0 ? totalRevenue / totalOrders : 0;
             var stockValue = GetStockValue();
 
-            // Create metric cards
+            // FIXED: Create metric cards with proper sizing
             topStatsPanel.Controls.Add(CreateMetricCard(totalMedicaments.ToString(), "Médicaments", Color.FromArgb(0, 123, 255)));
             topStatsPanel.Controls.Add(CreateMetricCard(lowStock.ToString(), "Stock Faible", Color.FromArgb(255, 193, 7)));
             topStatsPanel.Controls.Add(CreateMetricCard(expirationProche.ToString(), "Péremption Proche", Color.FromArgb(255, 105, 180)));
             topStatsPanel.Controls.Add(CreateMetricCard(totalClients.ToString(), "Clients", Color.FromArgb(32, 201, 151)));
 
             topStatsPanel.Controls.Add(CreateMetricCard(totalOrders.ToString(), "Commandes Total", Color.FromArgb(156, 39, 176)));
-            topStatsPanel.Controls.Add(CreateMetricCard($"{totalRevenue:N0} €", "Chiffre d'Affaires", Color.FromArgb(0, 123, 255)));
-            topStatsPanel.Controls.Add(CreateMetricCard($"{avgOrder:N2} €", "Prix Moyen", Color.FromArgb(255, 193, 7)));
-            topStatsPanel.Controls.Add(CreateMetricCard($"{stockValue:N0} €", "Valeur Stock", Color.FromArgb(32, 201, 151)));
+            topStatsPanel.Controls.Add(CreateMetricCard($"{totalRevenue:N0} DH", "Chiffre d'Affaires", Color.FromArgb(0, 123, 255)));
+            topStatsPanel.Controls.Add(CreateMetricCard($"{avgOrder:N2} DH", "Prix Moyen", Color.FromArgb(255, 193, 7)));
+            topStatsPanel.Controls.Add(CreateMetricCard($"{stockValue:N0} DH", "Valeur Stock", Color.FromArgb(32, 201, 151)));
 
             var lblUpdate = contentPanel.Controls.Find("lblUpdate", true).FirstOrDefault() as Label;
             if (lblUpdate != null)
                 lblUpdate.Text = $"Dernière mise à jour: {DateTime.Now:HH:mm}";
 
-            // Load low stock medicines
             LoadLowStockMedicines();
-
-            // Load recent activity
             LoadRecentActivity();
-
-            // Load Chart Data
             LoadChartData();
         }
         catch (Exception ex)
@@ -405,10 +340,12 @@ public partial class Form1 : Form
             var chart = chartPanel.Controls.Find("revenueChart", true).FirstOrDefault() as Chart;
             if (chart == null) return;
 
+            var series = chart.Series["Revenue"];
+            series.Points.Clear();
+
             using (var conn = DatabaseConnection.GetConnection())
             {
                 conn.Open();
-                // Query for last 7 days including today
                 var query = @"
                     SELECT CAST(DateCommande AS DATE) as Date, SUM(MontantTotal) as Total
                     FROM Commandes
@@ -416,53 +353,60 @@ public partial class Form1 : Form
                     GROUP BY CAST(DateCommande AS DATE)
                     ORDER BY Date";
 
-                var series = chart.Series["Revenue"];
-                series.Points.Clear();
-
-                bool hasData = false;
+                var dataPoints = new Dictionary<DateTime, decimal>();
+                
                 using (var cmd = new SqlCommand(query, conn))
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        hasData = true;
                         var date = (DateTime)reader["Date"];
                         var total = (decimal)reader["Total"];
-                        series.Points.AddXY(date.ToString("dd/MM"), total);
+                        dataPoints[date] = total;
                     }
                 }
 
-                // If no data, add zero points for the last 7 days so the chart isn't empty
-                if (!hasData)
+                // Generate points for all 7 days (including today)
+                for (int i = 6; i >= 0; i--)
                 {
-                    for (int i = 6; i >= 0; i--)
-                    {
-                        series.Points.AddXY(DateTime.Now.AddDays(-i).ToString("dd/MM"), 0);
-                    }
+                    var date = DateTime.Now.Date.AddDays(-i);
+                    var value = dataPoints.ContainsKey(date) ? (double)dataPoints[date] : 0;
+                    series.Points.AddXY(date.ToString("dd/MM"), value);
                 }
+
+                // Format Y-axis
+                chart.ChartAreas[0].AxisY.LabelStyle.Format = "0 DH";
+                chart.ChartAreas[0].AxisY.Minimum = 0;
                 
+                // If we have data, set a nice max value
+                if (dataPoints.Any())
+                {
+                    var maxValue = dataPoints.Values.Max();
+                    chart.ChartAreas[0].AxisY.Maximum = (double)(maxValue * 1.2m); // 20% padding
+                }
+
                 chart.Invalidate();
             }
         }
         catch (Exception ex)
         {
-            // Log error or just ignore for UI non-blocking
             System.Diagnostics.Debug.WriteLine($"Chart Error: {ex.Message}");
         }
     }
-
 
     private Panel CreateMetricCard(string value, string label, Color color)
     {
         var card = new Panel
         {
-            Size = new Size(260, 140),
+            Width = 260,
+            Height = 160,
+            MinimumSize = new Size(260, 140),
+            MaximumSize = new Size(260, 140),
             Margin = new Padding(0, 0, 15, 15),
             BackColor = Color.White,
             Cursor = Cursors.Hand
         };
 
-        // Apply standard card styling (shadow, rounded corners)
         StyleHelper.StyleCardPanel(card, 12);
 
         // Left accent border
@@ -470,33 +414,35 @@ public partial class Form1 : Form
         {
             Size = new Size(6, 100),
             BackColor = color,
-            Location = new Point(0, 20) // Vertically centered relative to content area
+            Location = new Point(0, 20)
         };
-        // Rounded corners for accent bar
+        
         accentBar.Paint += (s, e) =>
         {
-             using (var path = new System.Drawing.Drawing2D.GraphicsPath())
-             {
-                 int r = 3;
-                 path.AddArc(0, 0, r*2, r*2, 180, 90);
-                 path.AddLine(r, 0, accentBar.Width-r, 0);
-                 path.AddArc(accentBar.Width-r*2, 0, r*2, r*2, 270, 90);
-                 path.AddLine(accentBar.Width, r, accentBar.Width, accentBar.Height-r);
-                 path.AddArc(accentBar.Width-r*2, accentBar.Height-r*2, r*2, r*2, 0, 90);
-                 path.AddLine(accentBar.Width-r, accentBar.Height, r, accentBar.Height);
-                 path.AddArc(0, accentBar.Height-r*2, r*2, r*2, 90, 90);
-                 path.CloseFigure();
-                 accentBar.Region = new Region(path);
-             }
+            using (var path = new System.Drawing.Drawing2D.GraphicsPath())
+            {
+                int r = 3;
+                path.AddArc(0, 0, r * 2, r * 2, 180, 90);
+                path.AddLine(r, 0, accentBar.Width - r, 0);
+                path.AddArc(accentBar.Width - r * 2, 0, r * 2, r * 2, 270, 90);
+                path.AddLine(accentBar.Width, r, accentBar.Width, accentBar.Height - r);
+                path.AddArc(accentBar.Width - r * 2, accentBar.Height - r * 2, r * 2, r * 2, 0, 90);
+                path.AddLine(accentBar.Width - r, accentBar.Height, r, accentBar.Height);
+                path.AddArc(0, accentBar.Height - r * 2, r * 2, r * 2, 90, 90);
+                path.CloseFigure();
+                accentBar.Region = new Region(path);
+            }
         };
 
         var valueLabel = new Label
         {
             Text = value,
-            Font = new Font("Segoe UI", 28, FontStyle.Bold),
+            Font = new Font("Segoe UI", 22, FontStyle.Bold),
             ForeColor = StyleHelper.TextDark,
-            Location = new Point(25, 25),
-            AutoSize = true
+            Location = new Point(25, 30),
+            Size = new Size(220, 45),
+            AutoSize = false,
+            TextAlign = ContentAlignment.MiddleLeft
         };
 
         var titleLabel = new Label
@@ -504,16 +450,16 @@ public partial class Form1 : Form
             Text = label.ToUpper(),
             Font = new Font("Segoe UI", 9, FontStyle.Bold),
             ForeColor = StyleHelper.TextLight,
-            Location = new Point(28, 85),
+            Location = new Point(28, 90),
             AutoSize = true
         };
 
-        // Icon circle in top right (subtle background)
+        // Icon circle
         var iconCircle = new Panel
         {
             Size = new Size(50, 50),
             Location = new Point(190, 20),
-            BackColor = Color.Transparent 
+            BackColor = Color.Transparent
         };
 
         iconCircle.Paint += (s, e) =>
@@ -525,19 +471,8 @@ public partial class Form1 : Form
             }
         };
 
-        // Hover effect
-        var originalY = card.Location.Y;
-        card.MouseEnter += (s, e) =>
-        {
-            // Slight lift effect could be done here if we weren't in a FlowLayout
-            // For now, just subtle color shift
-            card.BackColor = Color.FromArgb(252, 252, 252); 
-        };
-
-        card.MouseLeave += (s, e) =>
-        {
-            card.BackColor = Color.White;
-        };
+        card.MouseEnter += (s, e) => card.BackColor = Color.FromArgb(252, 252, 252);
+        card.MouseLeave += (s, e) => card.BackColor = Color.White;
 
         card.Controls.Add(accentBar);
         card.Controls.Add(valueLabel);
@@ -553,7 +488,6 @@ public partial class Form1 : Form
         lowStockPanel.BackColor = Color.White;
         lowStockPanel.Padding = new Padding(0);
 
-        // Add shadow effect
         lowStockPanel.Paint += (s, e) =>
         {
             var g = e.Graphics;
@@ -568,7 +502,6 @@ public partial class Form1 : Form
             }
         };
 
-        // Title with icon and colored background
         var titlePanel = new Panel
         {
             Size = new Size(1100, 50),
@@ -599,7 +532,6 @@ public partial class Form1 : Form
         titlePanel.Controls.Add(titleLabel);
         lowStockPanel.Controls.Add(titlePanel);
 
-        // Data grid
         var grid = new DataGridView
         {
             Location = new Point(0, 50),
@@ -640,9 +572,7 @@ public partial class Form1 : Form
         grid.Columns[2].Width = 180;
         grid.Columns[3].Width = 100;
 
-        // Load data
         LoadLowStockData(grid);
-
         lowStockPanel.Controls.Add(grid);
     }
 
@@ -682,7 +612,6 @@ public partial class Form1 : Form
         recentActivityPanel.BackColor = Color.White;
         recentActivityPanel.Padding = new Padding(0);
 
-        // Add shadow effect
         recentActivityPanel.Paint += (s, e) =>
         {
             var g = e.Graphics;
@@ -697,7 +626,6 @@ public partial class Form1 : Form
             }
         };
 
-        // Title with icon
         var titlePanel = new Panel
         {
             Size = new Size(1100, 50),
@@ -727,7 +655,6 @@ public partial class Form1 : Form
         titlePanel.Controls.Add(titleLabel);
         recentActivityPanel.Controls.Add(titlePanel);
 
-        // Data grid
         var grid = new DataGridView
         {
             Location = new Point(0, 50),
@@ -768,9 +695,7 @@ public partial class Form1 : Form
         grid.Columns[2].Width = 150;
         grid.Columns[3].Width = 120;
 
-        // Load data
         LoadRecentActivityData(grid);
-
         recentActivityPanel.Controls.Add(grid);
     }
 
@@ -797,7 +722,7 @@ public partial class Form1 : Form
                         reader["Type"],
                         reader["Description"],
                         Convert.ToDateTime(reader["Date"]).ToString("dd/MM/yyyy"),
-                        $"{Convert.ToDecimal(reader["Montant"]):N2}"
+                        $"{Convert.ToDecimal(reader["Montant"]):N2} DH"
                     );
                 }
             }
@@ -889,6 +814,21 @@ public partial class Form1 : Form
     #endregion
 
     private void contentPanel_Paint(object sender, PaintEventArgs e)
+    {
+
+    }
+
+    private void mainMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+    {
+
+    }
+
+    private void menuCompte_Click_1(object sender, EventArgs e)
+    {
+
+    }
+
+    private void menuMedicaments_Click(object sender, EventArgs e)
     {
 
     }

@@ -12,7 +12,11 @@ namespace GestionPharmacie.Forms
         public MedicamentForm()
         {
             InitializeComponent();
-            StyleHelper.ApplyFormTheme(this);
+
+            if (!DesignMode)
+            {
+                StyleHelper.ApplyFormTheme(this);
+            }
             LoadMedicaments();
         }
 
