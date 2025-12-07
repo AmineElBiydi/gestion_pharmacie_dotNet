@@ -9,11 +9,13 @@ namespace GestionPharmacie.Data
         public List<Medicament> GetAll()
         {
             var medicaments = new List<Medicament>();
-            
+
             using (var conn = DatabaseConnection.GetConnection())
             {
                 conn.Open();
-                var cmd = new SqlCommand("SELECT * FROM Medicaments ORDER BY Nom", conn);
+                var cmd = new SqlCommand(
+                    "SELECT * FROM Medicaments WHERE EstBloque = 0 ORDER BY Nom", conn);
+
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -22,14 +24,14 @@ namespace GestionPharmacie.Data
                     }
                 }
             }
-            
+
             return medicaments;
         }
 
         public List<Medicament> GetMedicamentsEnAlerte()
         {
             var medicaments = new List<Medicament>();
-            
+
             using (var conn = DatabaseConnection.GetConnection())
             {
                 conn.Open();
@@ -37,7 +39,7 @@ namespace GestionPharmacie.Data
                     @"SELECT * FROM Medicaments 
                       WHERE QuantiteStock <= Seuil
                       ORDER BY QuantiteStock ASC, DatePeremption ASC", conn);
-                
+
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -46,7 +48,7 @@ namespace GestionPharmacie.Data
                     }
                 }
             }
-            
+
             return medicaments;
         }
 
@@ -58,12 +60,12 @@ namespace GestionPharmacie.Data
         public List<Medicament> SearchByCriteria(string searchTerm, string criteria)
         {
             var medicaments = new List<Medicament>();
-            
+
             using (var conn = DatabaseConnection.GetConnection())
             {
                 conn.Open();
                 SqlCommand cmd;
-                
+
                 switch (criteria)
                 {
                     case "Référence":
@@ -72,22 +74,24 @@ namespace GestionPharmacie.Data
                               WHERE Reference LIKE @search
                               ORDER BY Nom", conn);
                         break;
+
                     case "Nom":
                         cmd = new SqlCommand(
                             @"SELECT * FROM Medicaments 
                               WHERE Nom LIKE @search
                               ORDER BY Nom", conn);
                         break;
-                    default: // "Tous"
+
+                    default:
                         cmd = new SqlCommand(
                             @"SELECT * FROM Medicaments 
                               WHERE Reference LIKE @search OR Nom LIKE @search
                               ORDER BY Nom", conn);
                         break;
                 }
-                
+
                 cmd.Parameters.AddWithValue("@search", "%" + searchTerm + "%");
-                
+
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -96,7 +100,7 @@ namespace GestionPharmacie.Data
                     }
                 }
             }
-            
+
             return medicaments;
         }
 
@@ -107,7 +111,7 @@ namespace GestionPharmacie.Data
                 conn.Open();
                 var cmd = new SqlCommand("SELECT * FROM Medicaments WHERE ID = @id", conn);
                 cmd.Parameters.AddWithValue("@id", id);
-                
+
                 using (var reader = cmd.ExecuteReader())
                 {
                     if (reader.Read())
@@ -116,7 +120,7 @@ namespace GestionPharmacie.Data
                     }
                 }
             }
-            
+
             return null;
         }
 
@@ -126,17 +130,19 @@ namespace GestionPharmacie.Data
             {
                 conn.Open();
                 var cmd = new SqlCommand(
-                    @"INSERT INTO Medicaments (Reference, Nom, DatePeremption, PrixUnitaire, QuantiteStock, Seuil)
-                      VALUES (@ref, @nom, @date, @prix, @qte, @seuil);
+                    @"INSERT INTO Medicaments 
+                      (Reference, Nom, DatePeremption, PrixUnitaire, QuantiteStock, Seuil, EstBloque)
+                      VALUES (@ref, @nom, @date, @prix, @qte, @seuil, @estBloque);
                       SELECT CAST(SCOPE_IDENTITY() AS INT);", conn);
-                
+
                 cmd.Parameters.AddWithValue("@ref", medicament.Reference);
                 cmd.Parameters.AddWithValue("@nom", medicament.Nom);
                 cmd.Parameters.AddWithValue("@date", medicament.DatePeremption);
                 cmd.Parameters.AddWithValue("@prix", medicament.PrixUnitaire);
                 cmd.Parameters.AddWithValue("@qte", medicament.QuantiteStock);
                 cmd.Parameters.AddWithValue("@seuil", medicament.Seuil);
-                
+                cmd.Parameters.AddWithValue("@estBloque", medicament.EstBloque ? 1 : 0);
+
                 return (int)cmd.ExecuteScalar();
             }
         }
@@ -149,9 +155,10 @@ namespace GestionPharmacie.Data
                 var cmd = new SqlCommand(
                     @"UPDATE Medicaments 
                       SET Reference = @ref, Nom = @nom, DatePeremption = @date,
-                          PrixUnitaire = @prix, QuantiteStock = @qte, Seuil = @seuil
+                          PrixUnitaire = @prix, QuantiteStock = @qte, Seuil = @seuil,
+                          EstBloque = @estBloque
                       WHERE ID = @id", conn);
-                
+
                 cmd.Parameters.AddWithValue("@id", medicament.ID);
                 cmd.Parameters.AddWithValue("@ref", medicament.Reference);
                 cmd.Parameters.AddWithValue("@nom", medicament.Nom);
@@ -159,7 +166,8 @@ namespace GestionPharmacie.Data
                 cmd.Parameters.AddWithValue("@prix", medicament.PrixUnitaire);
                 cmd.Parameters.AddWithValue("@qte", medicament.QuantiteStock);
                 cmd.Parameters.AddWithValue("@seuil", medicament.Seuil);
-                
+                cmd.Parameters.AddWithValue("@estBloque", medicament.EstBloque ? 1 : 0);
+
                 cmd.ExecuteNonQuery();
             }
         }
@@ -169,7 +177,7 @@ namespace GestionPharmacie.Data
             using (var conn = DatabaseConnection.GetConnection())
             {
                 conn.Open();
-                var cmd = new SqlCommand("DELETE FROM Medicaments WHERE ID = @id", conn);
+                var cmd = new SqlCommand("update Medicaments set estBloque=1 WHERE ID = @id", conn);
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.ExecuteNonQuery();
             }
@@ -184,7 +192,7 @@ namespace GestionPharmacie.Data
                     @"UPDATE Medicaments 
                       SET QuantiteStock = QuantiteStock + @qte 
                       WHERE ID = @id", conn);
-                
+
                 cmd.Parameters.AddWithValue("@id", medicamentID);
                 cmd.Parameters.AddWithValue("@qte", quantite);
                 cmd.ExecuteNonQuery();
@@ -201,7 +209,8 @@ namespace GestionPharmacie.Data
                 DatePeremption = (DateTime)reader["DatePeremption"],
                 PrixUnitaire = (decimal)reader["PrixUnitaire"],
                 QuantiteStock = (int)reader["QuantiteStock"],
-                Seuil = (int)reader["Seuil"]
+                Seuil = (int)reader["Seuil"],
+                EstBloque = (bool)reader["EstBloque"]     // <-- LECTURE AJOUTÉE
             };
         }
     }

@@ -58,6 +58,10 @@
             "System.Windows.Forms.DataVisualization": {
               "target": "Package",
               "version": "[1.0.0-prerelease.20110.1, )"
+            },
+            "iTextSharp.LGPLv2.Core": {
+              "target": "Package",
+              "version": "[3.7.12, )"
             }
           },
           "imports": [

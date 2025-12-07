@@ -85,7 +85,7 @@ namespace GestionPharmacie.Forms
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(157, 40);
             btnDelete.TabIndex = 14;
-            btnDelete.Text = "Supprimer";
+            btnDelete.Text = "bloquer";
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += BtnDelete_Click;
             // 
@@ -314,6 +314,7 @@ namespace GestionPharmacie.Forms
             Name = "MedicamentForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Gestion des Médicaments";
+            Load += MedicamentForm_Load;
             formPanel.ResumeLayout(false);
             formPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nudSeuil).EndInit();

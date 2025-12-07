@@ -97,7 +97,7 @@ namespace GestionPharmacie.Forms
                 return;
             }
 
-            var result = MessageBox.Show($"Voulez-vous vraiment supprimer le médicament '{_currentMedicament.Nom}'?",
+            var result = MessageBox.Show($"Voulez-vous vraiment bloquer le médicament '{_currentMedicament.Nom}'?",
                 "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
@@ -105,13 +105,13 @@ namespace GestionPharmacie.Forms
                 try
                 {
                     _repository.Delete(_currentMedicament.ID);
-                    MessageBox.Show("Médicament supprimé avec succès!", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Médicament bloquer avec succès!", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadMedicaments();
                     ClearForm();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Erreur lors de la suppression: {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Erreur lors de la bloquage: {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -126,6 +126,11 @@ namespace GestionPharmacie.Forms
             nudQuantiteStock.Value = 0;
             nudSeuil.Value = 10;
             dgvMedicaments.ClearSelection();
+        }
+
+        private void MedicamentForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

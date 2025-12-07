@@ -17,8 +17,8 @@ namespace GestionPharmacie.Forms
 
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             searchPanel = new Panel();
             btnShowAll = new Button();
             btnSearchClient = new Button();
@@ -59,7 +59,7 @@ namespace GestionPharmacie.Forms
             searchPanel.Margin = new Padding(3, 4, 3, 4);
             searchPanel.Name = "searchPanel";
             searchPanel.Padding = new Padding(11, 13, 11, 13);
-            searchPanel.Size = new Size(1143, 133);
+            searchPanel.Size = new Size(1068, 133);
             searchPanel.TabIndex = 0;
             // 
             // btnShowAll
@@ -186,9 +186,10 @@ namespace GestionPharmacie.Forms
             dgvCommandes.RowHeadersWidth = 51;
             dgvCommandes.RowTemplate.Height = 25;
             dgvCommandes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCommandes.Size = new Size(1143, 667);
+            dgvCommandes.Size = new Size(1068, 667);
             dgvCommandes.TabIndex = 1;
             dgvCommandes.CellClick += DgvCommandes_CellClick;
+            dgvCommandes.CellContentClick += dgvCommandes_CellContentClick;
             dgvCommandes.SelectionChanged += DgvCommandes_SelectionChanged;
             // 
             // colID
@@ -202,8 +203,8 @@ namespace GestionPharmacie.Forms
             // colDateCommande
             // 
             colDateCommande.DataPropertyName = "DateCommande";
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy HH:mm";
-            colDateCommande.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Format = "dd/MM/yyyy HH:mm";
+            colDateCommande.DefaultCellStyle = dataGridViewCellStyle3;
             colDateCommande.HeaderText = "Date";
             colDateCommande.MinimumWidth = 6;
             colDateCommande.Name = "colDateCommande";
@@ -220,8 +221,8 @@ namespace GestionPharmacie.Forms
             // colMontantTotal
             // 
             colMontantTotal.DataPropertyName = "MontantTotal";
-            dataGridViewCellStyle2.Format = "N2";
-            colMontantTotal.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Format = "N2";
+            colMontantTotal.DefaultCellStyle = dataGridViewCellStyle4;
             colMontantTotal.HeaderText = "Montant Total (€)";
             colMontantTotal.MinimumWidth = 6;
             colMontantTotal.Name = "colMontantTotal";
@@ -249,7 +250,7 @@ namespace GestionPharmacie.Forms
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(245, 245, 245);
-            ClientSize = new Size(1143, 800);
+            ClientSize = new Size(1068, 800);
             Controls.Add(dgvCommandes);
             Controls.Add(searchPanel);
             Margin = new Padding(3, 4, 3, 4);

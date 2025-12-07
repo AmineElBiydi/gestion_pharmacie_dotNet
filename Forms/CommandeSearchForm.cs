@@ -1,8 +1,13 @@
-using GestionPharmacie.Models;
 using GestionPharmacie.Data;
+using GestionPharmacie.Models;
+using GestionPharmacie.Utils;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.draw;
+using System.Diagnostics;
 using System.Drawing.Printing;
 using System.Text;
-using GestionPharmacie.Utils;
+using Rectangle = iTextSharp.text.Rectangle;
 
 namespace GestionPharmacie.Forms
 {
@@ -17,7 +22,7 @@ namespace GestionPharmacie.Forms
             InitializeComponent();
             StyleHelper.ApplyFormTheme(this);
             dtpStartDate.Value = DateTime.Now.AddMonths(-1);
-            
+
             // Add extra columns if they don't exist (Modify, Payment, Print)
             SetupGridColumns();
         }
@@ -36,7 +41,7 @@ namespace GestionPharmacie.Forms
                 };
                 dgvCommandes.Columns.Add(colPaye);
             }
-            
+
             // Payment type column
             if (!dgvCommandes.Columns.Contains("TypePaiement"))
             {
@@ -94,7 +99,7 @@ namespace GestionPharmacie.Forms
             {
                 var allClients = new List<Client> { new Client { ID = 0, Nom = "Tous", Prenom = "" } };
                 allClients.AddRange(_clientRepo.GetAll());
-                
+
                 cboClient.DataSource = allClients;
                 cboClient.DisplayMember = "NomComplet";
                 cboClient.ValueMember = "ID";
@@ -322,102 +327,207 @@ namespace GestionPharmacie.Forms
         {
             try
             {
-                var printDoc = new PrintDocument();
-                printDoc.PrintPage += (s, e) =>
+                // Choisir où sauvegarder
+                SaveFileDialog saveDlg = new SaveFileDialog();
+                saveDlg.Filter = "PDF Files|*.pdf";
+                saveDlg.FileName = $"Facture_{commande.ID:D6}.pdf";
+                if (saveDlg.ShowDialog() != DialogResult.OK)
+                    return;
+                string filePath = saveDlg.FileName;
+
+                // Création du document PDF avec marges
+                Document pdfDoc = new Document(PageSize.A4, 50f, 50f, 50f, 50f);
+                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(filePath, FileMode.Create));
+                pdfDoc.Open();
+
+                // Définition des couleurs
+                BaseColor primaryColor = new BaseColor(41, 128, 185);    // Bleu
+                BaseColor secondaryColor = new BaseColor(52, 73, 94);    // Gris foncé
+                BaseColor lightGray = new BaseColor(236, 240, 241);      // Gris clair
+                BaseColor successColor = new BaseColor(39, 174, 96);     // Vert
+
+                // Styles de police
+                var titleFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 24, primaryColor);
+                var subtitleFont = FontFactory.GetFont(FontFactory.HELVETICA, 14, secondaryColor);
+                var headerFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11, BaseColor.White);
+                var boldFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 10, secondaryColor);
+                var textFont = FontFactory.GetFont(FontFactory.HELVETICA, 10, secondaryColor);
+                var smallFont = FontFactory.GetFont(FontFactory.HELVETICA, 8, BaseColor.Gray);
+                var totalFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14, secondaryColor);
+
+                // ========== EN-TÊTE ==========
+                PdfPTable headerTable = new PdfPTable(2);
+                headerTable.WidthPercentage = 100;
+                headerTable.SetWidths(new float[] { 1f, 1f });
+
+                // Colonne gauche - Nom de la pharmacie
+                PdfPCell leftCell = new PdfPCell();
+                leftCell.Border = Rectangle.NO_BORDER;
+                leftCell.AddElement(new Paragraph("🏥 PHARMACIE", titleFont));
+                leftCell.AddElement(new Paragraph("Votre santé, notre priorité", subtitleFont));
+                leftCell.AddElement(new Paragraph("\n123 Rue de la Santé\n75001 Paris\nTél: 01 23 45 67 89", smallFont));
+                headerTable.AddCell(leftCell);
+
+                // Colonne droite - Numéro de facture
+                PdfPCell rightCell = new PdfPCell();
+                rightCell.Border = Rectangle.NO_BORDER;
+                rightCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+                var factureFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18, primaryColor);
+                rightCell.AddElement(new Paragraph("FACTURE", factureFont));
+                rightCell.AddElement(new Paragraph($"N° {commande.ID:D6}", boldFont));
+                rightCell.AddElement(new Paragraph($"Date: {commande.DateCommande:dd/MM/yyyy}", textFont));
+                headerTable.AddCell(rightCell);
+
+                pdfDoc.Add(headerTable);
+                pdfDoc.Add(new Paragraph("\n"));
+
+                // Ligne de séparation
+                LineSeparator line = new LineSeparator(1f, 100f, primaryColor, Element.ALIGN_CENTER, -2);
+                pdfDoc.Add(new Chunk(line));
+                pdfDoc.Add(new Paragraph("\n"));
+
+                // ========== INFORMATIONS CLIENT ET COMMANDE ==========
+                PdfPTable infoTable = new PdfPTable(2);
+                infoTable.WidthPercentage = 100;
+                infoTable.SetWidths(new float[] { 1f, 1f });
+
+                // Bloc Client
+                PdfPCell clientCell = new PdfPCell();
+                clientCell.BackgroundColor = lightGray;
+                clientCell.Padding = 10f;
+                clientCell.Border = Rectangle.NO_BORDER;
+                clientCell.AddElement(new Paragraph("CLIENT", boldFont));
+                clientCell.AddElement(new Paragraph(commande.ClientNom, textFont));
+                infoTable.AddCell(clientCell);
+
+                // Bloc Détails
+                PdfPCell detailsCell = new PdfPCell();
+                detailsCell.BackgroundColor = lightGray;
+                detailsCell.Padding = 10f;
+                detailsCell.Border = Rectangle.NO_BORDER;
+                detailsCell.AddElement(new Paragraph("DÉTAILS", boldFont));
+                detailsCell.AddElement(new Paragraph($"Statut: {commande.Statut}", textFont));
+
+                Paragraph paiementPara = new Paragraph();
+                paiementPara.Add(new Chunk("Paiement: ", textFont));
+                paiementPara.Add(new Chunk(
+                    commande.EstPaye ? "✓ Payé" : "✗ Non Payé",
+                    FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 10, commande.EstPaye ? successColor : BaseColor.Red)
+                ));
+                detailsCell.AddElement(paiementPara);
+
+                if (!string.IsNullOrEmpty(commande.TypePaiement))
+                    detailsCell.AddElement(new Paragraph($"Mode: {commande.TypePaiement}", textFont));
+
+                infoTable.AddCell(detailsCell);
+
+                pdfDoc.Add(infoTable);
+                pdfDoc.Add(new Paragraph("\n\n"));
+
+                // ========== TABLEAU DES MÉDICAMENTS ==========
+                pdfDoc.Add(new Paragraph("DÉTAIL DE LA COMMANDE", boldFont));
+                pdfDoc.Add(new Paragraph("\n"));
+
+                PdfPTable table = new PdfPTable(5);
+                table.WidthPercentage = 100;
+                table.SetWidths(new float[] { 1.5f, 3f, 1f, 1.5f, 1.5f });
+
+                // En-têtes avec fond coloré
+                string[] headers = { "Référence", "Médicament", "Qté", "Prix Unit.", "Total" };
+                foreach (string header in headers)
                 {
-                    if (e.Graphics == null) return;
-
-                    var titleFont = new Font("Arial", 16, FontStyle.Bold);
-                    var headerFont = new Font("Arial", 11, FontStyle.Bold);
-                    var font = new Font("Arial", 10);
-                    var smallFont = new Font("Arial", 9);
-                    var y = 50f;
-                    var lineHeight = font.GetHeight(e.Graphics);
-                    var margin = 100f;
-                    var width = 400f;
-
-                    // Header
-                    e.Graphics.DrawString("PHARMACIE", titleFont, Brushes.Black, margin, y);
-                    y += lineHeight * 1.5f;
-                    e.Graphics.DrawString("FACTURE", headerFont, Brushes.Black, margin, y);
-                    y += lineHeight * 2;
-
-                    // Separator
-                    e.Graphics.DrawLine(new Pen(Color.Black, 2), margin, y, margin + width, y);
-                    y += lineHeight * 1.5f;
-
-                    // Commande Info
-                    e.Graphics.DrawString($"N° Facture: {commande.ID:D6}", headerFont, Brushes.Black, margin, y);
-                    y += lineHeight;
-                    e.Graphics.DrawString($"Date: {commande.DateCommande:dd/MM/yyyy HH:mm}", font, Brushes.Black, margin, y);
-                    y += lineHeight;
-                    e.Graphics.DrawString($"Client: {commande.ClientNom}", font, Brushes.Black, margin, y);
-                    y += lineHeight;
-                    e.Graphics.DrawString($"Statut: {commande.Statut}", font, Brushes.Black, margin, y);
-                    y += lineHeight;
-                    e.Graphics.DrawString($"Paiement: {(commande.EstPaye ? "Payé" : "Non Payé")}", font, commande.EstPaye ? Brushes.Green : Brushes.Red, margin, y);
-                    if (!string.IsNullOrEmpty(commande.TypePaiement))
-                    {
-                        y += lineHeight;
-                        e.Graphics.DrawString($"Type: {commande.TypePaiement}", font, Brushes.Black, margin, y);
-                    }
-                    y += lineHeight * 1.5f;
-
-                    // Separator
-                    e.Graphics.DrawLine(new Pen(Color.Black, 1), margin, y, margin + width, y);
-                    y += lineHeight;
-
-                    // Details Header
-                    e.Graphics.DrawString("DÉTAILS DE LA COMMANDE", headerFont, Brushes.Black, margin, y);
-                    y += lineHeight * 1.5f;
-                    e.Graphics.DrawLine(new Pen(Color.Black, 1), margin, y, margin + width, y);
-                    y += lineHeight;
-
-                    // Table Header
-                    e.Graphics.DrawString("Référence", smallFont, Brushes.Black, margin, y);
-                    e.Graphics.DrawString("Médicament", smallFont, Brushes.Black, margin + 100, y);
-                    e.Graphics.DrawString("Qté", smallFont, Brushes.Black, margin + 280, y);
-                    e.Graphics.DrawString("Prix", smallFont, Brushes.Black, margin + 320, y);
-                    e.Graphics.DrawString("Total", smallFont, Brushes.Black, margin + 380, y);
-                    y += lineHeight;
-                    e.Graphics.DrawLine(new Pen(Color.Black, 1), margin, y, margin + width, y);
-                    y += lineHeight;
-
-                    // Details
-                    foreach (var detail in commande.Details)
-                    {
-                        e.Graphics.DrawString(detail.MedicamentReference, smallFont, Brushes.Black, margin, y);
-                        e.Graphics.DrawString(detail.MedicamentNom, smallFont, Brushes.Black, margin + 100, y);
-                        e.Graphics.DrawString(detail.Quantite.ToString(), smallFont, Brushes.Black, margin + 280, y);
-                        e.Graphics.DrawString($"{detail.PrixUnitaire:N2}€", smallFont, Brushes.Black, margin + 320, y);
-                        e.Graphics.DrawString($"{detail.SousTotal:N2}€", smallFont, Brushes.Black, margin + 380, y);
-                        y += lineHeight;
-                    }
-
-                    y += lineHeight;
-                    e.Graphics.DrawLine(new Pen(Color.Black, 2), margin, y, margin + width, y);
-                    y += lineHeight;
-
-                    // Total
-                    e.Graphics.DrawString($"TOTAL: {commande.MontantTotal:N2} €", headerFont, Brushes.Black, margin + 300, y);
-                    y += lineHeight * 2;
-
-                    // Footer
-                    e.Graphics.DrawString("Merci de votre confiance!", smallFont, Brushes.Black, margin, y);
-                    y += lineHeight;
-                    e.Graphics.DrawString($"Facture générée le {DateTime.Now:dd/MM/yyyy HH:mm}", smallFont, Brushes.Gray, margin, y);
-                };
-
-                var printDialog = new PrintDialog { Document = printDoc };
-                if (printDialog.ShowDialog() == DialogResult.OK)
-                {
-                    printDoc.Print();
+                    PdfPCell cell = new PdfPCell(new Phrase(header, headerFont));
+                    cell.BackgroundColor = primaryColor;
+                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    cell.Padding = 8f;
+                    cell.Border = Rectangle.NO_BORDER;
+                    table.AddCell(cell);
                 }
+
+                // Lignes de données avec alternance de couleurs
+                int rowIndex = 0;
+                foreach (var d in commande.Details)
+                {
+                    BaseColor rowColor = rowIndex % 2 == 0 ? BaseColor.White : lightGray;
+
+                    PdfPCell[] cells = new PdfPCell[]
+                    {
+                new PdfPCell(new Phrase(d.MedicamentReference, textFont)),
+                new PdfPCell(new Phrase(d.MedicamentNom, textFont)),
+                new PdfPCell(new Phrase(d.Quantite.ToString(), textFont)) { HorizontalAlignment = Element.ALIGN_CENTER },
+                new PdfPCell(new Phrase($"{d.PrixUnitaire:N2} DH", textFont)) { HorizontalAlignment = Element.ALIGN_RIGHT },
+                new PdfPCell(new Phrase($"{d.SousTotal:N2} DH", boldFont)) { HorizontalAlignment = Element.ALIGN_RIGHT }
+                    };
+
+                    foreach (var cell in cells)
+                    {
+                        cell.BackgroundColor = rowColor;
+                        cell.Padding = 8f;
+                        cell.Border = Rectangle.NO_BORDER;
+                        table.AddCell(cell);
+                    }
+                    rowIndex++;
+                }
+
+                pdfDoc.Add(table);
+                pdfDoc.Add(new Paragraph("\n"));
+
+                // ========== TOTAL ==========
+                PdfPTable totalTable = new PdfPTable(2);
+                totalTable.WidthPercentage = 100;
+                totalTable.SetWidths(new float[] { 4f, 1f });
+
+                PdfPCell emptyCell = new PdfPCell(new Phrase(""));
+                emptyCell.Border = Rectangle.NO_BORDER;
+                totalTable.AddCell(emptyCell);
+
+                PdfPCell totalCell = new PdfPCell();
+                totalCell.BackgroundColor = primaryColor;
+                totalCell.Padding = 12f;
+                totalCell.Border = Rectangle.NO_BORDER;
+                Paragraph totalPara = new Paragraph();
+                totalPara.Add(new Chunk("TOTAL : ", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14, BaseColor.White)));
+                totalPara.Add(new Chunk($"{commande.MontantTotal:N2} DH", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16, BaseColor.White)));
+                totalPara.Alignment = Element.ALIGN_RIGHT;
+                totalCell.AddElement(totalPara);
+                totalTable.AddCell(totalCell);
+
+                pdfDoc.Add(totalTable);
+
+                // ========== PIED DE PAGE ==========
+                pdfDoc.Add(new Paragraph("\n\n"));
+                LineSeparator bottomLine = new LineSeparator(0.5f, 100f, BaseColor.LightGray, Element.ALIGN_CENTER, -2);
+                pdfDoc.Add(new Chunk(bottomLine));
+                pdfDoc.Add(new Paragraph("\n"));
+
+                Paragraph footer = new Paragraph("Merci de votre confiance !",
+                    FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11, primaryColor));
+                footer.Alignment = Element.ALIGN_CENTER;
+                pdfDoc.Add(footer);
+
+                Paragraph generatedDate = new Paragraph($"Document généré le {DateTime.Now:dd/MM/yyyy à HH:mm}", smallFont);
+                generatedDate.Alignment = Element.ALIGN_CENTER;
+                pdfDoc.Add(generatedDate);
+
+                pdfDoc.Close();
+
+                // Ouvrir automatiquement le PDF
+                Process.Start(new ProcessStartInfo()
+                {
+                    FileName = filePath,
+                    UseShellExecute = true
+                });
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erreur d'impression: {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erreur lors de la génération du PDF :\n{ex.Message}",
+                    "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dgvCommandes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
