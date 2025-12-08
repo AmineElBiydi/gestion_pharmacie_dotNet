@@ -82,7 +82,7 @@ namespace GestionPharmacie.Forms
             // 
             // btnNew
             // 
-            btnNew.BackColor = Color.FromArgb(100, 181, 246);
+            btnNew.BackColor = Color.FromArgb(0, 126, 167);
             btnNew.FlatStyle = FlatStyle.Flat;
             btnNew.ForeColor = Color.White;
             btnNew.Location = new Point(700, 129);
@@ -96,7 +96,7 @@ namespace GestionPharmacie.Forms
             // 
             // btnSave
             // 
-            btnSave.BackColor = Color.FromArgb(66, 133, 244);
+            btnSave.BackColor = Color.FromArgb(0, 126, 167);
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.ForeColor = Color.White;
             btnSave.Location = new Point(574, 129);

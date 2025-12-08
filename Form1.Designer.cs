@@ -34,8 +34,6 @@ namespace GestionPharmacie
             menuClients = new ToolStripMenuItem();
             menuCliGerer = new ToolStripMenuItem();
             menuCliRechercher = new ToolStripMenuItem();
-            menuStatistiques = new ToolStripMenuItem();
-            menuStatTableau = new ToolStripMenuItem();
             menuCompte = new ToolStripMenuItem();
             menuCompteGérer = new ToolStripMenuItem();
             menuCompteLogout = new ToolStripMenuItem();
@@ -50,9 +48,9 @@ namespace GestionPharmacie
             // 
             // mainMenuStrip
             // 
-            mainMenuStrip.BackColor = Color.White;
+            mainMenuStrip.BackColor = Color.FromArgb(0, 50, 73);
             mainMenuStrip.ImageScalingSize = new Size(20, 20);
-            mainMenuStrip.Items.AddRange(new ToolStripItem[] { menuHome, menuMedicaments, menuCommandes, menuClients, menuStatistiques, menuCompte });
+            mainMenuStrip.Items.AddRange(new ToolStripItem[] { menuHome, menuMedicaments, menuCommandes, menuClients, menuCompte });
             mainMenuStrip.Location = new Point(0, 0);
             mainMenuStrip.Name = "mainMenuStrip";
             mainMenuStrip.Padding = new Padding(11, 7, 11, 7);
@@ -64,7 +62,7 @@ namespace GestionPharmacie
             // menuHome
             // 
             menuHome.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            menuHome.ForeColor = Color.FromArgb(66, 133, 244);
+            menuHome.ForeColor = Color.FromArgb(128, 206, 215);
             menuHome.Name = "menuHome";
             menuHome.Size = new Size(110, 27);
             menuHome.Text = "🏠 Accueil";
@@ -74,6 +72,7 @@ namespace GestionPharmacie
             // 
             menuMedicaments.DropDownItems.AddRange(new ToolStripItem[] { menuMedGerer, menuMedRechercher, menuMedAlertes });
             menuMedicaments.Font = new Font("Segoe UI", 10F);
+            menuMedicaments.ForeColor = Color.White;
             menuMedicaments.Name = "menuMedicaments";
             menuMedicaments.Size = new Size(154, 27);
             menuMedicaments.Text = "💊 Médicaments";
@@ -104,6 +103,7 @@ namespace GestionPharmacie
             // 
             menuCommandes.DropDownItems.AddRange(new ToolStripItem[] { menuCmdDashboard, menuCmdNouvelle, menuCmdRechercher });
             menuCommandes.Font = new Font("Segoe UI", 10F);
+            menuCommandes.ForeColor = Color.White;
             menuCommandes.Name = "menuCommandes";
             menuCommandes.Size = new Size(148, 27);
             menuCommandes.Text = "📦 Commandes";
@@ -133,6 +133,7 @@ namespace GestionPharmacie
             // 
             menuClients.DropDownItems.AddRange(new ToolStripItem[] { menuCliGerer, menuCliRechercher });
             menuClients.Font = new Font("Segoe UI", 10F);
+            menuClients.ForeColor = Color.White;
             menuClients.Name = "menuClients";
             menuClients.Size = new Size(103, 27);
             menuClients.Text = "👥 Clients";
@@ -151,26 +152,12 @@ namespace GestionPharmacie
             menuCliRechercher.Text = "Rechercher clients";
             menuCliRechercher.Click += MenuCliRechercher_Click;
             // 
-            // menuStatistiques
-            // 
-            menuStatistiques.DropDownItems.AddRange(new ToolStripItem[] { menuStatTableau });
-            menuStatistiques.Font = new Font("Segoe UI", 10F);
-            menuStatistiques.Name = "menuStatistiques";
-            menuStatistiques.Size = new Size(138, 27);
-            menuStatistiques.Text = "📊 Statistiques";
-            menuStatistiques.Click += menuStatistiques_Click;
-            // 
-            // menuStatTableau
-            // 
-            menuStatTableau.Name = "menuStatTableau";
-            menuStatTableau.Size = new Size(217, 28);
-            menuStatTableau.Text = "Tableau de bord";
-            menuStatTableau.Click += MenuStatTableau_Click;
             // 
             // menuCompte
             // 
             menuCompte.DropDownItems.AddRange(new ToolStripItem[] { menuCompteGérer, menuCompteLogout });
             menuCompte.Font = new Font("Segoe UI", 10F);
+            menuCompte.ForeColor = Color.White;
             menuCompte.Name = "menuCompte";
             menuCompte.Size = new Size(113, 27);
             menuCompte.Text = "⚙️ Compte";
@@ -192,7 +179,7 @@ namespace GestionPharmacie
             // 
             // statusStrip
             // 
-            statusStrip.BackColor = Color.White;
+            statusStrip.BackColor = Color.FromArgb(0, 50, 73);
             statusStrip.ImageScalingSize = new Size(20, 20);
             statusStrip.Items.AddRange(new ToolStripItem[] { statusLabel, statusSpacer, statusDateLabel });
             statusStrip.Location = new Point(0, 720);
@@ -205,7 +192,7 @@ namespace GestionPharmacie
             // statusLabel
             // 
             statusLabel.Font = new Font("Segoe UI", 9F);
-            statusLabel.ForeColor = Color.FromArgb(66, 133, 244);
+            statusLabel.ForeColor = Color.FromArgb(128, 206, 215);
             statusLabel.Name = "statusLabel";
             statusLabel.Size = new Size(101, 20);
             statusLabel.Text = "👤 Utilisateur";
@@ -218,7 +205,7 @@ namespace GestionPharmacie
             // 
             // statusDateLabel
             // 
-            statusDateLabel.ForeColor = Color.FromArgb(117, 117, 117);
+            statusDateLabel.ForeColor = Color.FromArgb(154, 209, 212);
             statusDateLabel.Name = "statusDateLabel";
             statusDateLabel.Size = new Size(0, 20);
             // 

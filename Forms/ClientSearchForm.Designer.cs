@@ -41,7 +41,7 @@ namespace GestionPharmacie.Forms
             // 
             // btnSearch
             // 
-            btnSearch.BackColor = Color.FromArgb(66, 133, 244);
+            btnSearch.BackColor = Color.FromArgb(0, 126, 167);
             btnSearch.FlatAppearance.BorderSize = 0;
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Font = new Font("Segoe UI", 10F);

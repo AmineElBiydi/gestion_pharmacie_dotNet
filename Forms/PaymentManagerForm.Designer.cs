@@ -60,7 +60,7 @@ namespace GestionPharmacie.Forms
             // 
             lblCommande.Text = "";
             lblCommande.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblCommande.ForeColor = Color.FromArgb(66, 133, 244);
+            lblCommande.ForeColor = Color.FromArgb(0, 126, 167);
             lblCommande.Location = new Point(20, 20);
             lblCommande.AutoSize = true;
             lblCommande.Name = "lblCommande";
@@ -108,7 +108,7 @@ namespace GestionPharmacie.Forms
             btnSave.Text = "Enregistrer";
             btnSave.Location = new Point(200, 220);
             btnSave.Size = new Size(120, 35);
-            btnSave.BackColor = Color.FromArgb(66, 133, 244);
+            btnSave.BackColor = Color.FromArgb(0, 126, 167);
             btnSave.ForeColor = Color.White;
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.FlatAppearance.BorderSize = 0;

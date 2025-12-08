@@ -48,7 +48,7 @@ namespace GestionPharmacie.Forms
             // 
             // btnSearchAll
             // 
-            btnSearchAll.BackColor = Color.FromArgb(66, 133, 244);
+            btnSearchAll.BackColor = Color.FromArgb(0, 126, 167);
             btnSearchAll.FlatAppearance.BorderSize = 0;
             btnSearchAll.FlatStyle = FlatStyle.Flat;
             btnSearchAll.ForeColor = Color.White;

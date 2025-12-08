@@ -142,7 +142,7 @@ namespace GestionPharmacie.Forms
             // 
             // btnAdd
             // 
-            btnAdd.BackColor = Color.FromArgb(102, 187, 106);
+            btnAdd.BackColor = Color.FromArgb(0, 126, 167);
             btnAdd.FlatAppearance.BorderSize = 0;
             btnAdd.FlatStyle = FlatStyle.Flat;
             btnAdd.ForeColor = Color.White;
@@ -290,7 +290,7 @@ namespace GestionPharmacie.Forms
             // 
             // btnSave
             // 
-            btnSave.BackColor = Color.FromArgb(66, 133, 244);
+            btnSave.BackColor = Color.FromArgb(0, 126, 167);
             btnSave.FlatAppearance.BorderSize = 0;
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Segoe UI", 11F);
@@ -308,7 +308,7 @@ namespace GestionPharmacie.Forms
             // 
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblTotal.ForeColor = Color.FromArgb(66, 133, 244);
+            lblTotal.ForeColor = Color.FromArgb(0, 50, 73);
             lblTotal.Location = new Point(23, 33);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(174, 37);

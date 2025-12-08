@@ -54,7 +54,7 @@ namespace GestionPharmacie.Forms
             {
                 Text = "Gestion des Utilisateurs",
                 Font = new Font("Segoe UI", 18F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(66, 133, 244),
+                ForeColor = Color.FromArgb(0, 126, 167),
                 Location = new Point(20, 20),
                 AutoSize = true
             };
@@ -199,7 +199,7 @@ namespace GestionPharmacie.Forms
                 Text = "Créer le compte", 
                 Location = new Point(550, 200), 
                 Size = new Size(150, 40),
-                BackColor = Color.FromArgb(66, 133, 244),
+                BackColor = Color.FromArgb(0, 126, 167),
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
                 Cursor = Cursors.Hand,
@@ -213,7 +213,7 @@ namespace GestionPharmacie.Forms
                 Text = "Effacer", 
                 Location = new Point(710, 200), 
                 Size = new Size(120, 40),
-                BackColor = Color.FromArgb(100, 181, 246),
+                BackColor = Color.FromArgb(0, 126, 167),
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
                 Cursor = Cursors.Hand,
@@ -249,7 +249,7 @@ namespace GestionPharmacie.Forms
                 EnableHeadersVisualStyles = false
             };
 
-            dgvUsers.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(66, 133, 244);
+            dgvUsers.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 126, 167);
             dgvUsers.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dgvUsers.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
 

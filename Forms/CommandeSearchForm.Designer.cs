@@ -64,7 +64,7 @@ namespace GestionPharmacie.Forms
             // 
             // btnShowAll
             // 
-            btnShowAll.BackColor = Color.FromArgb(66, 133, 244);
+            btnShowAll.BackColor = Color.FromArgb(0, 126, 167);
             btnShowAll.FlatAppearance.BorderSize = 0;
             btnShowAll.FlatStyle = FlatStyle.Flat;
             btnShowAll.ForeColor = Color.White;

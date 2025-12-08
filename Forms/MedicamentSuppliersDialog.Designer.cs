@@ -46,7 +46,7 @@ namespace GestionPharmacie.Forms
             // lblTitle
             // 
             lblTitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            lblTitle.ForeColor = Color.FromArgb(66, 133, 244);
+            lblTitle.ForeColor = Color.FromArgb(0, 126, 167);
             lblTitle.Location = new Point(20, 20);
             lblTitle.Size = new Size(660, 30);
             lblTitle.Text = "Fournisseurs Disponibles";
@@ -59,7 +59,7 @@ namespace GestionPharmacie.Forms
             dgvSuppliers.AllowUserToDeleteRows = false;
             dgvSuppliers.BackgroundColor = Color.White;
             dgvSuppliers.BorderStyle = BorderStyle.None;
-            dgvSuppliers.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(66, 133, 244);
+            dgvSuppliers.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 126, 167);
             dgvSuppliers.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dgvSuppliers.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             dgvSuppliers.ColumnHeadersDefaultCellStyle.Padding = new Padding(5);
@@ -123,7 +123,7 @@ namespace GestionPharmacie.Forms
             // 
             // btnClose
             // 
-            btnClose.BackColor = Color.FromArgb(66, 133, 244);
+            btnClose.BackColor = Color.FromArgb(0, 126, 167);
             btnClose.FlatAppearance.BorderSize = 0;
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.Font = new Font("Segoe UI", 10F);

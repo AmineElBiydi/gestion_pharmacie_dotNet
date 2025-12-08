@@ -10,103 +10,126 @@ namespace GestionPharmacie.Forms
     public partial class LoginForm : Form
     {
         private bool _isCreateAccountMode = false;
+        private Panel _activeFocusPanel = null;
 
         public LoginForm()
         {
             InitializeComponent();
             ShowLoginView();
-            
-            if (!DesignMode)
-            {
-                // Apply global typography/colors
-                StyleHelper.ApplyFormTheme(this);
-                // Vibrant blue gradient background behind the main card
-                StyleHelper.ApplyGradientBackground(this);
-            }
+            cboRole.SelectedIndex = 0;
         }
-
-
 
         private void ShowLoginView()
         {
             _isCreateAccountMode = false;
-            lblTitle.Text = "Gestion Pharmacie";
-            lblSubtitle.Text = "Connectez-vous pour continuer";
+            lblTitle.Text = "Connexion";
+            lblSubtitle.Text = "Entrez vos identifiants ci-dessous";
+
+            // Show login controls
             btnLogin.Visible = true;
             btnCreateAccount.Visible = true;
-            chkShowPassword.Visible = true;
+            forgotPasswordLink.Visible = true;
             lblUsername.Visible = true;
-            txtUsername.Visible = true;
+            pnlUsername.Visible = true;
             lblPassword.Visible = true;
-            txtPassword.Visible = true;
-            txtPassword.Location = new Point(46, 360);
-            chkShowPassword.Location = new Point(46, 420);
-            btnLogin.Location = new Point(103, 513);
-            btnCreateAccount.Location = new Point(103, 580);
-            lblError.Location = new Point(46, 460);
+            pnlPassword.Visible = true;
 
-            txtConfirmPassword.Visible = false;
-            txtFullName.Visible = false;
+            // Reset labels
+            lblUsername.Text = "Nom d'utilisateur";
+            lblPassword.Text = "Mot de passe";
+
+            // Hide create account controls
+            lblConfirmPassword.Visible = false;
+            pnlConfirmPassword.Visible = false;
+            lblFullName.Visible = false;
+            pnlFullName.Visible = false;
+            lblRole.Visible = false;
             cboRole.Visible = false;
-            chkShowPasswordCreate.Visible = false;
             btnCreate.Visible = false;
             btnBackToLogin.Visible = false;
-            lblConfirmPassword.Visible = false;
-            lblFullName.Visible = false;
-            lblRole.Visible = false;
 
-            mainPanel.Size = new Size(434, 620);
-            this.ClientSize = new Size(514, 753);
+            // Reposition controls for login view
+            lblTitle.Location = new Point(60, 100);
+            lblSubtitle.Location = new Point(60, 165);
+            lblUsername.Location = new Point(60, 230);
+            pnlUsername.Location = new Point(60, 265);
+            lblPassword.Location = new Point(60, 345);
+            pnlPassword.Location = new Point(60, 380);
+            forgotPasswordLink.Location = new Point(60, 445);
+            lblError.Location = new Point(60, 480);
+            btnLogin.Location = new Point(60, 520);
+            btnCreateAccount.Location = new Point(150, 630);
+
+            mainPanel.Height = 700;
+            this.ClientSize = new Size(900, 700);
             this.AcceptButton = btnLogin;
+
+            lblError.Text = "";
+            CenterForm();
         }
 
         private void ShowCreateAccountView()
         {
             _isCreateAccountMode = true;
             lblTitle.Text = "Créer un compte";
-            lblSubtitle.Text = "Remplissez les informations pour créer un nouveau compte";
+            lblSubtitle.Text = "Remplissez les informations ci-dessous";
+
+            // Hide login controls
             btnLogin.Visible = false;
             btnCreateAccount.Visible = false;
-            chkShowPassword.Visible = false;
+            forgotPasswordLink.Visible = false;
+
+            // Update labels
             lblUsername.Text = "Nom d'utilisateur *";
             lblPassword.Text = "Mot de passe *";
 
+            // Show create account controls
             lblConfirmPassword.Visible = true;
-            lblConfirmPassword.Location = new Point(46, 390);
-
-            txtConfirmPassword.Visible = true;
-            txtConfirmPassword.Location = new Point(46, 420);
-
-            chkShowPasswordCreate.Visible = true;
-            chkShowPasswordCreate.Location = new Point(46, 470);
-
+            pnlConfirmPassword.Visible = true;
             lblFullName.Visible = true;
-            lblFullName.Location = new Point(46, 500);
-
-            txtFullName.Visible = true;
-            txtFullName.Location = new Point(46, 530);
-
+            pnlFullName.Visible = true;
             lblRole.Visible = true;
-            lblRole.Location = new Point(46, 570);
-
             cboRole.Visible = true;
-            cboRole.Location = new Point(46, 600);
-
             btnCreate.Visible = true;
-            btnCreate.Location = new Point(103, 660);
-
             btnBackToLogin.Visible = true;
-            btnBackToLogin.Location = new Point(103, 720);
 
-            lblError.Location = new Point(46, 640);
-            mainPanel.Size = new Size(434, 760);
-            this.ClientSize = new Size(514, 893);
+            // Reposition controls for create account view
+            lblTitle.Location = new Point(60, 80);
+            lblSubtitle.Location = new Point(60, 145);
+            lblUsername.Location = new Point(60, 210);
+            pnlUsername.Location = new Point(60, 245);
+            lblPassword.Location = new Point(60, 325);
+            pnlPassword.Location = new Point(60, 360);
+            lblConfirmPassword.Location = new Point(60, 385);
+            pnlConfirmPassword.Location = new Point(60, 420);
+            lblFullName.Location = new Point(60, 500);
+            pnlFullName.Location = new Point(60, 535);
+            lblRole.Location = new Point(60, 600);
+            cboRole.Location = new Point(60, 635);
+            lblError.Location = new Point(60, 675);
+            btnCreate.Location = new Point(60, 690);
+            btnBackToLogin.Location = new Point(170, 760);
+
+            mainPanel.Height = 820;
+            this.ClientSize = new Size(900, 820);
             this.AcceptButton = btnCreate;
+
+            lblError.Text = "";
+            txtPassword.Clear();
+            txtConfirmPassword.Clear();
+            CenterForm();
         }
 
-        private void ChkShowPassword_CheckedChanged(object? sender, EventArgs e)
+        private void CenterForm()
         {
-            txtPassword.UseSystemPasswordChar = !chkShowPassword.Checked;
+            if (this.Owner != null)
+            {
+                this.StartPosition = FormStartPosition.CenterParent;
+            }
+            else
+            {
+                this.StartPosition = FormStartPosition.CenterScreen;
+            }
         }
 
         private void BtnLogin_Click(object? sender, EventArgs e)
@@ -115,14 +138,14 @@ namespace GestionPharmacie.Forms
 
             if (string.IsNullOrWhiteSpace(txtUsername.Text))
             {
-                lblError.Text = "Veuillez entrer votre nom d'utilisateur";
+                ShowError("Veuillez entrer votre nom d'utilisateur");
                 txtUsername.Focus();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtPassword.Text))
             {
-                lblError.Text = "Veuillez entrer votre mot de passe";
+                ShowError("Veuillez entrer votre mot de passe");
                 txtPassword.Focus();
                 return;
             }
@@ -132,10 +155,9 @@ namespace GestionPharmacie.Forms
 
             try
             {
-                // First, test database connection
                 if (!DatabaseConnection.TestConnection())
                 {
-                    lblError.Text = "Erreur: Impossible de se connecter à la base de données. Vérifiez que la base de données existe et que SQL Server est démarré.";
+                    ShowError("Impossible de se connecter à la base de données");
                     btnLogin.Enabled = true;
                     btnLogin.Text = "Se connecter";
                     return;
@@ -151,7 +173,7 @@ namespace GestionPharmacie.Forms
                 }
                 else
                 {
-                    lblError.Text = "Nom d'utilisateur ou mot de passe incorrect";
+                    ShowError("Nom d'utilisateur ou mot de passe incorrect");
                     txtPassword.Clear();
                     txtPassword.Focus();
                     btnLogin.Enabled = true;
@@ -161,91 +183,65 @@ namespace GestionPharmacie.Forms
             catch (Exception ex)
             {
                 string errorMsg = ex.Message;
-                
-                // Provide more helpful error messages
-                if (errorMsg.Contains("Cannot open database") || errorMsg.Contains("Cannot open"))
+
+                if (errorMsg.Contains("Cannot open database"))
                 {
-                    errorMsg = "La base de données 'GestionPharmacie' n'existe pas. Veuillez exécuter le script DatabaseSchema_Clean.sql pour créer la base de données.";
+                    errorMsg = "La base de données n'existe pas. Exécutez le script de création.";
                 }
-                else if (errorMsg.Contains("server was not found") || errorMsg.Contains("not accessible"))
+                else if (errorMsg.Contains("server was not found"))
                 {
-                    errorMsg = "Impossible de se connecter au serveur SQL. Vérifiez que SQL Server est démarré et que la chaîne de connexion est correcte dans DatabaseConnection.cs";
+                    errorMsg = "Impossible de contacter le serveur SQL.";
                 }
-                else if (errorMsg.Contains("Invalid object name"))
-                {
-                    errorMsg = "La table n'existe pas. Veuillez exécuter le script DatabaseSchema_Clean.sql pour créer toutes les tables.";
-                }
-                
-                lblError.Text = "Erreur: " + errorMsg;
+
+                ShowError(errorMsg);
                 btnLogin.Enabled = true;
                 btnLogin.Text = "Se connecter";
             }
         }
 
-        private void BtnLogin_MouseEnter(object? sender, EventArgs e)
-        {
-            btnLogin.BackColor = StyleHelper.DarkBlue;
-        }
-
-        private void BtnLogin_MouseLeave(object? sender, EventArgs e)
-        {
-            btnLogin.BackColor = StyleHelper.PrimaryBlue;
-        }
-
-        private void lblIcon_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BtnCreateAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            ShowCreateAccountView();
-        }
-
         private void BtnCreate_Click(object? sender, EventArgs e)
         {
             lblError.Text = "";
-            lblError.ForeColor = StyleHelper.AccentGreen;
 
             // Validation
             if (string.IsNullOrWhiteSpace(txtUsername.Text))
             {
-                ShowError("Veuillez entrer un nom d'utilisateur.");
+                ShowError("Veuillez entrer un nom d'utilisateur");
                 txtUsername.Focus();
                 return;
             }
 
             if (txtUsername.Text.Length < 3)
             {
-                ShowError("Le nom d'utilisateur doit contenir au moins 3 caractères.");
+                ShowError("Le nom d'utilisateur doit contenir au moins 3 caractères");
                 txtUsername.Focus();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtPassword.Text))
             {
-                ShowError("Veuillez entrer un mot de passe.");
+                ShowError("Veuillez entrer un mot de passe");
                 txtPassword.Focus();
                 return;
             }
 
             if (txtPassword.Text.Length < 6)
             {
-                ShowError("Le mot de passe doit contenir au moins 6 caractères.");
+                ShowError("Le mot de passe doit contenir au moins 6 caractères");
                 txtPassword.Focus();
                 return;
             }
 
             if (txtPassword.Text != txtConfirmPassword.Text)
             {
-                ShowError("Les mots de passe ne correspondent pas.");
+                ShowError("Les mots de passe ne correspondent pas");
                 txtConfirmPassword.Focus();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtFullName.Text))
             {
-                ShowError("Veuillez entrer le nom complet.");
+                ShowError("Veuillez entrer le nom complet");
                 txtFullName.Focus();
                 return;
             }
@@ -254,7 +250,7 @@ namespace GestionPharmacie.Forms
             {
                 if (!DatabaseConnection.TestConnection())
                 {
-                    ShowError("Erreur: Impossible de se connecter à la base de données.");
+                    ShowError("Impossible de se connecter à la base de données");
                     return;
                 }
 
@@ -266,11 +262,11 @@ namespace GestionPharmacie.Forms
                     true
                 );
 
-                ShowSuccess("Compte créé avec succès! Vous pouvez maintenant vous connecter.");
+                ShowSuccess("Compte créé avec succès! Redirection...");
                 System.Threading.Thread.Sleep(1500);
                 ShowLoginView();
                 txtPassword.Clear();
-                if (txtConfirmPassword != null) txtConfirmPassword.Clear();
+                txtConfirmPassword.Clear();
                 txtUsername.Focus();
             }
             catch (Exception ex)
@@ -282,50 +278,184 @@ namespace GestionPharmacie.Forms
         private void ShowSuccess(string message)
         {
             lblError.Text = "✓ " + message;
-            lblError.ForeColor = StyleHelper.AccentGreen;
+            lblError.ForeColor = Color.FromArgb(40, 167, 69);
         }
 
         private void ShowError(string message)
         {
             lblError.Text = "✗ " + message;
-            lblError.ForeColor = StyleHelper.DangerColor;
+            lblError.ForeColor = Color.FromArgb(220, 53, 69);
         }
 
-        private void MainPanel_Paint(object? sender, PaintEventArgs e)
+        private void BtnLogin_MouseEnter(object? sender, EventArgs e)
+        {
+            if (sender is Button btn)
+            {
+                btn.BackColor = Color.FromArgb(0, 114, 152);
+            }
+        }
+
+        private void BtnLogin_MouseLeave(object? sender, EventArgs e)
+        {
+            if (sender is Button btn)
+            {
+                btn.BackColor = Color.FromArgb(0, 126, 167);
+            }
+        }
+
+        private void BtnCreateAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ShowCreateAccountView();
+        }
+
+        private void BtnTogglePassword_Click(object? sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = !txtPassword.UseSystemPasswordChar;
+            btnTogglePassword.Text = txtPassword.UseSystemPasswordChar ? "👁" : "🙈";
+        }
+
+        private void BtnToggleConfirmPassword_Click(object? sender, EventArgs e)
+        {
+            txtConfirmPassword.UseSystemPasswordChar = !txtConfirmPassword.UseSystemPasswordChar;
+            btnToggleConfirmPassword.Text = txtConfirmPassword.UseSystemPasswordChar ? "👁" : "🙈";
+        }
+
+        private void Input_Enter(object? sender, EventArgs e)
+        {
+            Panel parentPanel = null;
+
+            if (sender is TextBox txt)
+            {
+                parentPanel = txt.Parent as Panel;
+                txt.BackColor = Color.White;
+            }
+            else if (sender is ComboBox cmb)
+            {
+                parentPanel = cmb.Parent as Panel;
+            }
+
+            if (parentPanel != null)
+            {
+                _activeFocusPanel = parentPanel;
+                parentPanel.Invalidate();
+            }
+        }
+
+        private void Input_Leave(object? sender, EventArgs e)
+        {
+            Panel parentPanel = null;
+
+            if (sender is TextBox txt)
+            {
+                parentPanel = txt.Parent as Panel;
+                txt.BackColor = Color.FromArgb(248, 249, 250);
+            }
+            else if (sender is ComboBox cmb)
+            {
+                parentPanel = cmb.Parent as Panel;
+            }
+
+            if (parentPanel != null && parentPanel == _activeFocusPanel)
+            {
+                _activeFocusPanel = null;
+                parentPanel.Invalidate();
+            }
+        }
+
+        private void LeftPanel_Paint(object? sender, PaintEventArgs e)
         {
             if (sender is Panel panel)
             {
                 var g = e.Graphics;
                 g.SmoothingMode = SmoothingMode.AntiAlias;
-                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
 
-                var rect = new Rectangle(0, 0, panel.Width - 1, panel.Height - 1);
-                int cornerRadius = 16;
-
-                // Draw shadow layers
-                for (int i = 0; i < 4; i++)
+                // Create gradient from color palette
+                using (var brush = new LinearGradientBrush(
+                    panel.ClientRectangle,
+                    Color.FromArgb(0, 50, 73),      // Dark blue
+                    Color.FromArgb(0, 126, 167),    // Medium blue
+                    LinearGradientMode.Vertical))
                 {
-                    var shadowRect = new Rectangle(3 + i, 3 + i, panel.Width - 1, panel.Height - 1);
-                    using (var shadowPath = GetRoundedRect(shadowRect, cornerRadius))
-                    using (var shadowBrush = new SolidBrush(Color.FromArgb(15 - i * 3, 0, 0, 0)))
-                    {
-                        g.FillPath(shadowBrush, shadowPath);
-                    }
+                    // Add color blend for smooth transition
+                    ColorBlend colorBlend = new ColorBlend();
+                    colorBlend.Colors = new Color[] {
+                        Color.FromArgb(0, 50, 73),
+                        Color.FromArgb(0, 126, 167),
+                        Color.FromArgb(128, 206, 215)
+                    };
+                    colorBlend.Positions = new float[] { 0.0f, 0.6f, 1.0f };
+                    brush.InterpolationColors = colorBlend;
+
+                    g.FillRectangle(brush, panel.ClientRectangle);
                 }
 
-                // Draw main panel
+                // Add decorative circles
+                using (var circleBrush = new SolidBrush(Color.FromArgb(15, 255, 255, 255)))
+                {
+                    g.FillEllipse(circleBrush, -100, -100, 300, 300);
+                    g.FillEllipse(circleBrush, panel.Width - 150, panel.Height - 150, 280, 280);
+                }
+
+                // Add subtle diagonal lines for visual interest
+                using (var linePen = new Pen(Color.FromArgb(10, 255, 255, 255), 2))
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        g.DrawLine(linePen, -50, 100 + (i * 100), 100, -50 + (i * 100));
+                    }
+                }
+            }
+        }
+
+        private void InputPanel_Paint(object? sender, PaintEventArgs e)
+        {
+            if (sender is Panel panel)
+            {
+                var g = e.Graphics;
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+
+                var rect = new Rectangle(0, 0, panel.Width - 1, panel.Height - 1);
+                int cornerRadius = 8;
+
+                // Determine if this panel is focused
+                bool isFocused = panel == _activeFocusPanel;
+
+                // Draw background
                 using (var path = GetRoundedRect(rect, cornerRadius))
                 using (var brush = new SolidBrush(panel.BackColor))
                 {
                     g.FillPath(brush, path);
                 }
 
-                // Draw subtle border
+                // Draw border
                 using (var path = GetRoundedRect(rect, cornerRadius))
-                using (var pen = new Pen(Color.FromArgb(240, 240, 240), 1))
+                using (var pen = new Pen(isFocused ? Color.FromArgb(0, 126, 167) : Color.FromArgb(222, 226, 230), 2))
                 {
                     g.DrawPath(pen, path);
                 }
+            }
+        }
+
+        private void Btn_Paint(object? sender, PaintEventArgs e)
+        {
+            if (sender is Button btn)
+            {
+                var g = e.Graphics;
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+
+                var rect = new Rectangle(0, 0, btn.Width, btn.Height);
+                int cornerRadius = 8;
+
+                // Draw rounded background
+                using (var path = GetRoundedRect(rect, cornerRadius))
+                using (var brush = new SolidBrush(btn.BackColor))
+                {
+                    g.FillPath(brush, path);
+                }
+
+                // Draw text
+                TextRenderer.DrawText(g, btn.Text, btn.Font, rect, btn.ForeColor,
+                    TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
             }
         }
 
@@ -352,64 +482,6 @@ namespace GestionPharmacie.Forms
 
             path.CloseFigure();
             return path;
-        }
-
-        private void BtnLogin_Paint(object? sender, PaintEventArgs e)
-        {
-            if (sender is Button btn)
-            {
-                var g = e.Graphics;
-                g.SmoothingMode = SmoothingMode.AntiAlias;
-                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-
-                var rect = new Rectangle(0, 0, btn.Width, btn.Height);
-                int cornerRadius = 8;
-
-                // Draw rounded background
-                using (var path = GetRoundedRect(rect, cornerRadius))
-                using (var brush = new SolidBrush(btn.BackColor))
-                {
-                    g.FillPath(brush, path);
-                }
-
-                // Draw text
-                TextRenderer.DrawText(g, btn.Text, btn.Font, rect, btn.ForeColor, 
-                    TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter | TextFormatFlags.NoPadding);
-            }
-        }
-
-        private void TxtUsername_Enter(object? sender, EventArgs e)
-        {
-            if (sender is TextBox txt)
-            {
-                txt.BackColor = Color.White;
-                txt.BorderStyle = BorderStyle.FixedSingle;
-            }
-        }
-
-        private void TxtUsername_Leave(object? sender, EventArgs e)
-        {
-            if (sender is TextBox txt)
-            {
-                txt.BackColor = Color.FromArgb(250, 250, 250);
-            }
-        }
-
-        private void TxtPassword_Enter(object? sender, EventArgs e)
-        {
-            if (sender is TextBox txt)
-            {
-                txt.BackColor = Color.White;
-                txt.BorderStyle = BorderStyle.FixedSingle;
-            }
-        }
-
-        private void TxtPassword_Leave(object? sender, EventArgs e)
-        {
-            if (sender is TextBox txt)
-            {
-                txt.BackColor = Color.FromArgb(250, 250, 250);
-            }
         }
     }
 }

@@ -246,13 +246,21 @@ public partial class Form1 : Form
             BackColor = Color.White,
             Margin = new Padding(0, 0, 0, 20)
         };
-        StyleHelper.StyleCardPanel(chartPanel);
+        
+        // Simple border
+        chartPanel.Paint += (s, e) =>
+        {
+            using (var borderPen = new Pen(Color.FromArgb(229, 231, 235), 1))
+            {
+                e.Graphics.DrawRectangle(borderPen, 0, 0, chartPanel.Width - 1, chartPanel.Height - 1);
+            }
+        };
 
         var lblChartTitle = new Label
         {
             Text = "Chiffre d'Affaires (7 derniers jours)",
-            Font = StyleHelper.SubheadingFont,
-            ForeColor = StyleHelper.PrimaryBlue,
+            Font = new Font("Segoe UI", 13, FontStyle.Bold),
+            ForeColor = Color.FromArgb(0, 50, 73),
             Location = new Point(20, 15),
             AutoSize = true
         };
@@ -269,26 +277,22 @@ public partial class Form1 : Form
 
         var area = new ChartArea("MainArea");
         area.BackColor = Color.White;
-        area.AxisX.MajorGrid.LineColor = Color.LightGray;
-        area.AxisY.MajorGrid.LineColor = Color.LightGray;
+        area.AxisX.MajorGrid.LineColor = Color.FromArgb(243, 244, 246);
+        area.AxisY.MajorGrid.LineColor = Color.FromArgb(243, 244, 246);
         area.AxisX.LabelStyle.Font = new Font("Segoe UI", 9);
         area.AxisY.LabelStyle.Font = new Font("Segoe UI", 9);
-        area.AxisX.LineColor = Color.Gray;
-        area.AxisY.LineColor = Color.Gray;
+        area.AxisX.LabelStyle.ForeColor = Color.FromArgb(107, 114, 128);
+        area.AxisY.LabelStyle.ForeColor = Color.FromArgb(107, 114, 128);
+        area.AxisX.LineColor = Color.FromArgb(229, 231, 235);
+        area.AxisY.LineColor = Color.FromArgb(229, 231, 235);
         chart.ChartAreas.Add(area);
 
         var series = new Series("Revenue");
-        series.ChartType = SeriesChartType.SplineArea;
-        series.Color = Color.FromArgb(100, StyleHelper.PrimaryBlue);
-        series.BorderColor = StyleHelper.PrimaryBlue;
-        series.BorderWidth = 3;
+        series.ChartType = SeriesChartType.Line;
+        series.Color = Color.FromArgb(0, 126, 167);
+        series.BorderWidth = 2;
         series.IsValueShownAsLabel = false;
         chart.Series.Add(series);
-
-        // Add legend
-        var legend = new Legend("Legend");
-        legend.Enabled = false;
-        chart.Legends.Add(legend);
 
         chartPanel.Controls.Add(chart);
     }
@@ -399,7 +403,7 @@ public partial class Form1 : Form
         var card = new Panel
         {
             Width = 260,
-            Height = 160,
+            Height = 140,
             MinimumSize = new Size(260, 140),
             MaximumSize = new Size(260, 140),
             Margin = new Padding(0, 0, 15, 15),
@@ -407,77 +411,57 @@ public partial class Form1 : Form
             Cursor = Cursors.Hand
         };
 
-        StyleHelper.StyleCardPanel(card, 12);
-
-        // Left accent border
-        var accentBar = new Panel
+        // Simple card styling
+        card.Paint += (s, e) =>
         {
-            Size = new Size(6, 100),
-            BackColor = color,
-            Location = new Point(0, 20)
-        };
-        
-        accentBar.Paint += (s, e) =>
-        {
-            using (var path = new System.Drawing.Drawing2D.GraphicsPath())
+            var g = e.Graphics;
+            
+            // White background
+            g.Clear(Color.White);
+            
+            // Top colored border
+            using (var topBrush = new SolidBrush(color))
             {
-                int r = 3;
-                path.AddArc(0, 0, r * 2, r * 2, 180, 90);
-                path.AddLine(r, 0, accentBar.Width - r, 0);
-                path.AddArc(accentBar.Width - r * 2, 0, r * 2, r * 2, 270, 90);
-                path.AddLine(accentBar.Width, r, accentBar.Width, accentBar.Height - r);
-                path.AddArc(accentBar.Width - r * 2, accentBar.Height - r * 2, r * 2, r * 2, 0, 90);
-                path.AddLine(accentBar.Width - r, accentBar.Height, r, accentBar.Height);
-                path.AddArc(0, accentBar.Height - r * 2, r * 2, r * 2, 90, 90);
-                path.CloseFigure();
-                accentBar.Region = new Region(path);
+                g.FillRectangle(topBrush, 0, 0, card.Width, 3);
+            }
+            
+            // Subtle border
+            using (var borderPen = new Pen(Color.FromArgb(229, 231, 235), 1))
+            {
+                g.DrawRectangle(borderPen, 0, 0, card.Width - 1, card.Height - 1);
             }
         };
 
+        // Value label - large, bold number
         var valueLabel = new Label
         {
             Text = value,
-            Font = new Font("Segoe UI", 22, FontStyle.Bold),
-            ForeColor = StyleHelper.TextDark,
-            Location = new Point(25, 30),
-            Size = new Size(220, 45),
+            Font = new Font("Segoe UI", 32, FontStyle.Bold),
+            ForeColor = Color.FromArgb(0, 50, 73),
+            Location = new Point(20, 30),
+            Size = new Size(220, 60),
             AutoSize = false,
             TextAlign = ContentAlignment.MiddleLeft
         };
 
+        // Title label - simple uppercase
         var titleLabel = new Label
         {
             Text = label.ToUpper(),
-            Font = new Font("Segoe UI", 9, FontStyle.Bold),
-            ForeColor = StyleHelper.TextLight,
-            Location = new Point(28, 90),
-            AutoSize = true
+            Font = new Font("Segoe UI", 9, FontStyle.Regular),
+            ForeColor = Color.FromArgb(107, 114, 128),
+            Location = new Point(20, 100),
+            Size = new Size(220, 25),
+            AutoSize = false,
+            TextAlign = ContentAlignment.MiddleLeft
         };
 
-        // Icon circle
-        var iconCircle = new Panel
-        {
-            Size = new Size(50, 50),
-            Location = new Point(190, 20),
-            BackColor = Color.Transparent
-        };
-
-        iconCircle.Paint += (s, e) =>
-        {
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            using (var brush = new SolidBrush(Color.FromArgb(20, color)))
-            {
-                e.Graphics.FillEllipse(brush, 0, 0, 48, 48);
-            }
-        };
-
-        card.MouseEnter += (s, e) => card.BackColor = Color.FromArgb(252, 252, 252);
+        // Simple hover effect
+        card.MouseEnter += (s, e) => card.BackColor = Color.FromArgb(249, 250, 251);
         card.MouseLeave += (s, e) => card.BackColor = Color.White;
 
-        card.Controls.Add(accentBar);
         card.Controls.Add(valueLabel);
         card.Controls.Add(titleLabel);
-        card.Controls.Add(iconCircle);
 
         return card;
     }
@@ -488,50 +472,37 @@ public partial class Form1 : Form
         lowStockPanel.BackColor = Color.White;
         lowStockPanel.Padding = new Padding(0);
 
+        // Simple border
         lowStockPanel.Paint += (s, e) =>
         {
-            var g = e.Graphics;
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            using (var shadowBrush = new SolidBrush(Color.FromArgb(15, 0, 0, 0)))
+            using (var borderPen = new Pen(Color.FromArgb(229, 231, 235), 1))
             {
-                g.FillRectangle(shadowBrush, 2, 2, lowStockPanel.Width - 2, lowStockPanel.Height - 2);
-            }
-            using (var borderPen = new Pen(Color.FromArgb(230, 230, 230), 1))
-            {
-                g.DrawRectangle(borderPen, 0, 0, lowStockPanel.Width - 1, lowStockPanel.Height - 1);
+                e.Graphics.DrawRectangle(borderPen, 0, 0, lowStockPanel.Width - 1, lowStockPanel.Height - 1);
             }
         };
 
+        // Simple title panel
         var titlePanel = new Panel
         {
             Size = new Size(1100, 50),
-            BackColor = Color.FromArgb(255, 243, 205),
+            BackColor = Color.White,
             Dock = DockStyle.Top,
             Padding = new Padding(20, 0, 20, 0)
         };
 
-        var iconLabel = new Label
-        {
-            Text = "⚠",
-            Font = new Font("Segoe UI", 18, FontStyle.Bold),
-            ForeColor = Color.FromArgb(255, 193, 7),
-            Location = new Point(20, 10),
-            AutoSize = true
-        };
-
         var titleLabel = new Label
         {
-            Text = "Médicaments en Rupture de Stock (Top 5)",
+            Text = "⚠ Médicaments en Rupture de Stock",
             Font = new Font("Segoe UI", 13, FontStyle.Bold),
-            ForeColor = Color.FromArgb(102, 60, 0),
-            Location = new Point(55, 13),
+            ForeColor = Color.FromArgb(0, 50, 73),
+            Location = new Point(20, 15),
             AutoSize = true
         };
 
-        titlePanel.Controls.Add(iconLabel);
         titlePanel.Controls.Add(titleLabel);
         lowStockPanel.Controls.Add(titlePanel);
 
+        // Simple grid
         var grid = new DataGridView
         {
             Location = new Point(0, 50),
@@ -544,24 +515,24 @@ public partial class Form1 : Form
             RowHeadersVisible = false,
             AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
             SelectionMode = DataGridViewSelectionMode.FullRowSelect,
-            RowTemplate = { Height = 35 },
+            RowTemplate = { Height = 40 },
             CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal,
-            GridColor = Color.FromArgb(240, 240, 240)
+            GridColor = Color.FromArgb(243, 244, 246)
         };
 
-        grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(220, 53, 69);
+        // Simple header styling
+        grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 126, 167);
         grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-        grid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-        grid.ColumnHeadersDefaultCellStyle.Padding = new Padding(10, 8, 10, 8);
-        grid.ColumnHeadersHeight = 40;
+        grid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+        grid.ColumnHeadersDefaultCellStyle.Padding = new Padding(10, 5, 10, 5);
+        grid.ColumnHeadersHeight = 45;
         grid.EnableHeadersVisualStyles = false;
 
-        grid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 235, 238);
-        grid.DefaultCellStyle.SelectionForeColor = Color.FromArgb(52, 58, 64);
+        grid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(239, 246, 255);
+        grid.DefaultCellStyle.SelectionForeColor = Color.FromArgb(31, 41, 55);
         grid.DefaultCellStyle.Padding = new Padding(10, 5, 10, 5);
         grid.DefaultCellStyle.Font = new Font("Segoe UI", 9);
-
-        grid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(252, 252, 252);
+        grid.DefaultCellStyle.BackColor = Color.White;
 
         grid.Columns.Add("Reference", "Référence");
         grid.Columns.Add("Nom", "Nom");
@@ -612,49 +583,37 @@ public partial class Form1 : Form
         recentActivityPanel.BackColor = Color.White;
         recentActivityPanel.Padding = new Padding(0);
 
+        // Simple border
         recentActivityPanel.Paint += (s, e) =>
         {
-            var g = e.Graphics;
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            using (var shadowBrush = new SolidBrush(Color.FromArgb(15, 0, 0, 0)))
+            using (var borderPen = new Pen(Color.FromArgb(229, 231, 235), 1))
             {
-                g.FillRectangle(shadowBrush, 2, 2, recentActivityPanel.Width - 2, recentActivityPanel.Height - 2);
-            }
-            using (var borderPen = new Pen(Color.FromArgb(230, 230, 230), 1))
-            {
-                g.DrawRectangle(borderPen, 0, 0, recentActivityPanel.Width - 1, recentActivityPanel.Height - 1);
+                e.Graphics.DrawRectangle(borderPen, 0, 0, recentActivityPanel.Width - 1, recentActivityPanel.Height - 1);
             }
         };
 
+        // Simple title panel
         var titlePanel = new Panel
         {
             Size = new Size(1100, 50),
-            BackColor = Color.FromArgb(232, 244, 253),
+            BackColor = Color.White,
             Dock = DockStyle.Top,
             Padding = new Padding(20, 0, 20, 0)
         };
 
-        var iconLabel = new Label
-        {
-            Text = "📊",
-            Font = new Font("Segoe UI", 16, FontStyle.Regular),
-            Location = new Point(20, 12),
-            AutoSize = true
-        };
-
         var titleLabel = new Label
         {
-            Text = "Activité Récente",
+            Text = "📊 Activité Récente",
             Font = new Font("Segoe UI", 13, FontStyle.Bold),
-            ForeColor = Color.FromArgb(13, 71, 161),
-            Location = new Point(55, 14),
+            ForeColor = Color.FromArgb(0, 50, 73),
+            Location = new Point(20, 15),
             AutoSize = true
         };
 
-        titlePanel.Controls.Add(iconLabel);
         titlePanel.Controls.Add(titleLabel);
         recentActivityPanel.Controls.Add(titlePanel);
 
+        // Simple grid
         var grid = new DataGridView
         {
             Location = new Point(0, 50),
@@ -667,24 +626,24 @@ public partial class Form1 : Form
             RowHeadersVisible = false,
             AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
             SelectionMode = DataGridViewSelectionMode.FullRowSelect,
-            RowTemplate = { Height = 35 },
+            RowTemplate = { Height = 40 },
             CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal,
-            GridColor = Color.FromArgb(240, 240, 240)
+            GridColor = Color.FromArgb(243, 244, 246)
         };
 
-        grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 123, 255);
+        // Simple header styling
+        grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 126, 167);
         grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-        grid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-        grid.ColumnHeadersDefaultCellStyle.Padding = new Padding(10, 8, 10, 8);
-        grid.ColumnHeadersHeight = 40;
+        grid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+        grid.ColumnHeadersDefaultCellStyle.Padding = new Padding(10, 5, 10, 5);
+        grid.ColumnHeadersHeight = 45;
         grid.EnableHeadersVisualStyles = false;
 
-        grid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(227, 242, 253);
-        grid.DefaultCellStyle.SelectionForeColor = Color.FromArgb(52, 58, 64);
+        grid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(239, 246, 255);
+        grid.DefaultCellStyle.SelectionForeColor = Color.FromArgb(31, 41, 55);
         grid.DefaultCellStyle.Padding = new Padding(10, 5, 10, 5);
         grid.DefaultCellStyle.Font = new Font("Segoe UI", 9);
-
-        grid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(252, 252, 252);
+        grid.DefaultCellStyle.BackColor = Color.White;
 
         grid.Columns.Add("Type", "Type");
         grid.Columns.Add("Description", "Description");

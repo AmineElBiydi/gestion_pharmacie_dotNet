@@ -132,7 +132,7 @@ namespace GestionPharmacie.Forms
             // dgvRecent
             // 
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(66, 133, 244);
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(0, 126, 167);
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;

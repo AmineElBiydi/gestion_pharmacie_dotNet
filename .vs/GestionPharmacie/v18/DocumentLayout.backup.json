@@ -3,56 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|c:\\users\\amine\\.gemini\\antigravity\\scratch\\gestionpharmacie\\gestionpharmacie.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|solutionrelative:gestionpharmacie.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|c:\\users\\amine\\.gemini\\antigravity\\scratch\\gestionpharmacie\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|c:\\users\\amine\\.gemini\\antigravity\\scratch\\gestionpharmacie\\form1.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|solutionrelative:form1.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|c:\\users\\amine\\.gemini\\antigravity\\scratch\\gestionpharmacie\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|solutionrelative:form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|c:\\users\\amine\\.gemini\\antigravity\\scratch\\gestionpharmacie\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|c:\\users\\amine\\.gemini\\antigravity\\scratch\\gestionpharmacie\\forms\\usermanagementform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|solutionrelative:forms\\usermanagementform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|c:\\users\\amine\\.gemini\\antigravity\\scratch\\gestionpharmacie\\forms\\medicamentsearchform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|solutionrelative:forms\\medicamentsearchform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|c:\\users\\amine\\.gemini\\antigravity\\scratch\\gestionpharmacie\\forms\\medicamentform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|solutionrelative:forms\\medicamentform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|c:\\users\\amine\\.gemini\\antigravity\\scratch\\gestionpharmacie\\forms\\medicamentalertform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|solutionrelative:forms\\medicamentalertform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|c:\\users\\amine\\.gemini\\antigravity\\scratch\\gestionpharmacie\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|solutionrelative:forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|c:\\users\\amine\\.gemini\\antigravity\\scratch\\gestionpharmacie\\forms\\createaccountform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|solutionrelative:forms\\createaccountform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|c:\\users\\amine\\.gemini\\antigravity\\scratch\\gestionpharmacie\\forms\\commandesearchform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|solutionrelative:forms\\commandesearchform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|c:\\users\\amine\\.gemini\\antigravity\\scratch\\gestionpharmacie\\forms\\commandeeditform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|solutionrelative:forms\\commandeeditform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|c:\\users\\amine\\.gemini\\antigravity\\scratch\\gestionpharmacie\\forms\\commandeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|solutionrelative:forms\\commandeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|c:\\users\\amine\\.gemini\\antigravity\\scratch\\gestionpharmacie\\forms\\commandedashboardform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|solutionrelative:forms\\commandedashboardform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|c:\\users\\amine\\.gemini\\antigravity\\scratch\\gestionpharmacie\\forms\\clientsearchform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|solutionrelative:forms\\clientsearchform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|c:\\users\\amine\\.gemini\\antigravity\\scratch\\gestionpharmacie\\forms\\clientform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8B5E8E3F-9D4A-4C1E-B2A1-5F6C7D8E9F0A}|GestionPharmacie.csproj|solutionrelative:forms\\clientform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -70,158 +38,65 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserManagementForm.cs [Conception]",
-              "DocumentMoniker": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\UserManagementForm.cs",
-              "RelativeDocumentMoniker": "Forms\\UserManagementForm.cs",
-              "ToolTip": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\UserManagementForm.cs [Conception]",
-              "RelativeToolTip": "Forms\\UserManagementForm.cs [Conception]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T13:32:36.2Z",
-              "EditorCaption": " [Conception]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MedicamentSearchForm.cs [Conception]",
-              "DocumentMoniker": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\MedicamentSearchForm.cs",
-              "RelativeDocumentMoniker": "Forms\\MedicamentSearchForm.cs",
-              "ToolTip": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\MedicamentSearchForm.cs [Conception]",
-              "RelativeToolTip": "Forms\\MedicamentSearchForm.cs [Conception]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T13:32:34.926Z",
-              "EditorCaption": " [Conception]"
+              "DocumentIndex": 0,
+              "Title": "GestionPharmacie",
+              "DocumentMoniker": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\GestionPharmacie.csproj",
+              "RelativeDocumentMoniker": "GestionPharmacie.csproj",
+              "ToolTip": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\GestionPharmacie.csproj",
+              "RelativeToolTip": "GestionPharmacie.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-08T15:46:04.197Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "MedicamentForm.cs [Conception]",
-              "DocumentMoniker": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\MedicamentForm.cs",
-              "RelativeDocumentMoniker": "Forms\\MedicamentForm.cs",
-              "ToolTip": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\MedicamentForm.cs [Conception]",
-              "RelativeToolTip": "Forms\\MedicamentForm.cs [Conception]",
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "Form1.Designer.cs",
+              "ToolTip": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Form1.Designer.cs",
+              "RelativeToolTip": "Form1.Designer.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAA0wBIBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T13:32:33.509Z",
-              "EditorCaption": " [Conception]"
+              "WhenOpened": "2025-12-08T15:36:40.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.resx",
+              "DocumentMoniker": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Form1.resx",
+              "RelativeDocumentMoniker": "Form1.resx",
+              "ToolTip": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Form1.resx",
+              "RelativeToolTip": "Form1.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2025-12-08T15:36:39.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAkwFwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-08T15:36:35.142Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "MedicamentAlertForm.cs [Conception]",
-              "DocumentMoniker": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\MedicamentAlertForm.cs",
-              "RelativeDocumentMoniker": "Forms\\MedicamentAlertForm.cs",
-              "ToolTip": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\MedicamentAlertForm.cs [Conception]",
-              "RelativeToolTip": "Forms\\MedicamentAlertForm.cs [Conception]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T13:32:32.347Z",
-              "EditorCaption": " [Conception]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "Form1.cs [Conception]",
               "DocumentMoniker": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Form1.cs [Conception]",
               "RelativeToolTip": "Form1.cs [Conception]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T13:22:32.369Z",
-              "EditorCaption": " [Conception]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "LoginForm.cs [Conception]",
-              "DocumentMoniker": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\LoginForm.cs",
-              "RelativeDocumentMoniker": "Forms\\LoginForm.cs",
-              "ToolTip": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\LoginForm.cs [Conception]",
-              "RelativeToolTip": "Forms\\LoginForm.cs [Conception]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T13:32:30.805Z",
-              "EditorCaption": " [Conception]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CreateAccountForm.cs [Conception]",
-              "DocumentMoniker": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\CreateAccountForm.cs",
-              "RelativeDocumentMoniker": "Forms\\CreateAccountForm.cs",
-              "ToolTip": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\CreateAccountForm.cs [Conception]",
-              "RelativeToolTip": "Forms\\CreateAccountForm.cs [Conception]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T13:32:13.749Z",
-              "EditorCaption": " [Conception]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CommandeSearchForm.cs [Conception]",
-              "DocumentMoniker": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\CommandeSearchForm.cs",
-              "RelativeDocumentMoniker": "Forms\\CommandeSearchForm.cs",
-              "ToolTip": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\CommandeSearchForm.cs [Conception]",
-              "RelativeToolTip": "Forms\\CommandeSearchForm.cs [Conception]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T13:32:11.649Z",
-              "EditorCaption": " [Conception]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "CommandeEditForm.cs [Conception]",
-              "DocumentMoniker": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\CommandeEditForm.cs",
-              "RelativeDocumentMoniker": "Forms\\CommandeEditForm.cs",
-              "ToolTip": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\CommandeEditForm.cs [Conception]",
-              "RelativeToolTip": "Forms\\CommandeEditForm.cs [Conception]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T13:32:10.502Z",
-              "EditorCaption": " [Conception]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "CommandeForm.cs [Conception]",
-              "DocumentMoniker": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\CommandeForm.cs",
-              "RelativeDocumentMoniker": "Forms\\CommandeForm.cs",
-              "ToolTip": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\CommandeForm.cs [Conception]",
-              "RelativeToolTip": "Forms\\CommandeForm.cs [Conception]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T13:32:09.29Z",
-              "EditorCaption": " [Conception]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CommandeDashboardForm.cs [Conception]",
-              "DocumentMoniker": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\CommandeDashboardForm.cs",
-              "RelativeDocumentMoniker": "Forms\\CommandeDashboardForm.cs",
-              "ToolTip": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\CommandeDashboardForm.cs [Conception]",
-              "RelativeToolTip": "Forms\\CommandeDashboardForm.cs [Conception]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T13:32:07.694Z",
-              "EditorCaption": " [Conception]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "ClientSearchForm.cs [Conception]",
-              "DocumentMoniker": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\ClientSearchForm.cs",
-              "RelativeDocumentMoniker": "Forms\\ClientSearchForm.cs",
-              "ToolTip": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\ClientSearchForm.cs [Conception]",
-              "RelativeToolTip": "Forms\\ClientSearchForm.cs [Conception]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T13:32:06.373Z",
-              "EditorCaption": " [Conception]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ClientForm.cs [Conception]",
-              "DocumentMoniker": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\ClientForm.cs",
-              "RelativeDocumentMoniker": "Forms\\ClientForm.cs",
-              "ToolTip": "C:\\Users\\amine\\.gemini\\antigravity\\scratch\\GestionPharmacie\\Forms\\ClientForm.cs [Conception]",
-              "RelativeToolTip": "Forms\\ClientForm.cs [Conception]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T13:32:02.912Z",
+              "WhenOpened": "2025-12-08T15:36:16.199Z",
               "EditorCaption": " [Conception]"
             }
           ]

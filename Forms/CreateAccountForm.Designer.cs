@@ -61,7 +61,7 @@ namespace GestionPharmacie.Forms
             {
                 Text = "Créer un compte",
                 Font = new Font("Segoe UI", 20F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(66, 133, 244),
+                ForeColor = Color.FromArgb(0, 126, 167),
                 Location = new Point(0, 0),
                 AutoSize = true
             };
@@ -240,7 +240,7 @@ namespace GestionPharmacie.Forms
             btnCreate = new Button
             {
                 Text = "Créer le compte",
-                BackColor = Color.FromArgb(66, 133, 244),
+                BackColor = Color.FromArgb(0, 126, 167),
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
                 FlatAppearance = { BorderSize = 0 },
@@ -252,7 +252,7 @@ namespace GestionPharmacie.Forms
             };
             btnCreate.Click += BtnCreate_Click;
             btnCreate.MouseEnter += (s, e) => btnCreate.BackColor = Color.FromArgb(25, 118, 210);
-            btnCreate.MouseLeave += (s, e) => btnCreate.BackColor = Color.FromArgb(66, 133, 244);
+            btnCreate.MouseLeave += (s, e) => btnCreate.BackColor = Color.FromArgb(0, 126, 167);
             btnCreate.Paint += (s, e) => PaintRoundedButton(s, e, 8);
             mainPanel.Controls.Add(btnCreate);
 
