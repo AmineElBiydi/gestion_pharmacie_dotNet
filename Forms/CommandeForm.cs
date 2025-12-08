@@ -15,11 +15,7 @@ namespace GestionPharmacie.Forms
         public CommandeForm()
         {
             InitializeComponent();
-
-            if (!DesignMode)
-            {
-                StyleHelper.ApplyFormTheme(this);
-            }
+            StyleHelper.ApplyFormTheme(this);
             LoadData();
             cboStatut.SelectedIndex = 0; // Set default to "En cours"
         }
@@ -38,7 +34,9 @@ namespace GestionPharmacie.Forms
                 cboClient.DisplayMember = "NomComplet";
                 cboClient.ValueMember = "ID";
 
-                var medicaments = _medicamentRepo.GetAll();
+                var medicaments = _medicamentRepo.GetAll()
+                    .Where(m => !m.EstBloque)
+                    .ToList();
                 cboMedicament.DataSource = medicaments;
                 cboMedicament.DisplayMember = "Nom";
                 cboMedicament.ValueMember = "ID";
@@ -94,7 +92,31 @@ namespace GestionPharmacie.Forms
             dgvDetails.DataSource = _details.ToList();
             
             var total = _details.Sum(d => d.SousTotal);
-            lblTotal.Text = $"Total: {total:N2} DH";
+            lblTotal.Text = $"Total: {total:N2} €";
+        }
+
+        private void BtnNewClient_Click(object? sender, EventArgs e)
+        {
+            // Store the currently selected client ID (if any)
+            var selectedClientId = cboClient.SelectedValue as int?;
+
+            // Open the ClientForm
+            using (var clientForm = new ClientForm())
+            {
+                clientForm.ShowDialog();
+            }
+
+            // Reload the clients dropdown
+            var clients = _clientRepo.GetAll();
+            cboClient.DataSource = clients;
+            cboClient.DisplayMember = "NomComplet";
+            cboClient.ValueMember = "ID";
+
+            // Try to restore the previously selected client
+            if (selectedClientId.HasValue)
+            {
+                cboClient.SelectedValue = selectedClientId.Value;
+            }
         }
 
         private void BtnSave_Click(object? sender, EventArgs e)

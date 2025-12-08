@@ -25,6 +25,7 @@ namespace GestionPharmacie.Forms
             dtpDate = new DateTimePicker();
             lblDate = new Label();
             cboClient = new ComboBox();
+            btnNewClient = new Button();
             lblClient = new Label();
             detailsPanel = new Panel();
             btnAdd = new Button();
@@ -57,6 +58,7 @@ namespace GestionPharmacie.Forms
             headerPanel.Controls.Add(lblStatut);
             headerPanel.Controls.Add(dtpDate);
             headerPanel.Controls.Add(lblDate);
+            headerPanel.Controls.Add(btnNewClient);
             headerPanel.Controls.Add(cboClient);
             headerPanel.Controls.Add(lblClient);
             headerPanel.Dock = DockStyle.Top;
@@ -114,6 +116,21 @@ namespace GestionPharmacie.Forms
             cboClient.Size = new Size(342, 28);
             cboClient.TabIndex = 1;
             // 
+            // btnNewClient
+            // 
+            btnNewClient.BackColor = Color.FromArgb(102, 187, 106);
+            btnNewClient.FlatAppearance.BorderSize = 0;
+            btnNewClient.FlatStyle = FlatStyle.Flat;
+            btnNewClient.ForeColor = Color.White;
+            btnNewClient.Location = new Point(529, 23);
+            btnNewClient.Margin = new Padding(3, 4, 3, 4);
+            btnNewClient.Name = "btnNewClient";
+            btnNewClient.Size = new Size(150, 28);
+            btnNewClient.TabIndex = 6;
+            btnNewClient.Text = "+ Nouveau Client";
+            btnNewClient.UseVisualStyleBackColor = false;
+            btnNewClient.Click += BtnNewClient_Click;
+            // 
             // lblClient
             // 
             lblClient.AutoSize = true;
@@ -142,7 +159,7 @@ namespace GestionPharmacie.Forms
             // 
             // btnAdd
             // 
-            btnAdd.BackColor = Color.FromArgb(0, 126, 167);
+            btnAdd.BackColor = Color.FromArgb(102, 187, 106);
             btnAdd.FlatAppearance.BorderSize = 0;
             btnAdd.FlatStyle = FlatStyle.Flat;
             btnAdd.ForeColor = Color.White;
@@ -252,7 +269,7 @@ namespace GestionPharmacie.Forms
             colPrixUnit.DataPropertyName = "PrixUnitaire";
             dataGridViewCellStyle1.Format = "N2";
             colPrixUnit.DefaultCellStyle = dataGridViewCellStyle1;
-            colPrixUnit.HeaderText = "Prix Unit. (DH)";
+            colPrixUnit.HeaderText = "Prix Unit. (€)";
             colPrixUnit.MinimumWidth = 6;
             colPrixUnit.Name = "colPrixUnit";
             colPrixUnit.ReadOnly = true;
@@ -262,7 +279,7 @@ namespace GestionPharmacie.Forms
             colSousTotal.DataPropertyName = "SousTotal";
             dataGridViewCellStyle2.Format = "N2";
             colSousTotal.DefaultCellStyle = dataGridViewCellStyle2;
-            colSousTotal.HeaderText = "Sous-Total (DH)";
+            colSousTotal.HeaderText = "Sous-Total (€)";
             colSousTotal.MinimumWidth = 6;
             colSousTotal.Name = "colSousTotal";
             colSousTotal.ReadOnly = true;
@@ -290,7 +307,7 @@ namespace GestionPharmacie.Forms
             // 
             // btnSave
             // 
-            btnSave.BackColor = Color.FromArgb(0, 126, 167);
+            btnSave.BackColor = Color.FromArgb(66, 133, 244);
             btnSave.FlatAppearance.BorderSize = 0;
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Segoe UI", 11F);
@@ -308,12 +325,12 @@ namespace GestionPharmacie.Forms
             // 
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblTotal.ForeColor = Color.FromArgb(0, 50, 73);
+            lblTotal.ForeColor = Color.FromArgb(66, 133, 244);
             lblTotal.Location = new Point(23, 33);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(174, 37);
             lblTotal.TabIndex = 0;
-            lblTotal.Text = "Total: 0.00 DH";
+            lblTotal.Text = "Total: 0.00 €";
             // 
             // CommandeForm
             // 
@@ -346,6 +363,7 @@ namespace GestionPharmacie.Forms
 
         private System.Windows.Forms.Panel headerPanel;
         private System.Windows.Forms.ComboBox cboClient;
+        private System.Windows.Forms.Button btnNewClient;
         private System.Windows.Forms.Label lblClient;
         private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.Label lblDate;
