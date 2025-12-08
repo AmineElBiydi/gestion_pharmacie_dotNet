@@ -49,6 +49,10 @@ namespace GestionPharmacie.Forms
                 nudPrixUnitaire.Value = med.PrixUnitaire;
                 nudQuantiteStock.Value = med.QuantiteStock;
                 nudSeuil.Value = med.Seuil;
+                
+                // Update button text based on blocked status
+                btnDelete.Text = med.EstBloque ? "Débloquer" : "Bloquer";
+                btnDelete.BackColor = med.EstBloque ? Color.FromArgb(0, 126, 167) : Color.FromArgb(239, 83, 80);
             }
         }
 
@@ -97,25 +101,30 @@ namespace GestionPharmacie.Forms
         {
             if (_currentMedicament == null)
             {
-                MessageBox.Show("Veuillez sélectionner un médicament à supprimer.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Veuillez sélectionner un médicament.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            var result = MessageBox.Show($"Voulez-vous vraiment bloquer le médicament '{_currentMedicament.Nom}'?",
+            string action = _currentMedicament.EstBloque ? "débloquer" : "bloquer";
+            var result = MessageBox.Show($"Voulez-vous vraiment {action} le médicament '{_currentMedicament.Nom}'?",
                 "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
                 try
                 {
-                    _repository.Delete(_currentMedicament.ID);
-                    MessageBox.Show("Médicament bloquer avec succès!", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Toggle the blocked status
+                    _currentMedicament.EstBloque = !_currentMedicament.EstBloque;
+                    _repository.Update(_currentMedicament);
+                    
+                    string message = _currentMedicament.EstBloque ? "bloqué" : "débloqué";
+                    MessageBox.Show($"Médicament {message} avec succès!", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadMedicaments();
                     ClearForm();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Erreur lors de la bloquage: {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Erreur lors de l'opération: {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
